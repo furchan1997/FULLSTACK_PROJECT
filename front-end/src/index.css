@@ -1,0 +1,98 @@
+.custom-bg-purple {
+  background-color: #8000c0 !important;
+}
+
+.custom-bg-gold {
+  background-color: #ffd700 !important;
+}
+
+.custom-purple-color {
+  color: #8000c0 !important;
+}
+
+.custom-gold-color {
+  color: #eed235 !important;
+  font-weight: bold !important;
+}
+
+h3 {
+  font-size: 1rem !important;
+  font-weight: bold !important;
+}
+
+.rtl {
+  direction: rtl;
+  text-align: right;
+}
+
+.social-icon {
+  width: 50px;
+  transition: transform 0.3s ease-in-out;
+}
+
+.social-icon:hover {
+  transform: scale(1.1);
+}
+
+/* מסיר קו תחתון מהקישורים */
+.footer {
+  text-decoration: none;
+  font-weight: bold; /* הופך את הטקסט לעבה יותר */
+  color: white; /* צבע הטקסט */
+}
+
+/* מסיר את הצבע הכחול לאחר לחיצה */
+.footer:focus,
+.footer:active {
+  outline: none;
+  box-shadow: none;
+  color: white;
+}
+
+.logo {
+  text-decoration: none;
+  font-size: 30px;
+}
+
+.logo-container {
+  margin-left: 1rem;
+  margin-right: 1rem;
+}
+
+.user-detalis {
+  width: 50%;
+  margin: auto;
+}
+
+@media (max-width: 550px) {
+  /* למסכים קטנים מאוד */
+  .logo-container {
+    margin: 0; /* ביטול המרווח */
+  }
+
+  .logo {
+    text-decoration: none;
+    font-size: 20px;
+  }
+
+  .user-detalis {
+    width: 100%;
+  }
+
+  .sign-in-page {
+    display: flex;
+    flex-direction: column-reverse;
+  }
+
+  .btn-sign-up {
+    width: 25%;
+  }
+}
+@media (min-width: 551px) and (max-width: 1200px) {
+  .home-page-for-tablets {
+    min-height: 50vh; /* לפחות גובה מלא של המסך */
+    display: flex; /* גורם לתוכן להימתח בהתאם */
+    flex-direction: column;
+    justify-content: space-around; /* ממקם את התוכן במרכז אנכי */
+  }
+}

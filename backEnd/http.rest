@@ -1,0 +1,189 @@
+@local=http://localhost:3000
+@user=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3YWI5ZWRjNmY2ZWRiNjMxNWIzYzAyYyIsImlzQWRtaW4iOmZhbHNlLCJpYXQiOjE3MzkzMDA1NzZ9.FwicT9h6L56MAwqDDr8YBasdZQhkZ1rX7TBYnLq8qmA
+
+@user2=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3Y2YzZTdhMjU1ZWY4OTNlNzgwNTQ0MCIsImlzQWRtaW4iOmZhbHNlLCJpYXQiOjE3NDE2MzUyMDZ9.V4Bh3YwnYwW8su2P3ZTaHuQGHbVS7gdb_CsB_VuCIVo
+
+@admin=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3Y2Y0NGVhYjZjNjc3NWVlYjdhZmQ3NCIsImlzQWRtaW4iOnRydWUsImlhdCI6MTc0MTYzNjg5Mn0.Lut6Jx2qlvZuhkihV7zRRufc5Eg4b87g592zhhs6dTo
+
+@userForDeleting=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3YWJhMmI1NmY2ZWRiNjMxNWIzYzA1ZSIsImlzQWRtaW4iOmZhbHNlLCJpYXQiOjE3MzkzMDE1NjV9.zZ6U7SZ2nwa_NTjo2NSgvE_Mhf8Vi9mHACpaWS1rv-U
+###
+
+POST  {{local}}/users/
+Content-Type: application/json
+
+
+{
+  "firstName": "xxx",
+  "lastName": "eee",
+  "email": "arieq324xx@example.com",
+  "password": "12345678",
+  "phone": "0523456789",
+  "address": {
+    "state": "Tel Aviv",
+    "country": "Israel",
+    "city": "Tel Aviv",
+    "street": "Dizingoff St",
+    "houseNumber": 15,
+    "zip": 6432135
+  }
+}
+
+###
+
+
+GET  {{local}}/content/horoscope/favorites
+x-auth-token:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3Y2Y0NGVhYjZjNjc3NWVlYjdhZmQ3NCIsImlzQWRtaW4iOnRydWUsImlhdCI6MTc0MTYzODI0NX0.E7BfG8AH4Y9K_MDszgMr2RI2ltkfTclUb2YpQ1_UC3Q
+
+
+###
+
+POST  {{local}}/users/login
+Content-Type: application/json
+
+
+{
+  "email": "arie21212@example.com",
+  "password": "12345678"
+}
+
+###
+
+GET  {{local}}/users/67ab9edc6f6edb6315b3c02c
+x-auth-token:{{user}}
+
+###
+
+
+GET  {{local}}/users/
+x-auth-token: {{admin}}
+
+###
+
+DELETE  {{local}}/users/67aba2b56f6edb6315b3c05e
+x-auth-token:{{userForDeleting}}
+
+
+###
+
+PUT  {{local}}/users/67abad1a7a6cc568ee333407
+x-auth-token: {{admin}}
+Content-Type: application/json
+
+
+{
+  "firstName": "eden2",
+  "lastName": "ben or",
+    "email": "Eden@admin.com",
+  "phone": "0523456789",
+  "address": {
+    "state": "Tel Aviveee",
+    "country": "Israel",
+    "city": "Tel Aviv",
+    "street": "Dizingoff St",
+    "houseNumber": 15,
+    "zip": 6432135
+  }
+}
+
+###
+
+PUT  {{local}}/users/67ab83ae72fe5d02a5c17753
+x-auth-token: {{admin}}
+Content-Type: application/json
+
+
+{
+  "firstName": "Ariel",
+  "lastName": "Hodaya",
+    "email": "ariel111@example.com",
+  "phone": "0523456789",
+  "address": {
+    "state": "Tel Aviveee",
+    "country": "Israel",
+    "city": "Tel Aviv",
+    "street": "Dizingoff St",
+    "houseNumber": 15,
+    "zip": 6432135
+  }
+}
+
+
+###
+
+PATCH  {{local}}/users/67ab9082cd414422314af7e6
+x-auth-token:{{admin}}
+Content-Type: application/json
+
+
+{
+  "password": "adminPassword"
+}
+
+###
+
+GET  {{local}}/content/aries
+
+###
+
+POST  {{local}}/content/admin/
+x-auth-token:{{admin}}
+Content-Type: application/json
+
+
+
+{
+  "sign": "תוכן חדש",
+  "title": "איך לשפר את כישורי התקשורת שלך",
+  "subtitle": "ההכוונה שלך להצלחה",
+  "description": "כישורי תקשורת הם בין הדברים החשובים ביותר בחיים האישיים והמקצועיים שלנו. כל אחד יכול לשפר את כישוריו דרך תרגול מתמיד, במיוחד אם יש לו את הכלים הנכונים.",
+  "image": {
+    "url": "https://example.com/image.jpg",
+    "alt": "תמונה שממחישה את כישורי התקשורת"
+  }
+}
+
+###
+
+PUT  {{local}}/content/admin/67abae847a6cc568ee333415
+x-auth-token:{{admin}}
+Content-Type: application/json
+
+
+
+{
+  "sign": "תאומים",
+  "title": "איך לשפר את כישורי התקשורת שלך",
+  "subtitle": "ssההכוונה שלך להצלחה",
+  "description": "כישורי תקשורת הם בין הדברים החשובים ביותר בחיים האישיים והמקצועיים שלנו. כל אחד יכול לשפר את כישוריו דרך תרגול מתמיד, במיוחד אם יש לו את הכלים הנכונים.",
+  "image": {
+    "url": "https://example.com/image.jpg",
+    "alt": "תמונה שממחישה את כישורי התקשורת"
+  }
+}
+
+###
+
+DELETE  {{local}}/content/admin/67da01254fb3aaca999da207
+x-auth-token:{{admin}}
+
+### 
+
+
+GET  {{local}}/content/
+### 
+
+
+GET  {{local}}/content/horoscops/
+x-auth-token:{{admin}}
+
+
+###
+
+PATCH  {{local}}/content/horoscope/67cf506dfb87e97fd23353d4
+x-auth-token:{{admin}}
+
+
+### LIKES
+
+PATCH  {{local}}/content/horoscope/67cf506dfb87e97fd23353d4
+x-auth-token:{{admin}}
