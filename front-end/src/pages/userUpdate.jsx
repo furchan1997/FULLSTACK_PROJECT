@@ -13,7 +13,7 @@ function UserUpdate() {
   const { id } = useParams();
 
   // פונקציית ניווט עבור שינוי סיסמא
-ֶ
+
   const handleUpdatePassword = (ev) => {
     ev.preventDefault();
     navigate(`/change-password/${id}`);
