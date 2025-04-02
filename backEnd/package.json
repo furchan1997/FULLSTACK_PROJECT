@@ -4,7 +4,8 @@
   "main": "scripts/app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node .",
+    "start": "npm run build && node server.js",
+    "build": "cd ../front-end && npm run build",
     "dev": "nodemon ."
   },
   "keywords": [],
