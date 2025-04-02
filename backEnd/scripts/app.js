@@ -13,12 +13,16 @@ const usersRouter = require("../routers/users");
 const authRouter = require("../routers/auth");
 const contentRouter = require("../routers/content");
 
+app.get("/", (req, res) => {
+  res.send("Server is working!");
+});
+
 app.use(cors());
 app.use(express.json());
 app.use(require("morgan")("dev"));
 
 app.use("/users", usersRouter);
-app.use("/users", authRouter);
+app.use("/auth", authRouter);
 app.use("/content", contentRouter);
 
 // Middleware לטיפול בנתיבים לא קיימים

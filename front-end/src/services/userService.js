@@ -21,7 +21,7 @@ export function setToken(token) {
 // פונקציה אסינכרונית שמבצעת בקשה לשרת לצורך התחברות
 // מקבל את הטוקן מהשרת ומכניס אותו כארגומנט אל הפונקציה שצפויה לקבל טוקן כפרמטר ולשמור אותו בלוקאל סטורג
 export async function logIn(credentials) {
-  const response = await httpService.post("/users/login", credentials, {
+  const response = await httpService.post("/auth/login", credentials, {
     headers: {
       "Content-Type": "application/json",
     },
