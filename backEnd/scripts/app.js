@@ -13,9 +13,7 @@ const usersRouter = require("../routers/users");
 const authRouter = require("../routers/auth");
 const contentRouter = require("../routers/content");
 
-const cors = require("cors");
-app.use(cors({ origin: "*" })); // מאפשר לכל האתרים לגשת לנתונים
-
+app.use(cors());
 app.use(express.json());
 app.use(require("morgan")("dev"));
 
