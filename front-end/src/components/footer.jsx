@@ -18,7 +18,7 @@ function Footer() {
           >
             <img
               className="social-icon"
-              src="./Logos/instagram.png"
+              src="./LOGOS/instagram.png"
               alt="instagram-logo"
             />
           </a>
@@ -29,7 +29,7 @@ function Footer() {
           >
             <img
               className="social-icon"
-              src="./Logos/youtube.png"
+              src="./LOGOS/youtube.png"
               alt="youtube-logo"
             />
           </a>
@@ -40,7 +40,7 @@ function Footer() {
           >
             <img
               className="social-icon"
-              src="./Logos/tiktok.png"
+              src="./LOGOS/tiktok.png"
               alt="tiktok-logo"
             />
           </a>

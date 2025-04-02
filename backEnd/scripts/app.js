@@ -13,9 +13,8 @@ const usersRouter = require("../routers/users");
 const authRouter = require("../routers/auth");
 const contentRouter = require("../routers/content");
 
-app.get("/", (req, res) => {
-  res.send("Server is working!");
-});
+const cors = require("cors");
+app.use(cors({ origin: "*" })); // מאפשר לכל האתרים לגשת לנתונים
 
 app.use(cors());
 app.use(express.json());
