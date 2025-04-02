@@ -1,3 +1,7 @@
+# Ignore node_modules and environment files inside backEnd
+node_modules/
+.env
+
 # Logs
 logs
 *.log
@@ -7,15 +11,13 @@ yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 
-node_modules
-.env
-dist
-dist-ssr
+# Build files
+dist/
+dist-ssr/
 *.local
 
 # Editor directories and files
-.vscode/*
-!.vscode/extensions.json
+.vscode/
 .idea
 .DS_Store
 *.suo
