@@ -14,8 +14,8 @@ function HomePage() {
           </>
         }
       />
-      <div class="container py-4">
-        <div class="d-flex justify-content-center align-items-center">
+      <div className="container py-4">
+        <div className="d-flex justify-content-center align-items-center">
           <img
             src="../../LOGOS/mystic.png"
             alt="mystic-logo"
