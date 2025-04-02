@@ -90,18 +90,17 @@ function NavBar() {
             <NavLink className="nav-link custom-gold-color mx-3" to="/">
               Home page
             </NavLink>
-            {user && (
-              <>
-                <li className="nav-item">
-                  <NavLink
-                    className="nav-link custom-gold-color"
-                    to="/zodiacs-signs"
-                  >
-                    Zodiacs
-                  </NavLink>
-                </li>
-              </>
-            )}
+
+            <>
+              <li className="nav-item">
+                <NavLink
+                  className="nav-link custom-gold-color"
+                  to="/zodiacs-signs"
+                >
+                  Zodiacs
+                </NavLink>
+              </li>
+            </>
 
             <li className="nav-item">
               <NavLink className="nav-link custom-gold-color" to="/horoscops">
