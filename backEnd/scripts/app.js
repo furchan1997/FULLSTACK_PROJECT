@@ -7,7 +7,7 @@ const cors = require("cors");
 const path = require("path");
 
 const URL = process.env.CONNECTION_STRING_ATLAS;
-const PORT = process.env.PORT || 3000;
+const PORT = 3000;
 require("../data/createAdmin");
 
 const usersRouter = require("../routers/users");
@@ -15,8 +15,6 @@ const authRouter = require("../routers/auth");
 const contentRouter = require("../routers/content");
 
 const frontendDistPath = path.join(__dirname, "..", "..", "front-end", "dist");
-console.log(__dirname);
-console.log(frontendDistPath);
 
 app.use(cors());
 app.use(express.json());
