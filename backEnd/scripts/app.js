@@ -4,6 +4,7 @@ const express = require("express");
 const app = express();
 const mongoose = require("mongoose");
 const cors = require("cors");
+const path = require("path");
 
 const URL = process.env.CONNECTION_STRING_ATLAS;
 const PORT = 3000;
@@ -29,6 +30,14 @@ app.use((req, res, next) => {
 app.use((err, req, res, next) => {
   console.error(err);
   res.status(500).json({ message: "Internal server error" });
+});
+
+// הגדרת סטטיקת React
+app.use(express.static(path.join(__dirname, "build"))); // מקבל את הקבצים מהתיקיה 'build'
+
+// כל בקשה שלא נתפסת על ידי נתיב API תחזור לדף הראשי של React
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "build", "index.html"));
 });
 
 connect();
