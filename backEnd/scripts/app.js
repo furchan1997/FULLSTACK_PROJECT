@@ -14,6 +14,9 @@ const usersRouter = require("../routers/users");
 const authRouter = require("../routers/auth");
 const contentRouter = require("../routers/content");
 
+const frontendDistPath = path.join(__dirname, "..", "..", "front-end", "dist");
+console.log(frontendDistPath);
+
 app.use(cors());
 app.use(express.json());
 app.use(require("morgan")("dev"));
@@ -33,11 +36,11 @@ app.use((err, req, res, next) => {
 });
 
 // הגדרת סטטיקת React
-app.use(express.static(path.join(__dirname, "dist"))); // מקבל את הקבצים מהתיקיה 'build'
+app.use(express.static(path.join(frontendDistPath, "dist"))); // מקבל את הקבצים מהתיקיה 'build'
 
 // כל בקשה שלא נתפסת על ידי נתיב API תחזור לדף הראשי של React
 app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname, "dist", "index.html"));
+  res.sendFile(path.join(frontendDistPath, "index.html"));
 });
 
 connect();
