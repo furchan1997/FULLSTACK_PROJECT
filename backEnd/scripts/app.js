@@ -33,11 +33,11 @@ app.use((err, req, res, next) => {
 });
 
 // הגדרת סטטיקת React
-app.use(express.static(path.join(__dirname, "build"))); // מקבל את הקבצים מהתיקיה 'build'
+app.use(express.static(path.join(__dirname, "dist"))); // מקבל את הקבצים מהתיקיה 'build'
 
 // כל בקשה שלא נתפסת על ידי נתיב API תחזור לדף הראשי של React
 app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname, "build", "index.html"));
+  res.sendFile(path.join(__dirname, "dist", "index.html"));
 });
 
 connect();
