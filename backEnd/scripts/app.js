@@ -15,6 +15,7 @@ const authRouter = require("../routers/auth");
 const contentRouter = require("../routers/content");
 
 const frontendDistPath = path.join(__dirname, "..", "..", "front-end", "dist");
+console.log(__dirname);
 console.log(frontendDistPath);
 
 app.use(cors());
@@ -36,8 +37,7 @@ app.use((err, req, res, next) => {
 });
 
 // הגדרת סטטיקת React
-app.use(express.static(path.join(frontendDistPath, "dist"))); // מקבל את הקבצים מהתיקיה 'build'
-
+app.use(express.static(frontendDistPath));
 // כל בקשה שלא נתפסת על ידי נתיב API תחזור לדף הראשי של React
 app.get("*", (req, res) => {
   res.sendFile(path.join(frontendDistPath, "index.html"));
