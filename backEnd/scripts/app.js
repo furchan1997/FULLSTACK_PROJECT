@@ -13,7 +13,7 @@ const usersRouter = require("../routers/users");
 const authRouter = require("../routers/auth");
 const contentRouter = require("../routers/content");
 
-app.use(cors({ origin: "*" })); // לאפשר גישה מכל מקום
+app.use(cors({ origin: "https://fullstack-project-44co.onrender.com" }));
 app.use(express.json());
 app.use(require("morgan")("dev"));
 

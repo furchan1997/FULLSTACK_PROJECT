@@ -2,8 +2,7 @@ import config from "../config.json";
 import axios from "axios";
 
 // הקובץ מגדיר שירות HTTP מותאם אישית
-//  שמבוסס על אקסיוס, ומטרתו לספק ממשק אחיד ונוח לביצוע בקשות HTTP בפרויקט.
-
+//  שמבוסס על אקסיוס, ומטרתו לספק ממשק אחיד ונוח לביצע בקשות HTTP בפרויקט.
 axios.defaults.baseURL = import.meta.env.VITE_API_URL || config.apiURL;
 // הגדרת פונקציה לניהול כותרות
 // מאפשרת להגדיר כותרות ברירת מחדל לכל בקשה יוצאת
