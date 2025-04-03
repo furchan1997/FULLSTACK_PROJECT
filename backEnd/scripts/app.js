@@ -37,7 +37,7 @@ app.use((err, req, res, next) => {
 });
 
 // הגדרת סטטיקת React
-app.use(express.static(frontendDistPath));
+app.use(express.static(path.join(frontendDistPath)));
 // כל בקשה שלא נתפסת על ידי נתיב API תחזור לדף הראשי של React
 app.get("*", (req, res) => {
   res.sendFile(path.join(frontendDistPath, "index.html"));
