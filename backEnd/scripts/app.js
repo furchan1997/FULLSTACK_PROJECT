@@ -4,7 +4,6 @@ const express = require("express");
 const app = express();
 const mongoose = require("mongoose");
 const cors = require("cors");
-const path = require("path");
 
 const URL = process.env.CONNECTION_STRING_ATLAS;
 const PORT = 3000;
@@ -13,8 +12,6 @@ require("../data/createAdmin");
 const usersRouter = require("../routers/users");
 const authRouter = require("../routers/auth");
 const contentRouter = require("../routers/content");
-
-const frontendDistPath = path.join(__dirname, "..", "..", "front-end", "dist");
 
 app.use(cors());
 app.use(express.json());
@@ -32,13 +29,6 @@ app.use((req, res, next) => {
 app.use((err, req, res, next) => {
   console.error(err);
   res.status(500).json({ message: "Internal server error" });
-});
-
-// הגדרת סטטיקת React
-app.use(express.static(path.join(frontendDistPath)));
-// כל בקשה שלא נתפסת על ידי נתיב API תחזור לדף הראשי של React
-app.get("*", (req, res) => {
-  res.sendFile(path.join(frontendDistPath, "index.html"));
 });
 
 connect();
