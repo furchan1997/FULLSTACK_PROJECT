@@ -87,7 +87,6 @@ function UserUpdate() {
         await userUpdate(values);
         navigate("/");
       } catch (err) {
-        console.error(err);
         if (err) {
           return;
         }

@@ -121,7 +121,6 @@ export function AuthProvider({ children }) {
     setUserDetalis(null); // איפוס כדי למנוע תצוגה ישנה
 
     try {
-      // setLoading(true);
       const user = await userService.getUserByIDForAdmin(ID);
       setUserDetalis(user);
     } catch (err) {
