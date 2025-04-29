@@ -29,7 +29,7 @@ function App() {
         <header>
           <NavBar />
         </header>
-        <main className="flex-fill pb-2">
+        <main className="flex-fill">
           <Routes>
             <Route path="/" element={<HomePage />} />
             <Route path="/sign-up" element={<SignUp />} />

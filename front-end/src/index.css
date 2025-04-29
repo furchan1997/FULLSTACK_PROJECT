@@ -1,17 +1,19 @@
 .custom-bg-purple {
-  background-color: #8000c0 !important;
+  /* background-color: rgba(136, 10, 43, 0.757); */
+  background-color: #1b3457;
 }
+/* background-color: rgba(112, 11, 38, 0.757) !important; */
 
 .custom-bg-gold {
-  background-color: #ffd700 !important;
+  background-color: #b0bec5 !important;
 }
 
 .custom-purple-color {
-  color: #8000c0 !important;
+  color: rgba(136, 10, 43, 0.757) !important;
 }
-
+/* איפה שהנב בר */
 .custom-gold-color {
-  color: #eed235 !important;
+  color: rgba(255, 54, 108, 0.735) !important;
   font-weight: bold !important;
 }
 
@@ -23,6 +25,27 @@ h3 {
 .rtl {
   direction: rtl;
   text-align: right;
+}
+
+.signature {
+  font-family: "Great Vibes", cursive;
+  font-size: 2rem; /* תוכל לשנות לגודל אחר */
+  color: rgba(136, 10, 43, 0.757); /* או כל צבע שתרצה */
+  font-size: 88px;
+  font-weight: 600;
+}
+
+.officle-font-header {
+  font-family: "Great Vibes", cursive;
+  font-weight: bold;
+  font-size: 2.5rem; /* תוכל לשנות לגודל אחר */
+  color: rgba(136, 10, 43, 0.757); /* או כל צבע שתרצה */
+}
+
+.officle-font {
+  font-family: "Great Vibes", cursive;
+  font-size: 2rem; /* תוכל לשנות לגודל אחר */
+  color: rgba(136, 10, 43, 0.757); /* או כל צבע שתרצה */
 }
 
 .social-icon {
@@ -62,6 +85,88 @@ h3 {
 .user-detalis {
   width: 50%;
   margin: auto;
+}
+
+.main-image {
+  background-image: url("../LOGOS/ai-generated-8612487_1920.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  min-height: calc(100vh - 130px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.book-frame {
+  max-width: 700px;
+  margin: 50px auto;
+  padding: 60px 40px;
+  background: #b58e62; /* צבע קרמי עתיק */
+  border: 8px solid #b58e62; /* חום כהה למסגרת */
+  border-radius: 20px;
+  box-shadow: inset 0 0 30px #cbb79e,
+    /* מראה שחוק פנימי */ 0 0 30px rgba(0, 0, 0, 1.5); /* צל חיצוני */
+  font-family: "Georgia", serif; /* פונט קלאסי */
+  text-align: center;
+  position: relative;
+  opacity: 0.8;
+}
+
+/* קישוטים בפינות */
+.book-frame::before,
+.book-frame::after {
+  content: "";
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  background-size: contain;
+}
+
+.book-frame::before {
+  top: -20px;
+  left: -20px;
+}
+
+.book-frame::after {
+  bottom: -20px;
+  right: -20px;
+}
+
+.backgroundImages {
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: relative;
+  min-height: 400px; /* גובה כלשהו בשביל לראות את התמונה */
+}
+
+.backgroundImages::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.2); /* אפשר לשלוט ברמת השקיפות */
+  backdrop-filter: brightness(
+    50%
+  ); /* מוריד את הבהירות, יוצר אפקט של שקיפות לתמונה */
+  z-index: 1;
+}
+
+.backgroundImages > * {
+  position: relative;
+  z-index: 2;
+}
+
+.eden-logo {
+  width: 50px;
+  height: 50px;
+}
+
+.cursor-pointer {
+  cursor: pointer;
 }
 
 @media (max-width: 550px) {

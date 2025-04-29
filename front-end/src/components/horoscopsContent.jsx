@@ -85,7 +85,7 @@ function HoroscopsContent({
       {!horoscopPage && (
         <Btn
           description={"Show"}
-          className={"custom-bg-purple custom-gold-color col-3 col-xs-6 m-auto"}
+          className={"custom-bg-gold custom-gold-color col-3 col-xs-6 m-auto"}
           type={"submit"}
           fn={goToHoroscop}
         />

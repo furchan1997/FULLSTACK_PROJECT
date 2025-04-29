@@ -36,6 +36,22 @@ function ZodiacsSigns() {
 
   // מערך של סוגי המזלות לצורך קבלת אותו המזל אל רכיב תוכן ועבור סינון של המזלות לפי פרמטר שהוא שם המזל
 
+  const backgroundImages = {
+    aries: "aries.jpg",
+    gemini: "gemini.jpg",
+    aquarius: "aquarius.jpg",
+    pisces: "pisces.jpg",
+    taurus: "taureus.jpg",
+    capricorn: "capricorn.png",
+    cancer: "cancer.png",
+    leo: "leo.jpg",
+    virgo: "virgo.png",
+    libra: "libra.png",
+    scorpio: "scorpion.png",
+    sagittarius: "sagittarius.png",
+  };
+  console.log(backgroundImages);
+
   const zodiacSigns = [
     "aquarius",
     "pisces",
@@ -70,19 +86,19 @@ function ZodiacsSigns() {
 
   return (
     <>
-      <PageHeaders
+      {/* <PageHeaders
         title={
           <>
             {"ZODIACS"} <Logo />{" "}
           </>
         }
         description={"A general introduction to zodiac signs and mysticism"}
-      />
+      /> */}
       {/*selectedSign הקוד מאפשר למשתמש לבחור מזל מתוך רשימה נפתחת, כאשר הבחירה מתעדכנת במשתנה */}
       <select
         value={selectedSign}
         onChange={(e) => setSelectedSign(e.target.value)}
-        className="form-select form-select-lg text-center border-warning text-warning w-50 m-auto custom-bg-purple"
+        className="form-select form-select-lg text-center border-warning w-50 m-auto custom-bg-gold custom-gold-color "
       >
         <option value="">בחר מזל</option>
         {zodiacSigns.map((sign) => (
@@ -102,6 +118,7 @@ function ZodiacsSigns() {
             howYouThinkAndTalk={content[zodiac].howYouThinkAndTalk}
             locationOnMap={content[zodiac].locationOnMap}
             whoYouAre={content[zodiac].whoYouAre}
+            backgroundImages={backgroundImages[zodiac]}
           />
         );
       })}

@@ -61,7 +61,7 @@ function Horoscops() {
           <p>for special content you need to sign-in</p>
           <Btn
             type={"submit"}
-            className="custom-bg-gold custom-purple-color"
+            className="custom-bg-purple"
             description={"click"}
             fn={handleSignIn} // כפתור שמוביל לדף ההתחברות
           />
