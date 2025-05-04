@@ -1,8 +1,6 @@
 .custom-bg-purple {
-  /* background-color: rgba(136, 10, 43, 0.757); */
-  background-color: #1b3457;
+  background-color: #1b3457 !important;
 }
-/* background-color: rgba(112, 11, 38, 0.757) !important; */
 
 .custom-bg-gold {
   background-color: #b0bec5 !important;
@@ -138,7 +136,7 @@ h3 {
   background-position: center;
   background-repeat: no-repeat;
   position: relative;
-  min-height: 400px; /* גובה כלשהו בשביל לראות את התמונה */
+  min-height: 80vh; /* גובה כלשהו בשביל לראות את התמונה */
 }
 
 .backgroundImages::after {
@@ -167,6 +165,67 @@ h3 {
 
 .cursor-pointer {
   cursor: pointer;
+}
+
+.book-frame[data-page="zodiacs"] {
+  background-color: rgba(154, 87, 5, 0.4); /* שקיפות קלה לרקע */
+  backdrop-filter: blur(49px); /* מטשטש בעדינות מה שמתחת */
+  border-radius: 20px;
+  box-shadow: inset 125px 10px 20px rgba(106, 58, 0, 0.4),
+    /* אפקט פנימי רך */ 20px 20px 20px 20px #1b3457; /* צל חיצוני שקוף */
+  padding: 20px;
+}
+
+.zodiacs-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(3, 150px);
+  gap: 5px;
+}
+
+.item {
+  background-color: #1b3457;
+  color: #b58e62;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  cursor: pointer;
+  font-size: 28px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, background-color 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.item:hover {
+  background-color: #b58e62;
+  color: #1b3457;
+  transform: scale(1.1); /* גידול פרופורציונלי כשהסמן על הפריט */
+}
+
+.item::after {
+  content: "";
+  background: rgba(255, 255, 255, 0.2); /* צבע לבן חצי שקוף */
+  border-radius: 50%;
+  transform: scale(0);
+  transition: transform 0.4s ease;
+}
+
+.item:hover::after {
+  transform: scale(1); /* אפקט עיגול בתמונה כשהסמן על הפריט */
+}
+
+.book-frame[data-page="my-services"] {
+  padding: 10px;
+  width: 70%;
+  margin-top: 10px;
+  font-weight: 700;
+}
+.book-frame[data-page="my-services"] p {
+  font-size: 20px;
+}
+.book-frame[data-page="my-services"] h3 {
+  font-size: 26px !important ;
 }
 
 @media (max-width: 550px) {

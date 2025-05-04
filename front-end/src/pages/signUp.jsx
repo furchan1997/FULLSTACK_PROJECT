@@ -121,11 +121,11 @@ function SignUp() {
       <PageHeaders
         title={
           <>
-            Sign-up <Logo />
+            דף הרשמה <Logo />
           </>
         }
         description={
-          "Sign up for the app today to receive the highest quality, most up-to-date, and most interesting content. It's free!"
+          "הירשמו לאפליקציה עוד היום כדי לקבל את התוכן האיכותי ביותר, המעודכן ביותר והמעניין ביותר. זה בחינם!"
         }
       />
 
@@ -135,14 +135,14 @@ function SignUp() {
           <Input
             {...form.getFieldProps("firstName")}
             error={form.touched?.firstName ? form.errors?.firstName : ""}
-            label={"First Name"}
+            label={"שם"}
             name={"firstName"}
             type={"text"}
             id={"firstName"}
             required
           />
           <Input
-            label={"Last Name"}
+            label={"שם משפחה"}
             name={"lastName"}
             type={"text"}
             id={"lastName"}
@@ -151,7 +151,7 @@ function SignUp() {
             error={form.touched?.lastName && form.errors["lastName"]}
           />
           <Input
-            label={"email"}
+            label={"אמייל"}
             name={"email"}
             type={"email"}
             id={"email"}
@@ -160,7 +160,7 @@ function SignUp() {
             error={form.touched?.email && form.errors["email"]}
           />
           <Input
-            label={"password"}
+            label={"סיסמא"}
             name={"password"}
             type={"password"}
             id={"password"}
@@ -169,7 +169,7 @@ function SignUp() {
             error={form.touched?.password && form.errors["password"]}
           />
           <Input
-            label={"phone"}
+            label={"פלאפון"}
             name={"phone"}
             type={"text"}
             id={"phone"}
@@ -186,7 +186,7 @@ function SignUp() {
             error={form.touched.address?.state && form.errors["address.state"]}
           />
           <Input
-            label={"country"}
+            label={"מדינה"}
             name={"address.country"}
             type={"text"}
             id={"country"}
@@ -196,7 +196,7 @@ function SignUp() {
             }
           />
           <Input
-            label={"city"}
+            label={"עיר"}
             name={"city"}
             type={"text"}
             id={"city"}
@@ -204,7 +204,7 @@ function SignUp() {
             error={form.touched.address?.city && form.errors["address.city"]}
           />
           <Input
-            label={"street"}
+            label={"רחוב"}
             name={"street"}
             type={"text"}
             id={"street"}
@@ -214,7 +214,7 @@ function SignUp() {
             }
           />
           <Input
-            label={"House Number"}
+            label={"מספר בית"}
             name={"houseNumber"}
             type={"number"}
             id={"houseNumber"}
@@ -225,7 +225,7 @@ function SignUp() {
             }
           />
           <Input
-            label={"zip"}
+            label={"מיקוד"}
             name={"zip"}
             type={"number"}
             id={"zip"}
@@ -236,14 +236,14 @@ function SignUp() {
             <Btn
               type={"submit"}
               className="custom-bg-purple custom-gold-color"
-              description={"Sign-up"}
+              description={"הרשם/י"}
               disabled={!form.isValid}
             />
 
-            <p className="m-0"> have account?</p>
+            <p className="m-0">יש לך חשבון קיים? </p>
             <Btn
               className="custom-bg-gold custom-purple-color"
-              description={"click"}
+              description={"התחבר/י"}
               fn={handleSignIn}
             />
           </div>

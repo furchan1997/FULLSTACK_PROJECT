@@ -25,118 +25,109 @@ function HoroscopsContent({
     <div
       className={
         horoscopPage
-          ? "container rtl card shadow-lg border-1 p-1"
-          : "container rtl card shadow-lg border-1 p-4"
+          ? "container rtl card shadow-lg border p-3 my-4"
+          : "container rtl card shadow-lg border p-4 my-4"
       }
     >
-      <div className="row text-center mb-4">
-        <div className="col">
-          <h1 className="font-weight-bold fs-3">{sign}</h1>
+      <div className="card-body">
+        <div className="text-center mb-4">
+          <h1 className="fw-bold fs-3">{sign}</h1>
         </div>
-      </div>
+        <div className="text-center mb-4">
+          <h1 className="fw-bold fs-3">{title}</h1>
+        </div>
 
-      {horoscopPage && (
-        <>
-          <div className="row mb-3">
-            <div className="col">
-              <h2 className="font-weight-bold fs-3">{title}</h2>
+        <div className="mb-3 text-center">
+          <h3>{subtitle}</h3>
+        </div>
+
+        {horoscopPage && (
+          <>
+            <div className="mb-3 text-center">
+              <h3 className="text-muted fs-5">{description}</h3>
             </div>
-          </div>
+          </>
+        )}
 
-          <div className="row mb-3">
-            <div className="col">
-              <h3>{subtitle}</h3>
-            </div>
-          </div>
-        </>
-      )}
-      <div className="row mb-3">
-        <div className="col">
-          <h3>{description}</h3>
+        <div className="mb-3 text-center">
+          <img
+            className="img-fluid rounded"
+            style={{
+              maxHeight: horoscopPage ? "500px" : "300px",
+              objectFit: "contain",
+            }}
+            src={url}
+            alt={alt}
+          />
         </div>
-      </div>
-      <div>
-        <img
-          style={
-            horoscopPage
-              ? {
-                  width: "100%", // תמונה תתממש לרוחב כל הקונטיינר
-                  maxHeight: "500px", // גובה יתאים באופן אוטומטי ליחס רוחב/גובה של התמונה
-                  objectFit: "contain", // שמור על יחס פרופורציות
-                }
-              : {
-                  width: "100%", // גם כאן
-                  maxHeight: "300px", // גם כאן
-                  objectFit: "contain", // שמור על יחס פרופורציות
-                }
-          }
-          src={url}
-          alt={alt}
-        />
-      </div>
 
-      <div className="row mb-3">
-        <div className="col">
-          <h3>Likes: {likes}</h3>
+        <div className="mb-3 text-center">
+          <h3>
+            Likes: <span className="text-danger">{likes}</span>
+          </h3>
         </div>
-      </div>
 
-      {/* כפתור Show בתוך ה-box */}
-      {!horoscopPage && (
-        <Btn
-          description={"Show"}
-          className={"custom-bg-gold custom-gold-color col-3 col-xs-6 m-auto"}
-          type={"submit"}
-          fn={goToHoroscop}
-        />
-      )}
+        {!horoscopPage && (
+          <div className="d-flex justify-content-center mb-3">
+            <Btn
+              description={"Show"}
+              className={
+                "custom-bg-gold custom-gold-color col-6 col-md-3 text-center"
+              }
+              type={"submit"}
+              fn={goToHoroscop}
+            />
+          </div>
+        )}
 
-      {/* כפתור לייק בתוך ה-box */}
-      <Btn
-        description={
-          isLiked ? (
-            <span className="liked-icon fs-5">❤️</span>
-          ) : (
-            <span className="unliked-icon fs-5">🤍</span>
-          )
-        }
-        type={"submit"}
-        // className={horoscopPage && "w-50"}
-        fn={toggleLikeBuUser}
-      />
-
-      {horoscopPage && (
-        <>
+        <div className="d-flex justify-content-center mb-4">
           <Btn
-            fn={backToMainPage}
-            description={"Back"}
-            className={
-              "custom-bg-purple custom-gold-color col-12 col-sm-6 col-md-4"
+            description={
+              isLiked ? (
+                <span className="liked-icon fs-5">❤️</span>
+              ) : (
+                <span className="unliked-icon fs-5">🤍</span>
+              )
             }
             type={"submit"}
+            fn={toggleLikeBuUser}
           />
-          {user.isAdmin && (
-            <>
+        </div>
+
+        {horoscopPage && (
+          <div className="row g-2 justify-content-center">
+            <div className="col-12 col-sm-6 col-md-4">
               <Btn
-                fn={user.isAdmin ? updateHoroscopPage : undefined}
-                description={"Update"}
-                className={
-                  "custom-bg-purple custom-gold-color col-12 col-sm-6 col-md-4"
-                }
+                fn={backToMainPage}
+                description={"Back"}
+                className={"custom-bg-purple custom-gold-color w-100"}
                 type={"submit"}
               />
-              <Btn
-                fn={user.isAdmin ? deleteHoroscop : undefined}
-                description={"Delete"}
-                className={
-                  "custom-bg-purple custom-gold-color col-12 col-sm-6 col-md-4"
-                }
-                type={"submit"}
-              />
-            </>
-          )}
-        </>
-      )}
+            </div>
+
+            {user.isAdmin && (
+              <>
+                <div className="col-12 col-sm-6 col-md-4">
+                  <Btn
+                    fn={updateHoroscopPage}
+                    description={"Update"}
+                    className={"custom-bg-purple custom-gold-color w-100"}
+                    type={"submit"}
+                  />
+                </div>
+                <div className="col-12 col-sm-6 col-md-4">
+                  <Btn
+                    fn={deleteHoroscop}
+                    description={"Delete"}
+                    className={"custom-bg-purple custom-gold-color w-100"}
+                    type={"submit"}
+                  />
+                </div>
+              </>
+            )}
+          </div>
+        )}
+      </div>
     </div>
   );
 }

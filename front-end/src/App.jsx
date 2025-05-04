@@ -1,4 +1,4 @@
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, useLocation } from "react-router-dom";
 import SignUp from "./pages/signUp";
 import SignIn from "./pages/signIn";
 import ZodiacsSigns from "./pages/zodiacSigns";
@@ -19,9 +19,19 @@ import NavBar from "./components/navBar";
 import Footer from "./components/footer";
 import About from "./components/about";
 import Regulations from "./components/regulations";
+import HoroscopPage from "./pages/horoscopPage";
+import HoroscopZodiac from "./pages/horoscopZodiac";
+import MyServices from "./pages/myServices";
+import OpeningCards from "./pages/serviceType/OpeningCards";
+import Astrologicalmap from "./pages/serviceType/astrologicalMap";
+import LeadCleaning from "./pages/serviceType/leadCleaning";
 
 // רכיב ראשי , כאן מוצגים כל הרכיבים של האפליקציה
 function App() {
+  const loction = useLocation();
+  const isHomePage =
+    loction.pathname === "/" || loction.pathname === "/zodiacs-signs";
+
   return (
     <>
       <div className={"app min-vh-100 d-flex flex-column"}>
@@ -29,12 +39,13 @@ function App() {
         <header>
           <NavBar />
         </header>
-        <main className="flex-fill">
+        <main className={`${isHomePage ? "flex-fill" : "flex-fill mb-2"}`}>
           <Routes>
             <Route path="/" element={<HomePage />} />
             <Route path="/sign-up" element={<SignUp />} />
             <Route path="/sign-in" element={<SignIn />} />
-            <Route path="/horoscops" element={<Horoscops />} />
+            <Route path="/horoscop-page" element={<HoroscopPage />} />
+            <Route path="/horoscop-page/:sign" element={<HoroscopZodiac />} />
             <Route path="/zodiacs-signs" element={<ZodiacsSigns />} />
 
             <Route
@@ -124,6 +135,19 @@ function App() {
             />
             <Route path="/about" element={<About />} />
             <Route path="/regulations" element={<Regulations />} />
+            <Route path="/My-services" element={<MyServices />} />
+            <Route
+              path="/My-services/openin-cards"
+              element={<OpeningCards />}
+            />
+            <Route
+              path="/My-services/Astrological-map"
+              element={<Astrologicalmap />}
+            />
+            <Route
+              path="/My-services/Lead-cleaning"
+              element={<LeadCleaning />}
+            />
           </Routes>
         </main>
         <Footer />

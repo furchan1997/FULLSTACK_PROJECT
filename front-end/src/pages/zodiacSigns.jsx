@@ -52,26 +52,18 @@ function ZodiacsSigns() {
   };
   console.log(backgroundImages);
 
-  const zodiacSigns = [
-    "aquarius",
-    "pisces",
-    "aries",
-    "taurus",
-    "gemini",
-    "cancer",
-    "leo",
-    "virgo",
-    "libra",
-    "scorpio",
-    "sagittarius",
-    "capricorn",
-  ];
-
   // הצגת כל המזלות או מזל ספציפי לפי שם המזל
   const filterdContent = selectedSign
     ? { [selectedSign]: content[selectedSign] }
     : content;
+  console.log(filterdContent);
 
+  const contentArray = Object.entries(content).map(([key, value]) => ({
+    zodiacKey: key, // לדוגמה: "aries"
+    ...value, // כל המידע הפנימי
+  }));
+
+  console.log(contentArray);
   if (error) {
     return <div>{`There is a error: ${error}`}</div>;
   }
@@ -86,42 +78,34 @@ function ZodiacsSigns() {
 
   return (
     <>
-      {/* <PageHeaders
-        title={
-          <>
-            {"ZODIACS"} <Logo />{" "}
-          </>
-        }
-        description={"A general introduction to zodiac signs and mysticism"}
-      /> */}
-      {/*selectedSign הקוד מאפשר למשתמש לבחור מזל מתוך רשימה נפתחת, כאשר הבחירה מתעדכנת במשתנה */}
-      <select
-        value={selectedSign}
-        onChange={(e) => setSelectedSign(e.target.value)}
-        className="form-select form-select-lg text-center border-warning w-50 m-auto custom-bg-gold custom-gold-color "
-      >
-        <option value="">בחר מזל</option>
-        {zodiacSigns.map((sign) => (
-          <option key={sign} value={sign}>
-            {/*  מבצע המרה של האות הראשונה לאות גדולה (למקרה שהשמות במערך באותיות קטנות). */}
-            {sign.charAt(0).toUpperCase() + sign.slice(1)}
-          </option>
-        ))}
-      </select>
+      <div className="d-flex flex-column gap-2">
+        <select
+          value={selectedSign}
+          onChange={(e) => setSelectedSign(e.target.value)}
+          className="form-select form-select-lg text-center border-warning w-50 m-auto custom-bg-gold custom-gold-color "
+        >
+          <option value="">בחר מזל</option>
+          {contentArray.map((sign) => (
+            <option key={sign.zodiacKey} value={sign.zodiacKey}>
+              {sign.sign}
+            </option>
+          ))}
+        </select>
 
-      {Object.keys(filterdContent).map((zodiac) => {
-        return (
-          <Content
-            key={zodiac}
-            zodiac={content[zodiac].sign}
-            basicContent={content[zodiac].basicContent}
-            howYouThinkAndTalk={content[zodiac].howYouThinkAndTalk}
-            locationOnMap={content[zodiac].locationOnMap}
-            whoYouAre={content[zodiac].whoYouAre}
-            backgroundImages={backgroundImages[zodiac]}
-          />
-        );
-      })}
+        {Object.keys(filterdContent).map((zodiac) => {
+          return (
+            <Content
+              key={zodiac}
+              zodiac={content[zodiac].sign}
+              basicContent={content[zodiac].basicContent}
+              howYouThinkAndTalk={content[zodiac].howYouThinkAndTalk}
+              locationOnMap={content[zodiac].locationOnMap}
+              whoYouAre={content[zodiac].whoYouAre}
+              backgroundImages={backgroundImages[zodiac]}
+            />
+          );
+        })}
+      </div>
     </>
   );
 }

@@ -10,8 +10,12 @@ function HomePage() {
     navigate("/sign-up");
   };
 
+  const handleToMyServise = () => {
+    navigate("/My-services");
+  };
+
   return (
-    <div className="main-image">
+    <div className="main-image ">
       <div className="container text-center my-5 rtl">
         <div className="container">
           <div className="d-flex justify-content-center align-items-center"></div>
@@ -59,6 +63,16 @@ function HomePage() {
             <strong className="custom-purple-color" onClick={handleToSignUp}>
               <span className="cursor-pointer">
                 הצטרפו עכשיו וקבלו גישה להורוסקופים מותאמים אישית!
+              </span>
+            </strong>
+          </div>
+          <div
+            className="custom-bg-gold fs-5 text-center my-2"
+            style={{ borderRadius: "20px" }}
+          >
+            <strong className="custom-purple-color" onClick={handleToMyServise}>
+              <span className="cursor-pointer">
+                🌟 מגוון שירותים רוחניים מחכים רק לך – לחצ/י כאן להתחלה חדשה 🌟
               </span>
             </strong>
           </div>

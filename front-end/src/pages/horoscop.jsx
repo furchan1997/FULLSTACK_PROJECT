@@ -4,6 +4,8 @@ import HoroscopsContent from "../components/horoscopsContent";
 import { useAuth } from "../context/auth.context";
 import { useContent } from "../context/contents.context";
 import Logo from "../components/logo";
+import { signs } from "../components/common/HoroscopeFltered";
+// עמוד הצגת הורוסקופ מורכב ויחיד
 
 function Horoscop() {
   const { id } = useParams(); // מקבל את ה-ID מה-URL
@@ -36,7 +38,7 @@ function Horoscop() {
 
   // פונקציה שמעבירה לדף הראשי של ההורוסקופים
   const handleMainHoroscops = () => {
-    navigate("/horoscops/");
+    navigate(`/horoscop-page/${horoscop?.sign}`);
   };
 
   // פונקציה שמובילה לעמוד עריכת ההורוסקופ
@@ -61,6 +63,8 @@ function Horoscop() {
       navigate("/horoscops");
     }
   }, [error]);
+
+  console.log(horoscop?.id);
 
   // אם הנתונים עדיין נטענים, מציג הודעה זמנית
   if (loading) {

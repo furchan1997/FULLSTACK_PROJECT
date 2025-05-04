@@ -74,9 +74,7 @@ function NavBar() {
           <ul className="navbar-nav me-auto">
             {user?.isAdmin ? (
               <li className="nav-item">
-                <span className="nav-link custom-gold-color">
-                  Hello, Admin!
-                </span>
+                <span className="nav-link custom-gold-color">שלום, Admin!</span>
               </li>
             ) : (
               userDetalis?.firstName && (
@@ -88,7 +86,7 @@ function NavBar() {
               )
             )}
             <NavLink className="nav-link custom-gold-color mx-3" to="/">
-              Home page
+              דף הבית
             </NavLink>
 
             <>
@@ -97,14 +95,17 @@ function NavBar() {
                   className="nav-link custom-gold-color"
                   to="/zodiacs-signs"
                 >
-                  Zodiacs
+                  מזלות כללים
                 </NavLink>
               </li>
             </>
 
             <li className="nav-item">
-              <NavLink className="nav-link custom-gold-color" to="/horoscops">
-                Horoscops
+              <NavLink
+                className="nav-link custom-gold-color"
+                to="/horoscop-page"
+              >
+                הורוסקופ
               </NavLink>
             </li>
           </ul>
@@ -117,7 +118,7 @@ function NavBar() {
                     className="nav-link custom-gold-color"
                     to={`/my-account/${user?.id}`}
                   >
-                    My-account
+                    החשבון שלי
                   </NavLink>
                 </li>
                 <li className="nav-item">
@@ -125,7 +126,7 @@ function NavBar() {
                     className="nav-link custom-gold-color"
                     to={`/favorite/${user?.id}`}
                   >
-                    Favorite
+                    מועדפים
                   </NavLink>
                 </li>
                 {user?.isAdmin && (
@@ -141,12 +142,12 @@ function NavBar() {
               <>
                 <li className="nav-item">
                   <NavLink className="nav-link custom-gold-color" to="/sign-in">
-                    Sign-in
+                    התחברות
                   </NavLink>
                 </li>
                 <li className="nav-item">
                   <NavLink className="nav-link custom-gold-color" to="/sign-up">
-                    Sign-up
+                    הרשמה
                   </NavLink>
                 </li>
               </>
@@ -158,7 +159,7 @@ function NavBar() {
                     to="/"
                     onClick={hanleLogOut}
                   >
-                    Log-out
+                    יציאה
                   </NavLink>
                 </li>
               </>

@@ -89,7 +89,7 @@ function SignIn() {
       <PageHeaders
         title={
           <>
-            sign-in <Logo />
+            דף התחברות <Logo />
           </>
         }
       />
@@ -99,7 +99,7 @@ function SignIn() {
           {error && <div className="alert alert-danger">Error: {error}</div>}
 
           <Input
-            label={"email"}
+            label={"אימייל"}
             name={"email"}
             type={"email"}
             id={"email"}
@@ -108,7 +108,7 @@ function SignIn() {
             error={form?.touched?.email && form?.errors["email"]} // הצגת השגיאה רק אם השדה טופל ויש שגיאה
           />
           <Input
-            label={"password"}
+            label={"סיסמא"}
             name={"password"}
             type={"password"}
             id={"password"}
@@ -120,16 +120,16 @@ function SignIn() {
           <Btn
             type={"submit"}
             className="custom-bg-purple custom-gold-color"
-            description={"Sign-in"}
+            description={"התחבר/י"}
             disabled={!form?.isValid}
           />
         </form>
-        <div className="d-flex flex-column">
-          <p>No have account?</p>
+        <div className="d-flex flex-column rtl">
+          <p>אין לך חשבון?</p>
           <Btn
             type={"button"}
             className="custom-bg-gold custom-purple-color"
-            description={"click"}
+            description={"הרשם"}
             fn={handleSignUp}
           />
         </div>

@@ -1,0 +1,64 @@
+import { useEffect, useState } from "react";
+import { useAuth } from "../context/auth.context";
+import { useContent } from "../context/contents.context";
+import { useLocation, useNavigate, useParams } from "react-router-dom";
+import Btn from "../components/btn";
+import PageHeaders from "../components/common/pageHeaders";
+import { signs } from "../components/common/HoroscopeFltered";
+// עמוד בחירת מזל ומעבר אל ההורוסקופים שלו
+function HoroscopPage() {
+  const { user } = useAuth(); // מקבל מידע על המשתמש מהקונטקסט
+  const { error, loading } = useContent(); // מקבל מידע ופונקציות מהקונטקסט של התוכן
+
+  const navigate = useNavigate(); // מאפשר ניווט לדפים שונים
+
+  const handleSignIn = () => {
+    navigate("/sign-in"); // מעביר לדף ההתחברות
+  };
+
+  const { sign } = useParams();
+
+  if (loading) {
+    return <div>loading...</div>; // מציג הודעת טעינה אם הנתונים נטענים
+  }
+
+  if (!user) {
+    return (
+      <>
+        <div className="container rtl">
+          <p>הרשמ/י עוד היום וקבל מלא תכנים מתקדמים בחינם !</p>
+          <Btn
+            type={"submit"}
+            className="custom-bg-purple custom-gold-color"
+            description={"הרשמ/י"}
+            fn={handleSignIn} // כפתור שמוביל לדף ההתחברות
+          />
+        </div>
+      </>
+    );
+  }
+
+  if (error) {
+    return <div>Error: {error}</div>; // מציג שגיאה אם ישנה בעיה
+  }
+
+  if (!sign) {
+    return (
+      <div className="book-frame" data-page="zodiacs">
+        <div className="zodiacs-grid">
+          {signs.map((sign) => (
+            <div
+              key={sign.id}
+              className="item"
+              onClick={() => navigate(`/horoscop-page/${sign?.id}`)}
+            >
+              {sign.name}
+            </div>
+          ))}
+        </div>
+      </div>
+    );
+  }
+}
+
+export default HoroscopPage;
