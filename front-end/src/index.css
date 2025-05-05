@@ -252,6 +252,11 @@ h3 {
     width: 25%;
   }
 }
+
+.color-my-services-text {
+  color: #1c0222;
+}
+
 @media (min-width: 551px) and (max-width: 1200px) {
   .home-page-for-tablets {
     min-height: 50vh; /* לפחות גובה מלא של המסך */

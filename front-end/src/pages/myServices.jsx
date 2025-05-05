@@ -1,4 +1,6 @@
 import { useNavigate } from "react-router-dom";
+import Input from "../components/input";
+import Btn from "../components/btn";
 
 function MyServices() {
   const navigate = useNavigate();
@@ -12,10 +14,14 @@ function MyServices() {
       data-page="my-services"
       className="container book-frame d-flex flex-column align-items-center rtl"
     >
-      <h1>✨ עדניק – הכוונה רוחנית מדויקת מהלב ✨</h1>
-      <h2>טארוט | נומרולוגיה | אסטרולוגיה | ניקוי אנרגטי | פיתוח אישי</h2>
+      <h1 className="color-my-services-text fw-bold">
+        ✨ עדניק – הכוונה רוחנית מדויקת מהלב ✨
+      </h1>
+      <h2 className="color-my-services-text fw-bold">
+        טארוט | נומרולוגיה | אסטרולוגיה | ניקוי אנרגטי | פיתוח אישי
+      </h2>
 
-      <p>
+      <p className="color-my-services-text">
         <strong>ברוכה הבאה ♥</strong> <br />
         אני עדן בן אור, מתקשרת, פותחת בקלפים, יועצת רוחנית ומלווה נשים וגברים
         במסע לגילוי עצמי, קבלת החלטות והגשמה אישית. השליחות שלי היא לעזור לך
@@ -113,6 +119,18 @@ function MyServices() {
           </a>
         </h4>
       </div>
+
+      <Input label={"שם מלא"} />
+
+      <Input label={"פלאפון"} />
+
+      <Input label={"בקשתך?"} type="textarea" />
+
+      <Btn
+        type={"submit"}
+        description={"שלח/י"}
+        className="custom-bg-purple custom-gold-color w-25"
+      />
     </div>
   );
 }

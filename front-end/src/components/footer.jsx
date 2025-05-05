@@ -44,6 +44,17 @@ function Footer() {
               alt="tiktok-logo"
             />
           </a>
+          <a
+            href="https://wa.me/972524513043"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <img
+              className="social-icon"
+              src="./LOGOS/whatsapp.png"
+              alt="whatsapp-logo"
+            />
+          </a>
         </div>
 
         <div className="d-flex gap-3">
@@ -52,6 +63,9 @@ function Footer() {
           </NavLink>
           <NavLink to={"/regulations"} className="footer">
             תקנון אתר
+          </NavLink>
+          <NavLink to={"/My-services"} className="footer">
+            השירותים שלי
           </NavLink>
         </div>
       </div>
