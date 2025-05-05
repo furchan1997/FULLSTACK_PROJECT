@@ -12,6 +12,7 @@ require("../data/createAdmin");
 const usersRouter = require("../routers/users");
 const authRouter = require("../routers/auth");
 const contentRouter = require("../routers/content");
+const createContactRouter = require("../routers/createContact");
 
 app.use(cors());
 app.use(express.json());
@@ -20,6 +21,7 @@ app.use(require("morgan")("dev"));
 app.use("/users", usersRouter);
 app.use("/auth", authRouter);
 app.use("/content", contentRouter);
+app.use("/create-contact", createContactRouter);
 
 // Middleware לטיפול בנתיבים לא קיימים
 app.use((req, res, next) => {

@@ -6,9 +6,19 @@
 @admin=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3Y2Y0NGVhYjZjNjc3NWVlYjdhZmQ3NCIsImlzQWRtaW4iOnRydWUsImlhdCI6MTc0MTYzNjg5Mn0.Lut6Jx2qlvZuhkihV7zRRufc5Eg4b87g592zhhs6dTo
 
 @userForDeleting=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3YWJhMmI1NmY2ZWRiNjMxNWIzYzA1ZSIsImlzQWRtaW4iOmZhbHNlLCJpYXQiOjE3MzkzMDE1NjV9.zZ6U7SZ2nwa_NTjo2NSgvE_Mhf8Vi9mHACpaWS1rv-U
+
+
 ###
 
-GET https://backend-mystic-site.onrender.com/users
+POST {{local}}/create-contact/
+Content-Type: application/json 
+
+
+{
+  "firstName": "מיכל",
+  "phone": "0506595538",
+  "info": "הי, קציתי לברר בנודע חדלגחדלגחלדגחלדחגכלחדגלכחלדגחכלדגחכלדחגלכחדלגחכלדגחלדחגכלחדגלחכלד"
+}
 
 ###
 
