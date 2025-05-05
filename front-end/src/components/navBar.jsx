@@ -59,7 +59,7 @@ function NavBar() {
 
         {/* 🔹 שדה החיפוש */}
 
-        <form role="search" onSubmit={(ev) => ev.preventDefault()}>
+        {/* <form role="search" onSubmit={(ev) => ev.preventDefault()}>
           <input
             className="form-control"
             type="search"
@@ -68,7 +68,7 @@ function NavBar() {
             value={searchTerm}
             onChange={(ev) => setSearchTerm(ev.target.value)}
           />
-        </form>
+        </form> */}
         {/* הצגת קישורים עבור מנהל בלבד */}
         <div className="collapse navbar-collapse" id="navbarsExample02">
           <ul className="navbar-nav me-auto">
@@ -106,6 +106,12 @@ function NavBar() {
                 to="/horoscop-page"
               >
                 הורוסקופ
+              </NavLink>
+            </li>
+
+            <li className="nav-item">
+              <NavLink className="nav-link custom-gold-color" to="/My-services">
+                השירותים שלי
               </NavLink>
             </li>
           </ul>
