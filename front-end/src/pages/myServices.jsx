@@ -1,8 +1,69 @@
 import { useNavigate } from "react-router-dom";
 import Input from "../components/input";
 import Btn from "../components/btn";
+import { useFormik } from "formik";
+import joi from "joi";
+import userService from "../services/userService";
+import { useEffect, useState } from "react";
 
 function MyServices() {
+  const [message, setMessage] = useState("");
+  const [error, setError] = useState(null);
+
+  const form = useFormik({
+    validateOnMount: false,
+
+    initialValues: {
+      firstName: "",
+      phone: "",
+      info: "",
+    },
+
+    validate(values) {
+      const schema = joi.object({
+        firstName: joi.string().min(2).max(256).required(),
+        phone: joi.string().min(9).max(11).required().messages({
+          "string.min": "מספר הטלפון חייב להיות באורך של לפחות 9 תווים.",
+          "string.max": "מספר הטלפון יכול להיות באורך של עד 11 תווים בלבד.",
+          "string.pattern.base":
+            "מספר הטלפון חייב להיות תקין לפי פורמט ישראלי.",
+        }),
+        info: joi.string().min(20).max(1256).required(),
+      });
+
+      const { error } = schema.validate(values, { abortEarly: false });
+      let errors = {};
+
+      if (!error) return null;
+      for (const detail of error.details) {
+        const path = detail.path[0];
+        errors[path] = detail.message;
+      }
+
+      return errors;
+    },
+
+    async onSubmit(values) {
+      try {
+        const response = await userService.createContact(values);
+
+        if (response.status === 201) {
+          setMessage("success");
+          form.resetForm();
+        }
+      } catch (err) {
+        console.log(err);
+        setError(
+          err?.response?.data?.message || err?.message || "Something went wrong"
+        );
+      }
+    },
+  });
+
+  useEffect(() => {
+    console.log(message);
+  }, [message]);
+
   const navigate = useNavigate();
 
   const handleClike = (serviceType) => {
@@ -119,18 +180,45 @@ function MyServices() {
           </a>
         </h4>
       </div>
-
-      <Input label={"שם מלא"} />
-
-      <Input label={"פלאפון"} />
-
-      <Input label={"בקשתך?"} type="textarea" />
-
-      <Btn
-        type={"submit"}
-        description={"שלח/י"}
-        className="custom-bg-purple custom-gold-color w-25"
-      />
+      {message === "success" ? (
+        <div>
+          <p>ההודעה נשלחה בהצלחה, אחזור אלייך בהקדם, תודה לך 😉</p>
+        </div>
+      ) : (
+        <form onSubmit={form.handleSubmit} noValidate autoComplete="off">
+          {error && <div className="alert alert-danger"> {error}</div>}
+          <Input
+            label={"שם מלא"}
+            type={"text"}
+            name={"firstName"}
+            id={"firstName"}
+            required
+            {...form.getFieldProps("firstName")}
+          />
+          <Input
+            label={"פלאפון"}
+            type={"text"}
+            name={"phone"}
+            id={"phone"}
+            required
+            {...form.getFieldProps("phone")}
+          />
+          <Input
+            label={"בקשתך?"}
+            type="textarea"
+            name={"info"}
+            id={"info"}
+            required
+            {...form.getFieldProps("info")}
+          />
+          <Btn
+            type={"submit"}
+            description={"שלח/י"}
+            className="custom-bg-purple custom-gold-color w-25"
+            disabled={!form?.isValid}
+          />
+        </form>
+      )}
     </div>
   );
 }

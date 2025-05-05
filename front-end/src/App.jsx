@@ -25,6 +25,7 @@ import MyServices from "./pages/myServices";
 import OpeningCards from "./pages/serviceType/OpeningCards";
 import Astrologicalmap from "./pages/serviceType/astrologicalMap";
 import LeadCleaning from "./pages/serviceType/leadCleaning";
+import Inbox from "./pages/admin/Inbox";
 
 // רכיב ראשי , כאן מוצגים כל הרכיבים של האפליקציה
 function App() {
@@ -125,6 +126,16 @@ function App() {
                 </ProtectedRouts>
               }
             />
+
+            <Route
+              path="/admin/inbox"
+              element={
+                <ProtectedRouts isAdmin>
+                  <Inbox />
+                </ProtectedRouts>
+              }
+            ></Route>
+
             <Route
               path="/favorite/:id"
               element={
@@ -133,6 +144,7 @@ function App() {
                 </ProtectedRouts>
               }
             />
+
             <Route path="/about" element={<About />} />
             <Route path="/regulations" element={<Regulations />} />
             <Route path="/My-services" element={<MyServices />} />

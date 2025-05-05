@@ -22,6 +22,11 @@ Content-Type: application/json
 
 ###
 
+GET  {{local}}/create-contact/
+x-auth-token:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3ZTk5M2E4YWM0MTQyYWZiMDc2MjliMCIsImlzQWRtaW4iOnRydWUsImlhdCI6MTc0NjQ3ODE1NH0.u7MDH-X2M7scQTpgPBZyw_p4q5R-RvrIKuCa4pn9tNM
+
+###
+
 POST  {{local}}/users/
 Content-Type: application/json
 
@@ -29,7 +34,7 @@ Content-Type: application/json
 {
   "firstName": "qqq",
   "lastName": "eee",
-  "email": "ariel@ariel1.com",
+  "email": "ari8968el@ariel1.com",
   "password": "Qweasd1234560!!!",
   "phone": "0523456789",
   "address": {
@@ -51,13 +56,13 @@ x-auth-token:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3Y2Y0NGVhYjZjNjc3NW
 
 ###
 
-POST  {{local}}/users/login
+POST  {{local}}/auth/login
 Content-Type: application/json
 
 
 {
-  "email": "arie21212@example.com",
-  "password": "12345678"
+  "email": "admin@admin.com",
+  "password": "Admin1234!"
 }
 
 ###

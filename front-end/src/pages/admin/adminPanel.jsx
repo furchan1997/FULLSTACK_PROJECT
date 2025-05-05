@@ -5,11 +5,14 @@ import Btn from "../../components/btn";
 function AdminPanel() {
   const navigate = useNavigate();
 
-  const handleToAllUsers = () => {
-    navigate("/admin/users");
-  };
-  const handleToCreateHoroscop = () => {
-    navigate("/admin/create-horoscop");
+  // const handleToAllUsers = () => {
+  //   navigate("/admin/users");
+  // };
+  // const handleToCreateHoroscop = (navigate) => {
+  //   navigate("/admin/create-horoscop");
+  // };
+  const handleClick = (route) => {
+    navigate(route);
   };
 
   return (
@@ -21,13 +24,20 @@ function AdminPanel() {
           description={"all users"}
           className={"custom-bg-gold "}
           type={"submit"}
-          fn={handleToAllUsers}
+          fn={() => handleClick("/admin/users ")}
         />
         <Btn
           description={"Create New Horoscop"}
           className={"custom-bg-gold "}
           type={"submit"}
-          fn={handleToCreateHoroscop}
+          fn={() => handleClick("/admin/create-horoscop")}
+        />
+
+        <Btn
+          description={"Look at your customers' messages"}
+          className={"custom-bg-gold "}
+          type={"submit"}
+          fn={() => handleClick("/admin/inbox")}
         />
       </div>
     </div>

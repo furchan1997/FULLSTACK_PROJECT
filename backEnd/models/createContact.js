@@ -15,19 +15,21 @@ const createContactSchema = new mongoose.Schema({
     maxlength: 11,
     required: true,
   },
-
   info: {
     type: String,
     minlength: 20,
     maxlength: 1256,
     required: true,
   },
-
   createdAt: {
     type: Date,
     default: Date.now,
+    get: (val) => val.toLocaleString(), // מציג את התאריך בפורמט מקומי
+    set: (val) => new Date(val), // מבצע המרה בעת שמירת התאריך
   },
 });
+
+createContactSchema.set("toJSON", { getters: true });
 
 const CreateContact = mongoose.model(
   "CreateContact",
