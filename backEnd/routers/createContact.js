@@ -45,6 +45,15 @@ router.get("/", authMW, adminAuthMW, async (req, res, next) => {
   }
 });
 
+router.get("/messages-count", authMW, adminAuthMW, async (req, res, next) => {
+  try {
+    const count = await CreateContact.countDocuments();
+    res.json({ count });
+  } catch (error) {
+    next(error);
+  }
+});
+
 router.delete("/delete", authMW, adminAuthMW, async (req, res, next) => {
   try {
     const messages = await CreateContact.deleteMany();
