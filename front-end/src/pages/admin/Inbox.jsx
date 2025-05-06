@@ -1,28 +1,63 @@
 import { useEffect, useState } from "react";
 import userService from "../../services/userService";
 import MsgClient from "../../components/msgClients";
+import Btn from "../../components/btn";
+import { useAuth } from "../../context/auth.context";
 
 function Inbox() {
-  const [msgs, setMsgs] = useState([]);
+  const { getAllMsgs, msgs, deletedAllMsgs, deleteMsgByID, loading, error } =
+    useAuth();
+  console.log(error);
+
+  const handleDeletedAllClick = () => {
+    deletedAllMsgs();
+  };
+
+  const handleDeletedByIdClick = (ID) => {
+    deleteMsgByID(ID);
+  };
 
   useEffect(() => {
-    const fetch = async () => {
-      try {
-        const response = await userService.getMessages();
-        console.log(response.data.messages);
+    getAllMsgs();
+  }, [error]);
 
-        setMsgs(response?.data?.messages);
-      } catch (err) {
-        console.log(err);
-      }
-    };
+  if (loading) {
+    return (
+      <div className="container book-frame d-flex flex-column flex justify-content-center align-items-center rtl">
+        אנא המתיני...
+      </div>
+    );
+  }
 
-    fetch();
-  }, []);
-  console.log(msgs);
+  if (error) {
+    return (
+      <div className="container book-frame d-flex flex-column flex justify-content-center align-items-center">
+        ERROR: {error}
+      </div>
+    );
+  }
+
+  if (msgs?.length === 0) {
+    return (
+      <>
+        <div className="container book-frame d-flex flex-column flex justify-content-center align-items-center rtl">
+          אין הודעות מלקוחות כרגע, נסי שוב מאוחר יותר...
+        </div>
+      </>
+    );
+  }
   return (
     <div className="container d-flex flex-column justify-content-center align-items-center rtl">
-      <h2>INBOX</h2>
+      <div className="d-flex flex-column">
+        <h2>INBOX</h2>
+        <Btn
+          type={"button"}
+          className="custom-bg-gold custom-purple-color fw-bold"
+          description={"מחקי הכל"}
+          fn={handleDeletedAllClick}
+        />
+      </div>
+
       {msgs.map((msg) => (
         <MsgClient
           key={msg?._id}
@@ -30,6 +65,7 @@ function Inbox() {
           phone={msg?.phone}
           info={msg?.info}
           createdAt={msg?.createdAt}
+          deleteBtn={() => handleDeletedByIdClick(msg?._id)}
         />
       ))}
     </div>

@@ -15,6 +15,8 @@ export function AuthProvider({ children }) {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null); // הוספת סטייט של שגיאה
   const [users, setUsers] = useState([]);
+  const [msgs, setMsgs] = useState([]);
+
   const navigate = useNavigate();
 
   const refreshUser = () => setUser(userService.getUser());
@@ -203,6 +205,65 @@ export function AuthProvider({ children }) {
     }
   };
 
+  // קבלת כל ההודעות
+  const getAllMsgs = async () => {
+    setLoading(true);
+    try {
+      const response = await userService.getMessages();
+      console.log(response.data.messages);
+      setMsgs(response?.data?.messages);
+    } catch (err) {
+      setError(
+        err?.response?.data?.message ||
+          err?.response?.data ||
+          err?.message ||
+          "Something went wrong"
+      );
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  // מחיקת כל ההודעות
+  const deletedAllMsgs = async () => {
+    setLoading(true);
+    try {
+      const response = await userService.deleteAllMsgs();
+      await getAllMsgs();
+      console.log(response);
+      return response;
+    } catch (err) {
+      setError(
+        err?.response?.data?.message ||
+          err?.response?.data ||
+          err?.message ||
+          "Something went wrong"
+      );
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  // מחיקת הודעה לפי המזהה שלו
+  const deleteMsgByID = async (ID) => {
+    setLoading(true);
+    try {
+      const response = await userService.deleteMsgById(ID);
+
+      await getAllMsgs();
+      return response;
+    } catch (err) {
+      setError(
+        err?.response?.data?.message ||
+          err?.response?.data ||
+          err?.message ||
+          "Something went wrong"
+      );
+    } finally {
+      setLoading(false);
+    }
+  };
+
   return (
     <AuthContext.Provider
       value={{
@@ -221,7 +282,10 @@ export function AuthProvider({ children }) {
         updateUserPassword,
         getUserForAdmin,
         getAllUsers,
-
+        msgs,
+        getAllMsgs,
+        deletedAllMsgs,
+        deleteMsgByID,
         users,
       }}
     >

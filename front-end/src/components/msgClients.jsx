@@ -1,4 +1,13 @@
-function MsgClient({ id, firstName, phone, info, createdAt }) {
+import Btn from "./btn";
+
+function MsgClient({
+  id,
+  firstName,
+  phone,
+  info,
+  createdAt,
+  deleteBtn = () => {},
+}) {
   return (
     <div className="container book-frame d-flex flex-column flex justify-content-center align-items-center ">
       <h3>
@@ -14,6 +23,14 @@ function MsgClient({ id, firstName, phone, info, createdAt }) {
       </p>
       <p className="rtl">
         <span className="fw-bold">נשלח בתאריך: </span> {createdAt}
+      </p>
+      <p>
+        <Btn
+          type={"button"}
+          className="custom-bg-purple custom-purple-color fw-bold"
+          description={"🗑️"}
+          fn={deleteBtn}
+        />
       </p>
     </div>
   );

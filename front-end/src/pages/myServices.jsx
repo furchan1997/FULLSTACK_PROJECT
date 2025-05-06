@@ -9,6 +9,7 @@ import { useEffect, useState } from "react";
 function MyServices() {
   const [message, setMessage] = useState("");
   const [error, setError] = useState(null);
+  const [loading, setLoading] = useState(false);
 
   const form = useFormik({
     validateOnMount: false,
@@ -21,14 +22,27 @@ function MyServices() {
 
     validate(values) {
       const schema = joi.object({
-        firstName: joi.string().min(2).max(256).required(),
+        firstName: joi.string().min(2).max(256).required().messages({
+          "string.base": "שם חייב להיות טקסט.",
+          "string.empty": "השדה של השם לא יכול להיות ריק.",
+          "string.min": "השם חייב להכיל לפחות 2 תווים.",
+          "string.max": "השם יכול להכיל עד 256 תווים בלבד.",
+          "any.required": "שדה השם הוא שדה חובה.",
+        }),
         phone: joi.string().min(9).max(11).required().messages({
+          "string.empty": "השדה של הנייד לא יכול להיות ריק.",
           "string.min": "מספר הטלפון חייב להיות באורך של לפחות 9 תווים.",
           "string.max": "מספר הטלפון יכול להיות באורך של עד 11 תווים בלבד.",
           "string.pattern.base":
             "מספר הטלפון חייב להיות תקין לפי פורמט ישראלי.",
         }),
-        info: joi.string().min(20).max(1256).required(),
+        info: joi.string().min(20).max(1256).required().messages({
+          "string.base": "תיאור הבקשה חייב להיות טקסט.",
+          "string.empty": "שדה הבקשה לא יכול להיות ריק.",
+          "string.min": "שדה הבקשה חייב להכיל לפחות 20 תווים.",
+          "string.max": "שדה הבקשה יכול להכיל עד 1256 תווים בלבד.",
+          "any.required": "שדה הבקשה הוא שדה חובה.",
+        }),
       });
 
       const { error } = schema.validate(values, { abortEarly: false });
@@ -44,9 +58,9 @@ function MyServices() {
     },
 
     async onSubmit(values) {
+      setLoading(true);
       try {
         const response = await userService.createContact(values);
-
         if (response.status === 201) {
           setMessage("success");
           form.resetForm();
@@ -56,6 +70,8 @@ function MyServices() {
         setError(
           err?.response?.data?.message || err?.message || "Something went wrong"
         );
+      } finally {
+        setLoading(false);
       }
     },
   });
@@ -180,45 +196,57 @@ function MyServices() {
           </a>
         </h4>
       </div>
-      {message === "success" ? (
-        <div>
-          <p>ההודעה נשלחה בהצלחה, אחזור אלייך בהקדם, תודה לך 😉</p>
-        </div>
-      ) : (
-        <form onSubmit={form.handleSubmit} noValidate autoComplete="off">
-          {error && <div className="alert alert-danger"> {error}</div>}
-          <Input
-            label={"שם מלא"}
-            type={"text"}
-            name={"firstName"}
-            id={"firstName"}
-            required
-            {...form.getFieldProps("firstName")}
-          />
-          <Input
-            label={"פלאפון"}
-            type={"text"}
-            name={"phone"}
-            id={"phone"}
-            required
-            {...form.getFieldProps("phone")}
-          />
-          <Input
-            label={"בקשתך?"}
-            type="textarea"
-            name={"info"}
-            id={"info"}
-            required
-            {...form.getFieldProps("info")}
-          />
-          <Btn
-            type={"submit"}
-            description={"שלח/י"}
-            className="custom-bg-purple custom-gold-color w-25"
-            disabled={!form?.isValid}
-          />
-        </form>
-      )}
+
+      <div>
+        {loading ? (
+          <>
+            <p>המתן/י בבקשה...</p>
+          </>
+        ) : message === "success" ? (
+          <>
+            <p>ההודעה נשלחה בהצלחה, אחזור אלייך בהקדם, תודה לך 😉</p>
+          </>
+        ) : (
+          <>
+            <form onSubmit={form.handleSubmit} noValidate autoComplete="off">
+              {error && <div className="alert alert-danger"> {error}</div>}
+              <Input
+                label={"שם מלא"}
+                type={"text"}
+                name={"firstName"}
+                id={"firstName"}
+                required
+                {...form.getFieldProps("firstName")}
+                error={form?.touched?.firstName && form?.errors?.["firstName"]}
+              />
+              <Input
+                label={"פלאפון"}
+                type={"text"}
+                name={"phone"}
+                id={"phone"}
+                required
+                {...form.getFieldProps("phone")}
+                error={form?.touched?.phone && form?.errors?.["phone"]}
+              />
+              <Input
+                label={"בקשתך?"}
+                type="textarea"
+                name={"info"}
+                id={"info"}
+                required
+                {...form.getFieldProps("info")}
+                error={form?.touched?.info && form?.errors?.["info"]}
+              />
+              <Btn
+                type={"submit"}
+                description={"שלח/י"}
+                className="custom-bg-purple custom-gold-color w-25"
+                disabled={!form?.isValid}
+              />
+            </form>
+          </>
+        )}
+      </div>
     </div>
   );
 }

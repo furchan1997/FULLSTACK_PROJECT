@@ -45,4 +45,45 @@ router.get("/", authMW, adminAuthMW, async (req, res, next) => {
   }
 });
 
+router.delete("/delete", authMW, adminAuthMW, async (req, res, next) => {
+  try {
+    const messages = await CreateContact.deleteMany();
+    if (messages.deletedCount === 0) {
+      res.status(404).json({
+        message: "No messages found yet.",
+      });
+      return;
+    }
+
+    res.json({
+      message: "All the messages deleted.",
+      data: messages,
+    });
+  } catch (error) {
+    next(error);
+  }
+});
+
+router.delete("/delete/:id", authMW, adminAuthMW, async (req, res, next) => {
+  try {
+    const message = await CreateContact.findOneAndDelete({
+      _id: req.params.id,
+    });
+
+    if (!message) {
+      res.status(404).json({
+        message: "message not found.",
+      });
+      return;
+    }
+
+    res.json({
+      message: "message deleted.",
+      data: message,
+    });
+  } catch (error) {
+    next(error);
+  }
+});
+
 module.exports = router;

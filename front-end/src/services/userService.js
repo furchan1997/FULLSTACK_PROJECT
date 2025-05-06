@@ -118,6 +118,14 @@ export async function getMessages() {
   return httpService.get("/create-contact/");
 }
 
+export async function deleteAllMsgs() {
+  return httpService.delete("/create-contact/delete");
+}
+
+export async function deleteMsgById(ID) {
+  return httpService.delete(`/create-contact/delete/${ID}`);
+}
+
 // ייצוא של הפונקציות האסינכרוניות שמבצעות את הבקשות , יהיה שימוש בהן בקונסטסט של ניהול המשתמשים
 const userService = {
   refreshToken,
@@ -135,6 +143,8 @@ const userService = {
   deleteUserByAdmim,
   createContact,
   getMessages,
+  deleteAllMsgs,
+  deleteMsgById,
 };
 
 export default userService;
