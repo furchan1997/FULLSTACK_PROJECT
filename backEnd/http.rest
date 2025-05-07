@@ -49,9 +49,9 @@ Content-Type: application/json
 
 
 {
-  "firstName": "RIEKL",
+  "firstName": "שני",
   "lastName": "eee",
-  "email": "ariel1000@gmail.com",
+  "email": "arie3@gmail.com",
   "password": "Qweasd1234560!!!",
   "phone": "0523456789",
   "address": {
@@ -199,7 +199,7 @@ Content-Type: application/json
 
 ###
 
-DELETE  {{local}}/content/admin/67da01254fb3aaca999da207
+DELETE  {{local}}/content/admin/
 x-auth-token:{{admin}}
 
 ### 

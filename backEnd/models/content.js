@@ -43,7 +43,7 @@ const contentSchema = new mongoose.Schema({
     type: Array,
     default: [],
   },
-  createAt: {
+  createdAt: {
     type: Date,
     default: Date.now,
   },

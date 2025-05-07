@@ -45,8 +45,27 @@ function App() {
             <Route path="/" element={<HomePage />} />
             <Route path="/sign-up" element={<SignUp />} />
             <Route path="/sign-in" element={<SignIn />} />
+
             <Route path="/horoscop-page" element={<HoroscopPage />} />
-            <Route path="/horoscop-page/:sign" element={<HoroscopZodiac />} />
+
+            <Route
+              path="/horoscop-page/:sign"
+              element={
+                <ProtectedRouts>
+                  <HoroscopZodiac />
+                </ProtectedRouts>
+              }
+            />
+
+            <Route
+              path="/horoscops/:id"
+              element={
+                <ProtectedRouts>
+                  <Horoscop />
+                </ProtectedRouts>
+              }
+            />
+
             <Route path="/zodiacs-signs" element={<ZodiacsSigns />} />
 
             <Route
@@ -102,14 +121,6 @@ function App() {
               }
             />
 
-            <Route
-              path="/horoscops/:id"
-              element={
-                <ProtectedRouts>
-                  <Horoscop />
-                </ProtectedRouts>
-              }
-            />
             <Route
               path="/admin/create-horoscop"
               element={

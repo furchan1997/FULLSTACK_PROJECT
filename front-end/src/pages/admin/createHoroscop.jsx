@@ -54,7 +54,7 @@ function CreateHoroscop() {
 
     async onSubmit(values) {
       await createHoroscop(values);
-      navigate("/horoscops");
+      navigate("/horoscop-page");
     },
   });
 

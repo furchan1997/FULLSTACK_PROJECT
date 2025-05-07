@@ -1,13 +1,19 @@
 import PageHeaders from "../components/common/pageHeaders";
 import Logo from "../components/logo";
 import { Navigate, useNavigate, useParams } from "react-router-dom";
+import { useAuth } from "../context/auth.context";
 
 // רכיב דף הבית , מוצג כאן תיאור על מנהלת האתר ומה האתר ומנהלת מציעים לקהל
 
 function HomePage() {
+  const { user } = useAuth();
   const navigate = useNavigate(); // מאפשר ניווט בין דפים
   const handleToSignUp = () => {
     navigate("/sign-up");
+  };
+
+  const handleToHoroscop = () => {
+    navigate("/horoscop-page");
   };
 
   const handleToMyServise = () => {
@@ -54,18 +60,36 @@ function HomePage() {
               </strong>
             </li>
           </ul>
-
-          <div
-            className="custom-bg-gold fs-5 text-center"
-            style={{ borderRadius: "20px" }}
-          >
-            ✨{" "}
-            <strong className="custom-purple-color" onClick={handleToSignUp}>
-              <span className="cursor-pointer">
-                הצטרפו עכשיו וקבלו גישה להורוסקופים מותאמים אישית!
-              </span>
-            </strong>
-          </div>
+          {user ? (
+            <>
+              <div
+                className="custom-bg-gold fs-5 text-center"
+                style={{ borderRadius: "20px" }}
+              >
+                🔮{" "}
+                <strong
+                  className="custom-purple-color"
+                  onClick={handleToHoroscop}
+                >
+                  <span className="cursor-pointer">
+                    צפו בהורוסקופ החדשים לבחירתכם
+                  </span>
+                </strong>
+              </div>
+            </>
+          ) : (
+            <div
+              className="custom-bg-gold fs-5 text-center"
+              style={{ borderRadius: "20px" }}
+            >
+              ✨{" "}
+              <strong className="custom-purple-color" onClick={handleToSignUp}>
+                <span className="cursor-pointer">
+                  הצטרפו עכשיו וקבלו גישה להורוסקופים מותאמים אישית!
+                </span>
+              </strong>
+            </div>
+          )}
           <div
             className="custom-bg-gold fs-5 text-center my-2"
             style={{ borderRadius: "20px" }}

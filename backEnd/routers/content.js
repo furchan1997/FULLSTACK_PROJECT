@@ -13,7 +13,7 @@ const zodiacArticels = JSON.parse(fs.readFileSync(filePath, "utf-8"));
 // קבלת התכנים כל הדינמיים שרק משתמשים רשומים במערכת יכולים לגשת אליהם
 router.get("/horoscops", authMW, verifyUserExists, async (req, res, next) => {
   try {
-    const contents = await Content.find();
+    const contents = await Content.find().sort({ createdAt: -1 });
 
     res.json({
       message: "All contents.",
@@ -205,6 +205,12 @@ router.get("/zodiac/:zodiacName", async (req, res, next) => {
   } catch (error) {
     next(error); // מעביר את השגיאה לטיפול ב-Middleware של השגיאות
   }
+});
+router.delete("/admin/", authMW, adminAuthMW, async (req, res, next) => {
+  const horoscops = await Content.deleteMany({});
+  return res.json(200).json({
+    horoscops,
+  });
 });
 
 module.exports = router;

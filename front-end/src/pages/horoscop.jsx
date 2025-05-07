@@ -53,14 +53,14 @@ function Horoscop() {
     );
     if (!isConfirmed) return;
     await deleteHoroscop(ID); // מוחק את ההורוסקופ
-    navigate("/horoscops"); // מעביר חזרה לעמוד הראשי לאחר מחיקה
+    navigate("/horoscop-page"); // מעביר חזרה לעמוד הראשי לאחר מחיקה
   };
 
   // אם יש שגיאה, מציג התראה ומעביר לדף הראשי של ההורוסקופים
   useEffect(() => {
     if (error) {
       alert(`ERROR: ${error}`);
-      navigate("/horoscops");
+      navigate("/horoscop-page");
     }
   }, [error]);
 

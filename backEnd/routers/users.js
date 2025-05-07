@@ -51,7 +51,7 @@ router.post("/", async (req, res, next) => {
 // קבלת המשתמשים על ידיי המנהל
 router.get("/", authMW, adminAuthMW, async (req, res, next) => {
   try {
-    const users = await User.find({}, {});
+    const users = await User.find({}, {}).sort({ createdAt: -1 });
 
     if (!users || users.length === 0) {
       res

@@ -8,6 +8,7 @@ const contactLimiter = require("../middleware/contactLimiter");
 const authMW = require("../middleware/auth");
 const adminAuthMW = require("../middleware/adminAuth");
 
+// יצירת הודעה חדשה מלקוח
 router.post("/", contactLimiter, async (req, res, next) => {
   try {
     const { error } = validateCreateContact(req.body);
@@ -34,6 +35,7 @@ router.post("/", contactLimiter, async (req, res, next) => {
   }
 });
 
+// קבלת כל ההודעות עבור מנהל
 router.get("/", authMW, adminAuthMW, async (req, res, next) => {
   try {
     const messages = await CreateContact.find().sort({ createdAt: -1 });
@@ -45,6 +47,7 @@ router.get("/", authMW, adminAuthMW, async (req, res, next) => {
   }
 });
 
+//  קבלת הודעת לפי מזהה עבור מנהל
 router.get("/messages-count", authMW, adminAuthMW, async (req, res, next) => {
   try {
     const count = await CreateContact.countDocuments();
@@ -54,6 +57,7 @@ router.get("/messages-count", authMW, adminAuthMW, async (req, res, next) => {
   }
 });
 
+// מחיקת כל ההודעות על יידי מנהל
 router.delete("/delete", authMW, adminAuthMW, async (req, res, next) => {
   try {
     const messages = await CreateContact.deleteMany();
@@ -73,6 +77,7 @@ router.delete("/delete", authMW, adminAuthMW, async (req, res, next) => {
   }
 });
 
+// מחיקת הודעה לפי מזהה על ידיי מנהל
 router.delete("/delete/:id", authMW, adminAuthMW, async (req, res, next) => {
   try {
     const message = await CreateContact.findOneAndDelete({
