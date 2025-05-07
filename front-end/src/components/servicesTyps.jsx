@@ -16,7 +16,7 @@ function ServicesTypes({
   isLeadCleaning,
 }) {
   return (
-    <div className="container book-frame d-flex flex-column align-items-center rtl p-1 w-75">
+    <div className="container book-frame d-flex flex-column align-items-center rtl p-1 w-75 color-my-services-text">
       <h1 className="fw-bold fs-1">{title}</h1>
       <h2 className="fw-bold fs-2">{subtitle}</h2>
       <h3 className="fs-3"> למי זה מתאים?</h3>

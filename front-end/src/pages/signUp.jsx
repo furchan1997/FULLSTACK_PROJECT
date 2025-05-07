@@ -113,7 +113,11 @@ function SignUp() {
   });
 
   if (loading) {
-    return <div>Loading...</div>;
+    return (
+      <div className="rtl">
+        <p>טוען...</p>
+      </div>
+    );
   }
 
   return (

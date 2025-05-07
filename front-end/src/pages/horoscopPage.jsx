@@ -19,7 +19,11 @@ function HoroscopPage() {
   const { sign } = useParams();
 
   if (loading) {
-    return <div>loading...</div>; // מציג הודעת טעינה אם הנתונים נטענים
+    return (
+      <div className="rtl">
+        <p>טוען...</p>
+      </div>
+    );
   }
 
   if (!user) {
@@ -39,7 +43,7 @@ function HoroscopPage() {
   }
 
   if (error) {
-    return <div>Error: {error}</div>; // מציג שגיאה אם ישנה בעיה
+    return <div>שגיאה: {error}</div>; // מציג שגיאה אם ישנה בעיה
   }
 
   if (!sign) {

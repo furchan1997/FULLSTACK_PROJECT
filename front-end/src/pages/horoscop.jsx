@@ -64,23 +64,15 @@ function Horoscop() {
     }
   }, [error]);
 
-  console.log(horoscop?.id);
-
   // אם הנתונים עדיין נטענים, מציג הודעה זמנית
-  if (loading) {
-    return (
-      <>
-        <div>Loading...</div>
-      </>
-    );
+  if (loading) return <p className="rtl">טוען...</p>;
+  {
+    /* מציג הודעת טעינה */
   }
 
   return (
     <>
       <div className="container">
-        <h1 style={{ textAlign: "center" }}>
-          HOROSCOPE <Logo />
-        </h1>
         {horoscop && Object.keys(horoscop).length > 0 ? (
           <div
             key={horoscop?.id}

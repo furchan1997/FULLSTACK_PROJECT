@@ -69,13 +69,13 @@ function CreateHoroscop() {
   return (
     <>
       <div className="container">
-        <p>Create Horoscope</p>
+        <p>צור הורוסקופ</p>
         <div className="container d-flex justify-content-center">
           <form onSubmit={form.handleSubmit} noValidate autoComplete="off">
-            {error && <div className="alert alert-danger">ERROR: {error}</div>}
+            {error && <div className="alert alert-danger">שגיאה: {error}</div>}
 
             <Input
-              label="Sign"
+              label="סימן"
               name="sign"
               type="text"
               id="sign"
@@ -85,7 +85,7 @@ function CreateHoroscop() {
             />
 
             <Input
-              label="Title"
+              label="כותרת"
               name="title"
               type="textarea"
               id="title"
@@ -95,7 +95,7 @@ function CreateHoroscop() {
             />
 
             <Input
-              label="Subtitle"
+              label="כותרת משנה"
               name="subtitle"
               type="textarea"
               id="subtitle"
@@ -105,7 +105,7 @@ function CreateHoroscop() {
             />
 
             <Input
-              label="Description"
+              label="תיאור"
               name="description"
               type="textarea"
               id="description"
@@ -115,7 +115,7 @@ function CreateHoroscop() {
             />
 
             <Input
-              label="Url"
+              label="כתובת URL"
               name="image.url"
               type="textarea"
               id="url"
@@ -126,7 +126,7 @@ function CreateHoroscop() {
 
             <Input
               type="text"
-              label="Image alt"
+              label="אלט לתמונה"
               id="alt"
               name="image.alt"
               error={form.touched?.image?.alt && form.errors["image.alt"]}
@@ -136,7 +136,7 @@ function CreateHoroscop() {
             <Btn
               type="submit"
               className="custom-bg-purple custom-gold-color"
-              description="Create Horoscope"
+              description="צור הורוסקופ"
               disabled={!form.isValid}
             />
           </form>

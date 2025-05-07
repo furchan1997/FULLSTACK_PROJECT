@@ -42,26 +42,26 @@ function AdminPanel() {
   };
   console.log("from react", msgCount);
   return (
-    <div className="container">
-      <h3>HELLO ADMIN !</h3>
+    <div className="container" dir="rtl">
+      <h3>שלום אדמין!</h3>
 
-      <div className="d-flex gap-1">
+      <div className="d-flex gap-1 flex-wrap">
         <Btn
-          description={"all users"}
-          className={"custom-bg-gold "}
+          description={"כל המשתמשים"}
+          className={"custom-bg-gold"}
           type={"submit"}
-          fn={() => handleClick("/admin/users ")}
+          fn={() => handleClick("/admin/users")}
         />
         <Btn
-          description={"Create New Horoscop"}
-          className={"custom-bg-gold "}
+          description={"צור הורוסקופ חדש"}
+          className={"custom-bg-gold"}
           type={"submit"}
           fn={() => handleClick("/admin/create-horoscop")}
         />
 
         <Btn
-          description={"Look at your customers' messages"}
-          className={"custom-bg-gold "}
+          description={"צפה בהודעות מהלקוחות"}
+          className={"custom-bg-gold"}
           type={"submit"}
           fn={() => handleClick("/admin/inbox")}
         />
@@ -69,7 +69,7 @@ function AdminPanel() {
         {displayAlert ? (
           <div className="alert alert-info">🔔 יש הודעה חדשה מלקוח!</div>
         ) : (
-          <div className="alert alert-info">אין הודעות חדשות בנתיים</div>
+          <div className="alert alert-info">אין הודעות חדשות בינתיים</div>
         )}
       </div>
     </div>

@@ -24,7 +24,11 @@ function UserMe() {
   };
 
   const handleDeletedUser = async (ID) => {
-    if (window.confirm("Are you sure? This action cannot be undone.")) {
+    if (
+      window.confirm(
+        "האם אתה בטוח שברצונך למחוק את החשבון הזה? פעולה זו אינה ניתנת לשחזור."
+      )
+    ) {
       await deleteUser(ID);
       logOut();
       navigate("/sign-in");
@@ -46,13 +50,19 @@ function UserMe() {
     getUserDetalis();
   }, [userDetalis?._id]); // הפעלת הפונקציה רק שיש שינוי במזהה
 
-  if (loading) return <p>Loading...</p>;
-  if (error) return <p>Error: {error}</p>;
+  if (loading) return <p className="rtl">טוען...</p>;
+  {
+    /* מציג הודעת טעינה */
+  }
+  if (error) return <p className="rtl">שגיאה: {error}</p>;
+  {
+    /* מציג הודעת שגיאה */
+  }
 
   return (
     <>
-      <div className="container ">
-        <h2 className="text-center">Yore detalis:</h2>
+      <div className="container">
+        <h2 className="text-center">הפרטים שלך</h2>
 
         <User
           key={userID}
@@ -71,14 +81,14 @@ function UserMe() {
         <div className="m-auto d-flex gap-1 w-50">
           <Btn
             fn={handleChengeDetalis}
-            description={"update detalis"}
+            description={"עדכן/י פרטים"}
             type={"submit"}
             className="custom-bg-purple custom-gold-color"
           />
 
           <Btn
             fn={() => handleDeletedUser(userID)}
-            description={"Delete"}
+            description={"מחק/י משתמש"}
             type={"submit"}
             className="custom-bg-purple custom-gold-color"
           />

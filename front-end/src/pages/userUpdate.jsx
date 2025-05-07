@@ -6,6 +6,7 @@ import Logo from "../components/logo";
 import { useAuth } from "../context/auth.context";
 import { useNavigate, useParams } from "react-router-dom";
 import joi from "joi";
+
 // רכיב עבור עריכת פרטי משתמש מלבד סיסמא
 function UserUpdate() {
   const { userUpdate, userDetalis, loading, error } = useAuth(); // מביא את המידע עבור משתמש יחד עם פונקציה של עריכת משתמש מהקונטקסט של ניהול משתמשים
@@ -13,7 +14,6 @@ function UserUpdate() {
   const { id } = useParams();
 
   // פונקציית ניווט עבור שינוי סיסמא
-
   const handleUpdatePassword = (ev) => {
     ev.preventDefault();
     navigate(`/change-password/${id}`);
@@ -38,7 +38,6 @@ function UserUpdate() {
     },
 
     // סכמה של ג'וי
-
     validate(values) {
       const schema = joi.object({
         firstName: joi.string().min(2).max(256).required(),
@@ -81,6 +80,7 @@ function UserUpdate() {
       }
       return errors;
     },
+
     // פונקציה א-סינכרונית שקוראת לפונקציה שמנצאת בקונטקסט עבור בקשה לשרת לשינוי פרטים יחד עם הערכים שמתקבלים בטופס
     async onSubmit(values) {
       try {
@@ -95,7 +95,7 @@ function UserUpdate() {
   });
 
   if (loading) {
-    return <div>Loading...</div>;
+    return <div>טוען...</div>;
   }
 
   return (
@@ -103,19 +103,18 @@ function UserUpdate() {
       <PageHeaders
         title={
           <>
-            update yore details <Logo />
+            עדכון פרטים <Logo />
           </>
         }
-        description={
-          "update yore details, here you can change yore detalis without a password"
-        }
+        description={"כאן ניתן לעדכן את פרטיך האישיים ללא צורך בסיסמה"}
       />
 
       <div className="container d-flex justify-content-center">
         <form onSubmit={form.handleSubmit} noValidate autoComplete="off">
-          {error && <div className="alert alert-danger">ERROR: {error}</div>}
+          {error && <div className="alert alert-danger">שגיאה: {error}</div>}
+
           <Input
-            label={"First Name"}
+            label={"שם פרטי"}
             name={"firstName"}
             type={"text"}
             id={"firstName"}
@@ -123,7 +122,7 @@ function UserUpdate() {
             error={form.touched?.firstName && form.errors["firstName"]}
           />
           <Input
-            label={"Last Name"}
+            label={"שם משפחה"}
             name={"lastName"}
             type={"text"}
             id={"lastName"}
@@ -132,7 +131,7 @@ function UserUpdate() {
             error={form.touched?.lastName && form.errors["lastName"]}
           />
           <Input
-            label={"email"}
+            label={"אימייל"}
             name={"email"}
             type={"email"}
             id={"email"}
@@ -140,9 +139,8 @@ function UserUpdate() {
             {...form.getFieldProps("email")}
             error={form.touched?.email && form.errors["email"]}
           />
-
           <Input
-            label={"phone"}
+            label={"טלפון"}
             name={"phone"}
             type={"text"}
             id={"phone"}
@@ -151,7 +149,7 @@ function UserUpdate() {
             error={form.touched?.phone && form.errors["phone"]}
           />
           <Input
-            label={"state"}
+            label={"אזור / מדינה"}
             name={"state"}
             type={"text"}
             id={"state"}
@@ -159,7 +157,7 @@ function UserUpdate() {
             error={form.touched?.address?.state && form.errors["address.state"]}
           />
           <Input
-            label={"country"}
+            label={"מדינה"}
             name={"country"}
             type={"text"}
             id={"country"}
@@ -169,7 +167,7 @@ function UserUpdate() {
             }
           />
           <Input
-            label={"city"}
+            label={"עיר"}
             name={"city"}
             type={"text"}
             id={"city"}
@@ -177,7 +175,7 @@ function UserUpdate() {
             error={form.touched.address?.city && form.errors["address.city"]}
           />
           <Input
-            label={"street"}
+            label={"רחוב"}
             name={"street"}
             type={"text"}
             id={"street"}
@@ -187,7 +185,7 @@ function UserUpdate() {
             }
           />
           <Input
-            label={"House Number"}
+            label={"מספר בית"}
             name={"houseNumber"}
             type={"number"}
             id={"houseNumber"}
@@ -198,24 +196,25 @@ function UserUpdate() {
             }
           />
           <Input
-            label={"zip"}
+            label={"מיקוד"}
             name={"zip"}
             type={"number"}
             id={"zip"}
             {...form.getFieldProps("address.zip")}
             error={form.touched.address?.zip && form.errors["address.zip"]}
           />
+
           <div className="d-flex gap-1">
             <Btn
               type={"submit"}
               className="custom-bg-purple custom-gold-color"
-              description={"Update"}
+              description={"עדכנ/י"}
               disabled={!form.isValid}
             />
 
             <Btn
               className="custom-bg-gold custom-purple-color"
-              description={"update password"}
+              description={"עדכנ/י סיסמה"}
               fn={handleUpdatePassword}
             />
           </div>

@@ -41,7 +41,7 @@ function UserDetalis() {
 
   const handleDeletedUser = async () => {
     const isConfirmed = window.confirm(
-      "Are you sure you want to delete this account? This action cannot be undone."
+      "האם אתה בטוח שברצונך למחוק את החשבון הזה? פעולה זו אינה ניתנת לשחזור."
     );
     if (!isConfirmed) return;
 
@@ -52,20 +52,21 @@ function UserDetalis() {
   const isIdExist = users.some((user) => user?._id === id);
 
   if (loading) {
-    return <div>Loading...</div>;
+    return <div>טוען...</div>;
   }
 
   if (error) {
-    return <div>ERROR: {error}</div>;
+    return <div>שגיאה: {error}</div>;
   }
 
   if (!isIdExist) {
-    return <div>User not found</div>;
+    return <div>המשתמש לא נמצא</div>;
   }
 
   if (!userDetalis) {
-    return <div>Loading user details...</div>;
+    return <div>טוען פרטי משתמש...</div>;
   }
+
   return (
     <>
       <User

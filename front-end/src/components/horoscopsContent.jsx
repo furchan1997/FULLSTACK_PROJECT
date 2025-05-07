@@ -63,14 +63,14 @@ function HoroscopsContent({
 
         <div className="mb-3 text-center">
           <h3>
-            Likes: <span className="text-danger">{likes}</span>
+            לייקים: <span className="text-danger">{likes}</span>
           </h3>
         </div>
 
         {!horoscopPage && (
           <div className="d-flex justify-content-center mb-3">
             <Btn
-              description={"Show"}
+              description={"הצג"}
               className={
                 "custom-bg-gold custom-gold-color col-6 col-md-3 text-center"
               }
@@ -99,7 +99,7 @@ function HoroscopsContent({
             <div className="col-12 col-sm-6 col-md-4">
               <Btn
                 fn={backToMainPage}
-                description={"Back"}
+                description={"חזרה"}
                 className={"custom-bg-purple custom-gold-color w-100"}
                 type={"submit"}
               />
@@ -110,7 +110,7 @@ function HoroscopsContent({
                 <div className="col-12 col-sm-6 col-md-4">
                   <Btn
                     fn={updateHoroscopPage}
-                    description={"Update"}
+                    description={"עדכן"}
                     className={"custom-bg-purple custom-gold-color w-100"}
                     type={"submit"}
                   />
@@ -118,7 +118,7 @@ function HoroscopsContent({
                 <div className="col-12 col-sm-6 col-md-4">
                   <Btn
                     fn={deleteHoroscop}
-                    description={"Delete"}
+                    description={"מחק"}
                     className={"custom-bg-purple custom-gold-color w-100"}
                     type={"submit"}
                   />

@@ -67,88 +67,88 @@ function UpdateHoroscop() {
       navigate(`/horoscops/${id}`);
     },
   });
-
   if (loading || !horoscop) {
-    return <div>Loading...</div>;
+    return <div className="rtl">טוען...</div>;
+    {
+      /* מציג הודעת טעינה */
+    }
   }
+
   return (
     <>
-      <p>Update Horoscop</p>
+      <div className="container">
+        <p>עדכון הורוסקופ</p>
+        <div className="container d-flex justify-content-center">
+          <form onSubmit={form.handleSubmit} noValidate autoComplete="off">
+            {error && <div className="alert alert-danger">שגיאה: {error}</div>}
 
-      <div className="container-fluid d-flex justify-content-center">
-        <form onSubmit={form.handleSubmit} noValidate autoComplete="off">
-          {error && <div className="alert alert-danger">ERROR: {error}</div>}
+            <Input
+              label="סימן"
+              name="sign"
+              type="text"
+              id="sign"
+              required
+              error={form.touched.sign && form.errors.sign}
+              {...form.getFieldProps("sign")}
+            />
 
-          <div className="row">
-            <div className="col-12 col-md-6 col-sm-4">
-              <Input
-                label={"sign"}
-                name={"sign"}
-                type={"text"}
-                id={"sign"}
-                required
-                error={form.touched?.sign && form.errors["sign"]}
-                {...form.getFieldProps("sign")}
-              />
+            <Input
+              label="כותרת"
+              name="title"
+              type="textarea"
+              id="title"
+              required
+              error={form.touched.title && form.errors.title}
+              {...form.getFieldProps("title")}
+            />
 
-              <Input
-                label={"title"}
-                name={"title"}
-                type={"textarea"}
-                id={"title"}
-                required
-                error={form.touched?.title && form.errors["title"]}
-                {...form.getFieldProps("title")}
-              />
+            <Input
+              label="כותרת משנה"
+              name="subtitle"
+              type="textarea"
+              id="subtitle"
+              required
+              error={form.touched.subtitle && form.errors.subtitle}
+              {...form.getFieldProps("subtitle")}
+            />
 
-              <Input
-                label={"subtitle"}
-                name={"subtitle"}
-                type={"textarea"}
-                id={"subtitle"}
-                required
-                error={form.touched?.subtitle && form.errors["subtitle"]}
-                {...form.getFieldProps("subtitle")}
-              />
+            <Input
+              label="תיאור"
+              name="description"
+              type="textarea"
+              id="description"
+              required
+              error={form.touched.description && form.errors.description}
+              {...form.getFieldProps("description")}
+            />
 
-              <Input
-                label={"description"}
-                name={"description"}
-                type={"textarea"}
-                id={"description"}
-                required
-                error={form.touched?.description && form.errors["description"]}
-                {...form.getFieldProps("description")}
-              />
+            <Input
+              label="כתובת URL"
+              name="image.url"
+              type="textarea"
+              id="url"
+              required
+              error={form.touched?.image?.url && form.errors["image.url"]}
+              {...form.getFieldProps("image.url")}
+            />
 
-              <Input
-                label={"Url"}
-                name={"image.url"}
-                type={"textarea"}
-                id={"url"}
-                required
-                error={form.touched?.image?.url && form.errors["image.url"]}
-                {...form.getFieldProps("image.url")}
-              />
+            <Input
+              type="text"
+              label="אלט לתמונה"
+              id="alt"
+              name="image.alt"
+              error={form.touched?.image?.alt && form.errors["image.alt"]}
+              {...form.getFieldProps("image.alt")}
+            />
 
-              <Input
-                type="text"
-                label="Image alt"
-                id="alt"
-                name="image.alt"
-                error={form.touched?.image?.alt && form.errors["image.alt"]}
-                {...form.getFieldProps("image.alt")}
-              />
-
-              <Btn
-                type={"submit"}
-                className="custom-bg-purple custom-gold-color"
-                description={"Update Horoscop"}
-                disabled={!form.isValid}
-              />
-            </div>
-          </div>
-        </form>
+            <Btn
+              type="submit"
+              className="custom-bg-purple custom-gold-color"
+              description="עדכון הורוסקופ"
+              disabled={!form.isValid}
+            />
+          </form>
+        </div>
       </div>
     </>
   );

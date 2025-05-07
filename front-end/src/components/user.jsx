@@ -20,29 +20,29 @@ function User({
   isAdminUserDetalis = false,
 }) {
   return (
-    <div className="container">
+    <div className="container" dir="rtl">
       <div className="d-flex flex-column pb-1 my-3 user-detalis">
-        <div className="card shadow-lg border-1 p-3 custom-bg-gold">
-          <p>firstName: {firstName}</p>
-          <p>lastName: {lastName}</p>
+        <div className="card shadow-lg border-1 p-3 custom-bg-gold ">
+          <p>שם פרטי: {firstName}</p>
+          <p>שם משפחה: {lastName}</p>
           {isUserDetalisComponnet && (
             <>
-              <p>phone: {phone}</p>
-              <p>email: {email}</p>
-              <p>state: {state}</p>
-              <p>country: {country}</p>
-              <p>city: {city}</p>
-              <p>street: {street}</p>
-              <p>houseNumber: {houseNumber}</p>
-              <p>zip: {zip}</p>
+              <p>טלפון: {phone}</p>
+              <p>אימייל: {email}</p>
+              <p>מחוז: {state}</p>
+              <p>מדינה: {country}</p>
+              <p>עיר: {city}</p>
+              <p>רחוב: {street}</p>
+              <p>מספר בית: {houseNumber}</p>
+              <p>מיקוד: {zip}</p>
             </>
           )}
 
           {isAdminUserDetalis && (
             <>
-              <p>createdAt: {createdAt}</p>
+              <p>נוצר בתאריך: {createdAt}</p>
               <Btn
-                description={"Delete User"}
+                description={"מחק/י משתמש"}
                 className={"custom-bg-purple w-50 m-auto custom-gold-color"}
                 fn={deleteUser}
               />
@@ -51,7 +51,7 @@ function User({
           {isAdmin && (
             <>
               <Btn
-                description={"Get User Details"}
+                description={"הצג/י פרטי משתמש"}
                 className={"custom-bg-purple w-50 m-auto custom-gold-color"}
                 fn={userDetalis}
               />

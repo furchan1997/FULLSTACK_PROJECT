@@ -41,20 +41,28 @@ function Favorite() {
   // הצגת הודעת טעינה אם הנתונים עדיין נטענים
   if (loading) {
     return (
-      <>
-        <p>loading</p>
-      </>
+      <div className="rtl">
+        <p>טוען...</p>
+      </div>
     );
   }
 
   // הצגת הודעת שגיאה אם אירעה שגיאה
   if (error) {
-    return <div>ERROR: {error}</div>;
+    return (
+      <div className="rtl">
+        <div>שגיאה: {error}</div>
+      </div>
+    );
   }
 
   // אם אין מועדפים, מציג הודעה מתאימה
   if (favorites.length === 0) {
-    return <div>No favorites yet...</div>;
+    return (
+      <div className="rtl">
+        <div>אין מועדפים עדיין...</div>
+      </div>
+    );
   }
 
   return (
@@ -63,11 +71,11 @@ function Favorite() {
       <PageHeaders
         title={
           <>
-            Favorite page <Logo />
+            עמוד מועדפים <Logo />
           </>
         }
         description={
-          "Here you can save your favorite content. Some of the content may be re-edited or deleted by the site administrator."
+          "כאן תוכל לשמור את התוכן המועדף עליך. חלק מהתוכן עשוי להיות נערך מחדש או נמחק על ידי מנהל האתר."
         }
       />
       <div className="container">

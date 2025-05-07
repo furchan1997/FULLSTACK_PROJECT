@@ -56,20 +56,21 @@ function ChangeUserPassword() {
     },
   });
 
-  if (loading) {
-    return <div>Loading...</div>;
+  if (loading) return <p className="rtl">טוען...</p>;
+  {
+    /* מציג הודעת טעינה */
   }
 
   return (
     <>
-      <div className="container">
-        <h3>Change password:</h3>
+      <div className="container" dir="rtl">
+        <h3>שינוי סיסמה:</h3>
 
         <div className="d-flex m-auto justify-content-center align-items-center">
           <form onSubmit={form.handleSubmit} noValidate autoComplete="off">
             {error && <div className="alert alert-danger">{error}</div>}
             <Input
-              label={"password"}
+              label={"סיסמה חדשה"}
               name={"password"}
               type={"password"}
               id={"password"}
@@ -81,7 +82,7 @@ function ChangeUserPassword() {
             <Btn
               type={"submit"}
               className="custom-bg-purple custom-gold-color"
-              description={"update"}
+              description={"עדכון"}
               disabled={!form.isValid || form.isSubmitting}
             />
           </form>

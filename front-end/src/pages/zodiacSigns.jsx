@@ -65,15 +65,27 @@ function ZodiacsSigns() {
 
   console.log(contentArray);
   if (error) {
-    return <div>{`There is a error: ${error}`}</div>;
+    return (
+      <div className="rtl">
+        <p>{`שגיאה: ${error}`}</p> {/* מציג הודעת שגיאה */}
+      </div>
+    );
   }
 
   if (loading) {
-    return <div>loading...</div>;
+    return (
+      <div className="rtl">
+        <p>טוען...</p> {/* מציג הודעת טעינה */}
+      </div>
+    );
   }
 
   if (content.length === 0) {
-    return <p>No content available.</p>;
+    return (
+      <div className="rtl">
+        <p>אין תוכן זמין.</p> {/* מציג הודעה אם אין תוכן */}
+      </div>
+    );
   }
 
   return (

@@ -39,11 +39,19 @@ function HoroscopZodiac() {
   }
 
   if (loading) {
-    return <div>loading...</div>; // מציג הודעת טעינה אם הנתונים נטענים
+    return (
+      <div className="rtl">
+        <p>טוען...</p> {/* מציג הודעת טעינה אם הנתונים נטענים */}
+      </div>
+    );
   }
 
   if (error) {
-    return <div>Error: {error}</div>; // מציג שגיאה אם ישנה בעיה
+    return (
+      <div className="rtl">
+        <p>שגיאה: {error}</p> {/* מציג שגיאה אם ישנה בעיה */}
+      </div>
+    );
   }
 
   return (

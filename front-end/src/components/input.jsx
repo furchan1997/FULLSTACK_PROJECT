@@ -4,7 +4,7 @@
 function Input({ label, type, rows = 8, ...rest }) {
   return (
     <>
-      <div className="mb-3">
+      <div className="mb-3 rtl">
         <label className="form-label" htmlFor={rest.name}>
           {label}
           {rest.required && <span className="text-danger ms-1">*</span>}

@@ -6,8 +6,7 @@ function Footer() {
     <footer className="custom-bg-purple p-3">
       <div className="d-flex flex-wrap justify-content-around align-items-center gap-3 text-center">
         <p className="m-0 footer">
-          © {new Date().getFullYear()} All rights reserved - Mystic site{" "}
-          <Logo />
+          © {new Date().getFullYear()} All rights reserved - Edenque <Logo />
         </p>
 
         <div className="d-flex gap-3">
