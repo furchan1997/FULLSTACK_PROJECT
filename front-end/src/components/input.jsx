@@ -4,7 +4,7 @@
 function Input({ label, type, rows = 8, ...rest }) {
   return (
     <>
-      <div className="mb-3 rtl">
+      <div className="mb-3 rtl w-100">
         <label className="form-label" htmlFor={rest.name}>
           {label}
           {rest.required && <span className="text-danger ms-1">*</span>}
@@ -12,11 +12,9 @@ function Input({ label, type, rows = 8, ...rest }) {
         {type === "textarea" ? (
           <textarea
             id={rest.name}
-            className={`form-control ${rest.error ? "is-invalid" : ""}`}
+            className={`form-control  ${rest.error ? "is-invalid" : ""}`}
             style={{
               minHeight: "150px",
-              width: "90vw", // רוחב גמיש
-              maxWidth: "700px", // לא יגדל מעבר ל-700px
               resize: "vertical",
             }}
             rows={rows}

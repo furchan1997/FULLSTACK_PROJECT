@@ -89,7 +89,7 @@ function MyServices() {
   return (
     <div
       data-page="my-services"
-      className="container book-frame d-flex flex-column align-items-center rtl color-my-services-text"
+      className="container book-frame d-flex flex-column align-items-center rtl color-my-services-text w-100"
     >
       <h1 className=" fw-bold">✨ עדניק – הכוונה רוחנית מדויקת מהלב ✨</h1>
       <h2 className="color-my-services-text fw-bold">
@@ -194,8 +194,7 @@ function MyServices() {
           </a>
         </h4>
       </div>
-
-      <div>
+      <div className="w-100">
         {loading ? (
           <>
             <p>המתן/י בבקשה...</p>

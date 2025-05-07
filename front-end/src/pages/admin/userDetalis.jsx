@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import User from "../../components/user";
 import { useAuth } from "../../context/auth.context";
+import { alertDeleting } from "../../components/common/alertDeleting";
 
 // הרכיב הבא הוא עבור ניהול משתמש על ידיי מנהל
 // ניתן לראות את פרטיו המלאים יחד עם אפשרות למחוק אותו במיקרה הצורך
@@ -39,14 +40,11 @@ function UserDetalis() {
     fetchUserForAdmin();
   }, [id, user, users]);
 
-  const handleDeletedUser = async () => {
-    const isConfirmed = window.confirm(
-      "האם אתה בטוח שברצונך למחוק את החשבון הזה? פעולה זו אינה ניתנת לשחזור."
-    );
-    if (!isConfirmed) return;
-
-    await deleteUserByAdmin(id);
-    navigate("/admin/users");
+  const handleDeletedUser = () => {
+    alertDeleting(async () => {
+      await deleteUserByAdmin(id);
+      navigate("/admin/users");
+    });
   };
 
   const isIdExist = users.some((user) => user?._id === id);

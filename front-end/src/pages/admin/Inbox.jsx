@@ -3,18 +3,18 @@ import userService from "../../services/userService";
 import MsgClient from "../../components/msgClients";
 import Btn from "../../components/btn";
 import { useAuth } from "../../context/auth.context";
+import { alertDeleting } from "../../components/common/alertDeleting";
 
 function Inbox() {
   const { getAllMsgs, msgs, deletedAllMsgs, deleteMsgByID, loading, error } =
     useAuth();
-  console.log(error);
 
   const handleDeletedAllClick = () => {
-    deletedAllMsgs();
+    alertDeleting(() => deletedAllMsgs());
   };
 
   const handleDeletedByIdClick = (ID) => {
-    deleteMsgByID(ID);
+    alertDeleting(() => deleteMsgByID(ID));
   };
 
   useEffect(() => {
@@ -40,7 +40,7 @@ function Inbox() {
   if (msgs?.length === 0) {
     return (
       <>
-        <div className="container book-frame d-flex flex-column flex justify-content-center align-items-center rtl">
+        <div className="container book-frame d-flex flex-column flex justify-content-center align-items-center rtl fw-bold fs-3">
           אין הודעות מלקוחות כרגע, נסי שוב מאוחר יותר...
         </div>
       </>

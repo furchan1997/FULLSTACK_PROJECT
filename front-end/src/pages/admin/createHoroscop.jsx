@@ -71,7 +71,12 @@ function CreateHoroscop() {
       <div className="container">
         <p>צור הורוסקופ</p>
         <div className="container d-flex justify-content-center">
-          <form onSubmit={form.handleSubmit} noValidate autoComplete="off">
+          <form
+            onSubmit={form.handleSubmit}
+            noValidate
+            autoComplete="off"
+            className="w-75"
+          >
             {error && <div className="alert alert-danger">שגיאה: {error}</div>}
 
             <Input

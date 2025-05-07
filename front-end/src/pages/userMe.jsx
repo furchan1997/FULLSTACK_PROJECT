@@ -3,6 +3,7 @@ import User from "../components/user";
 import { useAuth } from "../context/auth.context";
 import { useNavigate, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
+import { alertDeleting } from "../components/common/alertDeleting";
 
 function UserMe() {
   const {
@@ -23,16 +24,12 @@ function UserMe() {
     navigate(`/update-user/${userID}`);
   };
 
-  const handleDeletedUser = async (ID) => {
-    if (
-      window.confirm(
-        "האם אתה בטוח שברצונך למחוק את החשבון הזה? פעולה זו אינה ניתנת לשחזור."
-      )
-    ) {
+  const handleDeletedUser = (ID) => {
+    alertDeleting(async () => {
       await deleteUser(ID);
       logOut();
       navigate("/sign-in");
-    }
+    });
   };
   // אם המזהה של משתמש שמתקבל מהפרובידר של ניהול משתמשים לא תואם למזהה שקיים בכתובת URL
   // מוציא אותו מהמערכת אל דף התחברות

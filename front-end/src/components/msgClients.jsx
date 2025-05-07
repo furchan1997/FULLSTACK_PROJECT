@@ -9,14 +9,14 @@ function MsgClient({
   deleteBtn = () => {},
 }) {
   return (
-    <div className="container book-frame d-flex flex-column flex justify-content-center align-items-center ">
-      <h3>
-        <span className="fw-bold">שם: </span> {firstName}
-      </h3>
-      <h3>
+    <div className="container book-frame d-flex flex-column flex justify-content-center align-items-center fs-4">
+      <p>
+        <span className="fw-bold ">שם: </span> {firstName}
+      </p>
+      <p>
         {" "}
         <span className="fw-bold">נייד: </span> {phone}
-      </h3>
+      </p>
       <p style={{ wordBreak: "break-word" }}>
         {" "}
         <span className="fw-bold">תגובת הלקוח: </span> {info}{" "}

@@ -50,7 +50,7 @@ function Users() {
 
   return (
     <>
-      <div className="container d-flex justify-content-center p-4">
+      <div className="container d-flex justify-content-center p-4 w-75">
         <Input
           type="text"
           value={value}
