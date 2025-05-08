@@ -5,7 +5,6 @@ import Btn from "../components/btn";
 import PageHeaders from "../components/common/pageHeaders";
 import HoroscopsContent from "../components/horoscopsContent";
 import { useAuth } from "../context/auth.context";
-import HoroscopsCard from "../components/horoscopCard";
 // הצגת הורוסקפים לפי מזל
 function HoroscopZodiac() {
   const {
@@ -56,18 +55,23 @@ function HoroscopZodiac() {
   }
 
   return (
-    <div className="horoscop-page-image">
-      <div className="my-5 d-flex flex-wrap gap-5 justify-content-center align-items-center">
+    <div className="container">
+      <div className="row my-5 gap-3 m-auto">
         {filteredHoroscop.map((horoscop, id) => (
-          <div key={id} className="col-md-4 col-sm-12">
-            <HoroscopsCard
-              sign={horoscop?.sign}
-              title={horoscop?.title}
-              likes={horoscop?.likes?.length ?? 0}
-              goToHoroscop={() => handleHoroscop(horoscop?._id)}
-              toggleLikeBuUser={() => handleLikeClick(horoscop?._id)}
-              isLiked={horoscop?.likes?.includes(user?.id)}
-            />
+          <div key={id} className="col-12">
+            <div className="card shadow-lg border-1 d-flex flex-column">
+              <HoroscopsContent
+                key={id}
+                sign={horoscop?.sign}
+                title={horoscop?.title}
+                subtitle={horoscop?.subtitle}
+                likes={horoscop?.likes?.length ?? 0} // בודק אם יש לייקים ומחזיר 0 אם אין
+                image={horoscop?.image}
+                goToHoroscop={() => handleHoroscop(horoscop?._id)}
+                toggleLikeBuUser={() => handleLikeClick(horoscop?._id)}
+                isLiked={horoscop?.likes?.includes(user?.id)}
+              />
+            </div>
           </div>
         ))}
       </div>

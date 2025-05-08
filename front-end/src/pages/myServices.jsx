@@ -5,6 +5,7 @@ import { useFormik } from "formik";
 import joi from "joi";
 import userService from "../services/userService";
 import { useEffect, useState } from "react";
+import HoroscopsCard from "../components/horoscopCard";
 
 function MyServices() {
   const [message, setMessage] = useState("");

@@ -31,7 +31,9 @@ import Inbox from "./pages/admin/Inbox";
 function App() {
   const loction = useLocation();
   const isHomePage =
-    loction.pathname === "/" || loction.pathname === "/zodiacs-signs";
+    loction.pathname === "/" ||
+    loction.pathname === "/zodiacs-signs" ||
+    loction.pathname.startsWith("/horoscop-page/");
 
   return (
     <>

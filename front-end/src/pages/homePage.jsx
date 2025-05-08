@@ -2,6 +2,7 @@ import PageHeaders from "../components/common/pageHeaders";
 import Logo from "../components/logo";
 import { Navigate, useNavigate, useParams } from "react-router-dom";
 import { useAuth } from "../context/auth.context";
+import HoroscopsCard from "../components/horoscopCard";
 
 // רכיב דף הבית , מוצג כאן תיאור על מנהלת האתר ומה האתר ומנהלת מציעים לקהל
 
