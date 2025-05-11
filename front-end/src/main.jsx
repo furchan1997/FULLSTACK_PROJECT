@@ -8,13 +8,16 @@ import "bootstrap-icons/font/bootstrap-icons.css";
 import { BrowserRouter } from "react-router-dom";
 import { AuthProvider } from "./context/auth.context.jsx";
 import { ContentProvider } from "./context/contents.context.jsx";
+import { ProductProvider } from "./context/products.context.jsx";
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
     <BrowserRouter>
       <AuthProvider>
         <ContentProvider>
-          <App />
+          <ProductProvider>
+            <App />
+          </ProductProvider>
         </ContentProvider>
       </AuthProvider>
     </BrowserRouter>

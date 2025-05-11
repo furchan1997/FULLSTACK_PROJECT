@@ -4,6 +4,12 @@ const authMW = require("../middleware/auth");
 const adminAuthMW = require("../middleware/adminAuth");
 const { Product, validateProduct } = require("../models/product");
 
+// קבלת קטגוריות
+router.get("/categories", (req, res) => {
+  const categories = Product.schema.path("category").enumValues;
+  res.json(categories);
+});
+
 // קבלת מוצרים
 router.get("/products", async (req, res, next) => {
   const products = await Product.find({}).sort({ createdAt: -1 });
