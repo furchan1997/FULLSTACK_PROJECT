@@ -10,6 +10,55 @@
 
 ###
 
+GET  {{local}}/shop/products
+
+###
+
+GET  {{local}}/shop/products/68210ea703ccef6137a9fe01
+
+###
+
+POST  {{local}}/shop/products
+x-auth-token:{{admin}}
+Content-Type: application/json
+
+
+{
+  "name": " טארוט",
+  "description": "קלפים מיוחדים עם תמונות של חיות מיסטיות המאפשרות חיזוי עתידות.",
+  "price": 150,
+  "image": "https://example.com/images/tarot_cards.jpg",
+  "category": "קלפים",
+  "quantityInStock": 10
+}
+
+
+###
+
+PUT   {{local}}/shop/products/68210ea703ccef6137a9fe01
+x-auth-token:{{admin}}
+Content-Type: application/json
+
+
+{
+  "name": "קלפי טארוט",
+  "description": "קלפים מיוחדים עם  של חיות מיסטיות המאפשרות חיזוי עתידות.",
+  "price": 90,
+  "image": "https://example.com/images/tarot_cards.jpg",
+  "category": "קלפים",
+  "quantityInStock": 20
+}
+
+###
+DELETE  {{local}}/shop/products/682118ce42f597f9d04a9ead
+x-auth-token:{{admin}}
+
+###
+DELETE  {{local}}/shop/products/
+x-auth-token:{{admin}}
+
+###
+
 POST {{local}}/create-contact/
 Content-Type: application/json 
 
