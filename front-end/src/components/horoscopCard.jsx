@@ -1,6 +1,7 @@
 import { useAuth } from "../context/auth.context";
 import Btn from "./btn";
 
+// רכיב כרטיס שבו מוצג הורוסקופ מתומצת
 function HoroscopsCard({
   sign,
   title,

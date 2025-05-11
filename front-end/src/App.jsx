@@ -26,6 +26,7 @@ import OpeningCards from "./pages/serviceType/OpeningCards";
 import Astrologicalmap from "./pages/serviceType/astrologicalMap";
 import LeadCleaning from "./pages/serviceType/leadCleaning";
 import Inbox from "./pages/admin/Inbox";
+import Shop from "./pages/shop";
 
 // רכיב ראשי , כאן מוצגים כל הרכיבים של האפליקציה
 function App() {
@@ -173,6 +174,7 @@ function App() {
               path="/My-services/Lead-cleaning"
               element={<LeadCleaning />}
             />
+            <Route path="/shop" element={<Shop />} />
           </Routes>
         </main>
         <Footer />

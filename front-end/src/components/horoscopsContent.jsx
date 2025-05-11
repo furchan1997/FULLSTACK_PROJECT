@@ -22,111 +22,93 @@ function HoroscopsContent({
   const { user } = useAuth();
 
   return (
-    <div
-      className={
-        horoscopPage
-          ? "container rtl card shadow-lg border p-3 my-4"
-          : "container rtl card shadow-lg border p-4 my-4"
-      }
-    >
-      <div className="card-body">
-        <div className="text-center mb-4">
-          <h1 className="fw-bold fs-3">{sign}</h1>
-        </div>
-        <div className="text-center mb-4">
-          <h1 className="fw-bold fs-3">{title}</h1>
-        </div>
+    <div className={`container rtl my-5 fw-bold`}>
+      <div className="card mystic-card p-4">
+        <div className="card-body">
+          <div className="text-center mb-3">
+            <h1 className="display-5 fw-bold text-light">{sign}</h1>
+            <h2 className="h4 text-warning">{title}</h2>
+            <h5 className="text-light">{subtitle}</h5>
+          </div>
 
-        <div className="mb-3 text-center">
-          <h3>{subtitle}</h3>
-        </div>
+          {horoscopPage && (
+            <p className="text-center text-light fs-5 px-md-5">{description}</p>
+          )}
 
-        {horoscopPage && (
-          <>
-            <div className="mb-3 text-center">
-              <h3 className="text-muted fs-5">{description}</h3>
-            </div>
-          </>
-        )}
-
-        <div className="mb-3 text-center">
-          <img
-            className="img-fluid rounded"
-            style={{
-              maxHeight: horoscopPage ? "500px" : "300px",
-              objectFit: "contain",
-            }}
-            src={url}
-            alt={alt}
-          />
-        </div>
-
-        <div className="mb-3 text-center">
-          <h3>
-            לייקים: <span className="text-danger">{likes}</span>
-          </h3>
-        </div>
-
-        {!horoscopPage && (
-          <div className="d-flex justify-content-center mb-3">
-            <Btn
-              description={"הצג"}
-              className={
-                "custom-bg-gold custom-gold-color col-6 col-md-3 text-center"
-              }
-              type={"submit"}
-              fn={goToHoroscop}
+          <div className="text-center mb-4">
+            <img
+              src={url}
+              alt={alt}
+              className="img-fluid rounded-4 shadow"
+              style={{
+                maxHeight: horoscopPage ? "450px" : "300px",
+                objectFit: "cover",
+              }}
             />
           </div>
-        )}
 
-        <div className="d-flex justify-content-center mb-4">
-          <Btn
-            description={
-              isLiked ? (
-                <span className="liked-icon fs-5">❤️</span>
-              ) : (
-                <span className="unliked-icon fs-5">🤍</span>
-              )
-            }
-            type={"submit"}
-            fn={toggleLikeBuUser}
-          />
-        </div>
+          <div className="text-center mb-3">
+            <h5 className="text-light">
+              לייקים: <span className="text-danger fw-bold">{likes}</span>
+            </h5>
+          </div>
 
-        {horoscopPage && (
-          <div className="row g-2 justify-content-center">
-            <div className="col-12 col-sm-6 col-md-4">
+          {!horoscopPage && (
+            <div className="d-flex justify-content-center mb-3">
               <Btn
-                fn={backToMainPage}
-                description={"חזרה"}
-                className={"custom-bg-purple custom-gold-color w-100"}
-                type={"submit"}
+                description={"הצג"}
+                className="mystic-button w-50 "
+                type="button"
+                fn={goToHoroscop}
               />
             </div>
+          )}
 
-            {user.isAdmin && (
-              <>
-                <div className="col-12 col-sm-6 col-md-4">
-                  <Btn
-                    fn={updateHoroscopPage}
-                    description={"עדכן"}
-                    className={"custom-bg-purple custom-gold-color w-100"}
-                    type={"submit"}
-                  />
-                </div>
-                <div className="col-12 col-sm-6 col-md-4">
-                  <Btn
-                    fn={deleteHoroscop}
-                    description={"מחק"}
-                    className={"custom-bg-purple custom-gold-color w-100"}
-                    type={"submit"}
-                  />
-                </div>
-              </>
-            )}
+          <div className="d-flex justify-content-center mb-4">
+            <button
+              onClick={toggleLikeBuUser}
+              className={`btn btn-lg ${
+                isLiked ? "btn-danger" : "btn-outline-danger"
+              } rounded-circle like-button`}
+            >
+              {isLiked ? "❤️" : "🤍"}
+            </button>
           </div>
-        )}
+
+          {horoscopPage && (
+            <div className="row g-3 justify-content-center">
+              <div className="col-12 col-sm-6 col-md-4">
+                <Btn
+                  fn={backToMainPage}
+                  description={"חזרה"}
+                  className="mystic-button w-100 color-for-horoscop"
+                  type="button"
+                />
+              </div>
+
+              {user.isAdmin && (
+                <>
+                  <div className="col-12 col-sm-6 col-md-4">
+                    <Btn
+                      fn={updateHoroscopPage}
+                      description={"עדכן"}
+                      className="mystic-button w-100 color-for-horoscop"
+                      type="button"
+                    />
+                  </div>
+                  <div className="col-12 col-sm-6 col-md-4">
+                    <Btn
+                      fn={deleteHoroscop}
+                      description={"מחק"}
+                      className="btn btn-outline-danger w-100 fw-bold"
+                      type="button"
+                    />
+                  </div>
+                </>
+              )}
+            </div>
+          )}
+        </div>
       </div>
     </div>
   );

@@ -215,6 +215,7 @@ h3 {
 }
 
 .item {
+  font-size: 2.2rem;
   background-color: #1b3457;
   color: #b58e62;
   display: flex;
@@ -222,7 +223,6 @@ h3 {
   justify-content: center;
   font-weight: bold;
   cursor: pointer;
-  font-size: 28px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s ease, background-color 0.3s ease,
     box-shadow 0.3s ease;
@@ -274,6 +274,8 @@ h3 {
   text-align: center;
   color: #fff; /* צבע טקסט בהיר שיבלוט על הרקע */
   transition: transform 0.3s ease, box-shadow 0.3s ease; /* אנימציה חלקה */
+  width: 300px;
+  /* gap: 100px; */
 }
 
 .horoscop-card:hover {
@@ -285,17 +287,18 @@ h3 {
 
 .horoscop-page-image {
   background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
-    url("/crystal.jpg"); /* אפקט כהה מעל התמונה */
+    url("/crystal.jpg");
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
+  min-height: 100vh; /* תמלא את כל גובה המסך */
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
   color: #fff;
-  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.8); /* הצללה לטקסט */
+  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.8);
   animation: fadeIn 2s ease-in-out;
+  padding: 40px 20px;
 }
 
 /* אפקט הופעה חלקה */
@@ -312,6 +315,85 @@ h3 {
 
 .color-my-services-text {
   color: #1c0222;
+}
+
+/* קובץ CSS כללי - ניתן להוסיף ל-App.css או לקובץ נפרד */
+.mystic-card {
+  background: linear-gradient(135deg, rgba(136, 10, 43, 0.85), #1b3457);
+  border-radius: 20px;
+  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2), 0px 20px 40px rgba(0, 0, 0, 0.3),
+    0px 30px 60px rgba(0, 0, 0, 0.4), 0px 40px 80px rgba(0, 0, 0, 0.5);
+  color: white;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.mystic-card:hover {
+  transform: scale(1.01);
+  box-shadow: 0px 15px 25px rgba(0, 0, 0, 0.3), 0px 30px 60px rgba(0, 0, 0, 0.4);
+}
+
+.mystic-button {
+  background: linear-gradient(90deg, #8a2be2, #4b0082);
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 30px;
+  font-weight: bold;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.mystic-button:hover {
+  background: linear-gradient(90deg, #4b0082, #8a2be2);
+  transform: scale(1.05);
+}
+
+.like-button {
+  width: 60px;
+  height: 60px;
+  font-size: 1.5rem;
+  transition: transform 0.3s ease;
+  background-color: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(4px);
+}
+
+.like-button:hover {
+  transform: scale(1.2);
+}
+
+.color-for-horoscop {
+  color: white !important;
+  font-weight: bold !important;
+}
+
+.container-products {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(3, 150px);
+  gap: 15px;
+}
+
+.item-product {
+  background-color: rgba(136, 10, 43, 0.757); /* צבע רקע כהה, לא אטום לגמרי */
+  color: white; /* צבע טקסט בהיר */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  cursor: pointer;
+  border-radius: 20px; /* פינות מעוגלות יותר */
+  font-size: 2rem;
+  padding: 20px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2), 0px 6px 15px rgba(0, 0, 0, 0.3); /* הצללה */
+  transition: all 0.3s ease; /* מעבר חלק בין המצבים */
+}
+
+.item-product:hover {
+  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.4), 0px 12px 25px rgba(0, 0, 0, 0.5); /* הצללה גדולה יותר */
+  transform: scale(1.05); /* אנימציית הגדלה קלה */
+}
+
+.item-product:active {
+  transform: scale(0.95); /* הקטנה קלה בעת לחיצה */
 }
 
 @media (max-width: 550px) {

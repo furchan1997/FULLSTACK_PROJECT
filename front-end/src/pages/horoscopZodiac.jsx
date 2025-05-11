@@ -57,19 +57,21 @@ function HoroscopZodiac() {
 
   return (
     <div className="horoscop-page-image">
-      <div className="my-5 d-flex flex-wrap gap-5 justify-content-center align-items-center">
-        {filteredHoroscop.map((horoscop, id) => (
-          <div key={id} className="col-md-4 col-sm-12">
-            <HoroscopsCard
-              sign={horoscop?.sign}
-              title={horoscop?.title}
-              likes={horoscop?.likes?.length ?? 0}
-              goToHoroscop={() => handleHoroscop(horoscop?._id)}
-              toggleLikeBuUser={() => handleLikeClick(horoscop?._id)}
-              isLiked={horoscop?.likes?.includes(user?.id)}
-            />
-          </div>
-        ))}
+      <div className="container py-5">
+        <div className="row g-4 justify-content-center">
+          {filteredHoroscop.map((horoscop, id) => (
+            <div key={id} className="col-md-4 col-sm-12">
+              <HoroscopsCard
+                sign={horoscop?.sign}
+                title={horoscop?.title}
+                likes={horoscop?.likes?.length ?? 0}
+                goToHoroscop={() => handleHoroscop(horoscop?._id)}
+                toggleLikeBuUser={() => handleLikeClick(horoscop?._id)}
+                isLiked={horoscop?.likes?.includes(user?.id)}
+              />
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   );

@@ -114,6 +114,12 @@ function NavBar() {
                 השירותים שלי
               </NavLink>
             </li>
+
+            <li className="nav-item">
+              <NavLink className="nav-link custom-gold-color" to="/shop">
+                חנות
+              </NavLink>
+            </li>
           </ul>
           {/* הצגת קישורים עבור משתמש מחובר ועבור משתמש שאינו מחובר */}
           <ul className="navbar-nav ms-auto">
