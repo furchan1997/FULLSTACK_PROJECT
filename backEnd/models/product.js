@@ -20,8 +20,12 @@ const productSchema = new mongoose.Schema({
     min: 0,
   },
   image: {
-    type: String,
-    required: true,
+    url: {
+      type: String,
+      default:
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQO59DbN8_8JTIuLiyMOOWFde_rHdAG1CpRBA&s",
+    },
+    alt: { type: String, required: true },
   },
   category: {
     type: String,
@@ -52,7 +56,10 @@ function validateProduct(product) {
     name: joi.string().min(2).max(100).required(),
     description: joi.string().min(10).max(1000).required(),
     price: joi.number().min(0).required(),
-    image: joi.string().allow("").optional(), // התמונה לא חובה, ויכולה להיות ריקה
+    image: joi.object({
+      url: joi.string().min(14).optional().allow("").default(""),
+      alt: joi.string().min(2).max(1024).required(),
+    }),
     category: joi
       .string()
       .valid("קלפים", "נרות", "קמעות", "מפות", "תכשיטים", "אחר")

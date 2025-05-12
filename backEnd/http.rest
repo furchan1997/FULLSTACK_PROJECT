@@ -27,7 +27,10 @@ Content-Type: application/json
   "name": " טארוט",
   "description": "קלפים מיוחדים עם תמונות של חיות מיסטיות המאפשרות חיזוי עתידות.",
   "price": 150,
-  "image": "https://example.com/images/tarot_cards.jpg",
+  "image": {
+    "url": "https://img.fruugo.com/product/4/68/1096370684_0340_0340.jpg",
+    "alt": "טארוט"
+  },
   "category": "קלפים",
   "quantityInStock": 10
 }

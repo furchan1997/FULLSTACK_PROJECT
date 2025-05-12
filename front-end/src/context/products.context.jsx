@@ -8,6 +8,7 @@ export function ProductProvider({ children }) {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [products, setProducts] = useState([]);
+  const [product, setProduct] = useState({});
   const [categories, setCategories] = useState([]);
 
   const getCategories = async () => {
@@ -22,13 +23,20 @@ export function ProductProvider({ children }) {
   const getProducts = async () => {
     try {
       const response = await productService.getProducts();
-      setProducts(response.data);
+      setProducts(response.data.products);
     } catch (err) {
       setError(err);
     }
   };
 
-  const getProduct = async (ID) => {};
+  const getProduct = async (ID) => {
+    try {
+      const response = await productService.getProduct(ID);
+      setProduct(response?.data?.product);
+    } catch (err) {
+      setError(err || err?.response?.message || err?.message);
+    }
+  };
 
   const createProduct = async () => {};
 
@@ -51,6 +59,7 @@ export function ProductProvider({ children }) {
         loading,
         error,
         products,
+        product,
         categories,
       }}
     >

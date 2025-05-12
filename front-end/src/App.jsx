@@ -3,7 +3,7 @@ import SignUp from "./pages/signUp";
 import SignIn from "./pages/signIn";
 import ZodiacsSigns from "./pages/zodiacSigns";
 import HomePage from "./pages/homePage";
-import Horoscops from "./pages/horoscops";
+// import Horoscops from "./pages/horoscops";
 import UserMe from "./pages/userMe";
 import UserUpdate from "./pages/userUpdate";
 import ChangeUserPassword from "./pages/userUpdatePassword";
@@ -28,6 +28,8 @@ import LeadCleaning from "./pages/serviceType/leadCleaning";
 import Inbox from "./pages/admin/Inbox";
 import Shop from "./pages/products/shop";
 import AllProducts from "./pages/products/allProducts";
+import Product from "./pages/products/singleProduct";
+import SingleProduct from "./pages/products/singleProduct";
 
 // רכיב ראשי , כאן מוצגים כל הרכיבים של האפליקציה
 function App() {
@@ -177,6 +179,7 @@ function App() {
             />
             <Route path="/shop" element={<Shop />} />
             <Route path="/shop/products/" element={<AllProducts />} />
+            <Route path="/shop/products/:id" element={<SingleProduct />} />
           </Routes>
         </main>
         <Footer />
