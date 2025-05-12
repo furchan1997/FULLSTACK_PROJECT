@@ -4,7 +4,7 @@ import { useProduct } from "../../context/products.context";
 function AllProducts() {
   const { getProducts, products } = useProduct();
   useEffect(() => {
-    getProducts();
+    getProducts();ז
   }, []);
 
   console.log(products);
