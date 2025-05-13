@@ -1,16 +1,48 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Btn from "../../components/btn";
 import Input from "../../components/input";
+import { useAuth } from "../../context/auth.context";
 
 function NumerologicalCalculation() {
-  const [date, setDate] = useState("");
+  const [days, setDays] = useState([]);
+  const [months, setMonths] = useState([]);
+  const [years, setYears] = useState([]);
+  const [selectedDay, setSelectedDay] = useState("");
+  const [selectedMonth, setSelectedMonth] = useState("");
+  const [selectedYear, setSelectedYear] = useState("");
   const [result, setResult] = useState(null);
+  const { userDetalis } = useAuth();
+  console.log(userDetalis);
 
-  const sumDigit = (date) => {
-    const [year, month, day] = date.split("-");
-    const allDigits = year + month + day;
+  const dayPicker = () => {
+    let dayArr = [];
+    for (let i = 1; i <= 31; i++) {
+      dayArr.push(i);
+    }
+    setDays(dayArr);
+  };
 
-    let sum = allDigits
+  const monthPicker = () => {
+    let monthArr = [];
+    for (let i = 1; i <= 12; i++) {
+      monthArr.push(i);
+    }
+    setMonths(monthArr);
+  };
+
+  const yearsPicker = () => {
+    let yearsArr = [];
+    for (let i = 1940; i <= 2025; i++) {
+      yearsArr.push(i);
+    }
+    yearsArr.sort((a, b) => b - a);
+    setYears(yearsArr);
+  };
+
+  const sumDigit = () => {
+    const allDigit = selectedDay + selectedMonth + selectedYear;
+
+    let sum = allDigit
       .split("")
       .map(Number)
       .reduce((acc, curr) => acc + curr, 0);
@@ -26,49 +58,113 @@ function NumerologicalCalculation() {
     return sum;
   };
 
-  const handleClickResult = () => {
-    const calculatedResult = sumDigit(date);
-    setResult(calculatedResult);
-    console.log(result);
+  const handleDateResult = () => {
+    setResult(sumDigit());
   };
 
-  return (
-    <div className="container numerological-page rtl my-1 text-white p-5">
-      <h2 className="text-center">חישוב נומורולוגי</h2>
+  useEffect(() => {
+    dayPicker();
+    monthPicker();
+    yearsPicker();
+  }, []);
 
-      {/* שינוי כאן: direction לפי גודל מסך */}
-      <div className="d-flex flex-column flex-md-row gap-3">
-        {/* טופס */}
-        <div className="d-flex flex-wrap gap-3 w-100 w-md-50 fw-bold">
-          <Input label={"שם פרטי"} type={"text"} />
-          <Input label={"שם משפחה"} type={"text"} />
-          <Input
-            label={"תאריך לידה"}
-            type={"date"}
-            value={date}
-            onChange={(e) => setDate(e.target.value)}
-          />
+  return (
+    <div className="backround-numerological-calculation-page rtl text-white p-3">
+      <h2 className="text-center mb-4  fw-bold">
+        חישוב נומורולוגי - מספר גורל
+      </h2>
+
+      <div className="d-flex flex-column flex-lg-row my-5">
+        {/* הבחירות בצד שמאל */}
+        <div className="d-flex flex-column gap-3 w-75 w-lg-50">
+          <select
+            name="day"
+            value={selectedDay}
+            onChange={(e) => setSelectedDay(e.target.value)}
+            className="form-select"
+          >
+            <option disabled value="">
+              יום
+            </option>
+            {days.map((day) => (
+              <option key={day} value={day}>
+                {day}
+              </option>
+            ))}
+          </select>
+
+          <select
+            name="month"
+            value={selectedMonth}
+            onChange={(e) => setSelectedMonth(e.target.value)}
+            className="form-select"
+          >
+            <option disabled value="">
+              חודש
+            </option>
+            {months.map((month) => (
+              <option key={month} value={month}>
+                {month}
+              </option>
+            ))}
+          </select>
+
+          <select
+            name="year"
+            value={selectedYear}
+            onChange={(e) => setSelectedYear(e.target.value)}
+            className="form-select"
+          >
+            <option disabled value="">
+              שנה
+            </option>
+            {years.map((year) => (
+              <option key={year} value={year}>
+                {year}
+              </option>
+            ))}
+          </select>
+
           <Btn
             type={"button"}
-            className="custom-bg-gold custom-purple-color w-50 fw-bold"
+            disabled={!selectedDay || !selectedMonth || !selectedYear}
+            className="custom-bg-gold custom-purple-color w-100  fw-bold"
             description={"חשב/י"}
-            onClick={handleClickResult}
+            onClick={handleDateResult}
           />
         </div>
 
-        {/* תוצאה */}
-        <div className="d-flex w-100 w-md-50 justify-content-center">
+        {/* כפתור באמצע */}
+        <div className="d-flex justify-content-center align-items-center w-100 w-lg-25">
+          {/* אין צורך בכפתור נוסף באמצע, כל הפוקוס על כפתור החישוב */}
+        </div>
+
+        {/* תוצאה בצד שמאל */}
+        <div className="d-flex w-100 w-lg-25 justify-content-start">
           <p className="m-0 fw-bold">
-            {result !== null && !Number.isNaN(result) ? (
-              <>
-                התוצאה היא:
-                <br />
-                {result}
-              </>
-            ) : result !== null && Number.isNaN(result) ? (
-              <>הינך חייב למלא את התאריך</>
+            {!result ? (
+              !selectedDay || !selectedMonth || !selectedYear ? (
+                "בחר/י יום, חודש ושנה"
+              ) : (
+                "לחץ/י על כפתור החישוב"
+              )
             ) : (
-              <>הנך מוזמן/ת לחשב את מספר הגורל שלך</>
+              <>
+                היי {userDetalis?.firstName}, מספר הגורל שלך הינו: {result} וזה
+                אומר כך: <br /> Lorem ipsum dolor sit, amet consectetur
+                adipisicing elit. Excepturi atque repudiandae, veniam recusandae
+                quis corporis? Minima placeat sunt, ea quae atque debitis. Sint
+                maiores earum neque deserunt delectus similique quidem? Suscipit
+                minus omnis inventore assumenda laboriosam facilis dolor
+                perspiciatis? Ut nobis exercitationem illum fugit, autem nulla
+                rem reprehenderit, consectetur vitae in sint tempore tempora
+                enim dolor laboriosam ipsa nisi sed? Ea culpa, repudiandae
+                inventore veniam, distinctio placeat recusandae quo tempora
+                delectus similique reprehenderit. Eum at voluptatem reiciendis
+                possimus ea, commodi voluptas sed beatae est illo molestias
+                pariatur dicta. Ex, vitae?
+                <br />
+              </>
             )}
           </p>
         </div>

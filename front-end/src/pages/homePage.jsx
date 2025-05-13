@@ -9,16 +9,9 @@ import HoroscopsCard from "../components/horoscopCard";
 function HomePage() {
   const { user } = useAuth();
   const navigate = useNavigate(); // מאפשר ניווט בין דפים
-  const handleToSignUp = () => {
-    navigate("/sign-up");
-  };
 
-  const handleToHoroscop = () => {
-    navigate("/horoscop-page");
-  };
-
-  const handleToMyServise = () => {
-    navigate("/My-services");
+  const handleClikeToPage = (page) => {
+    navigate(page);
   };
 
   return (
@@ -70,10 +63,26 @@ function HomePage() {
                 🔮{" "}
                 <strong
                   className="custom-purple-color"
-                  onClick={handleToHoroscop}
+                  onClick={() => handleClikeToPage("/horoscop-page")}
                 >
                   <span className="cursor-pointer">
                     צפו בהורוסקופ החדשים לבחירתכם
+                  </span>
+                </strong>
+              </div>
+              <div
+                className="custom-bg-gold fs-5 text-center my-2"
+                style={{ borderRadius: "20px" }}
+              >
+                🔢{" "}
+                <strong
+                  className="custom-purple-color"
+                  onClick={() =>
+                    handleClikeToPage("/numerological-calculation")
+                  }
+                >
+                  <span className="cursor-pointer">
+                    גלו מה אומר מספר הגורל שלכם/ן{" "}
                   </span>
                 </strong>
               </div>
@@ -84,18 +93,25 @@ function HomePage() {
               style={{ borderRadius: "20px" }}
             >
               ✨{" "}
-              <strong className="custom-purple-color" onClick={handleToSignUp}>
+              <strong
+                className="custom-purple-color"
+                onClick={() => handleClikeToPage("/sign-up")}
+              >
                 <span className="cursor-pointer">
                   הצטרפו עכשיו וקבלו גישה להורוסקופים מותאמים אישית!
                 </span>
               </strong>
             </div>
           )}
+
           <div
             className="custom-bg-gold fs-5 text-center my-2"
             style={{ borderRadius: "20px" }}
           >
-            <strong className="custom-purple-color" onClick={handleToMyServise}>
+            <strong
+              className="custom-purple-color"
+              onClick={() => handleClikeToPage("/My-services")}
+            >
               <span className="cursor-pointer">
                 🌟 מגוון שירותים רוחניים מחכים רק לך – לחצ/י כאן להתחלה חדשה 🌟
               </span>

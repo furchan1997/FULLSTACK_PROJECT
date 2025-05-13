@@ -330,49 +330,6 @@ h3 {
   color: #1c0222;
 }
 
-/* קובץ CSS כללי - ניתן להוסיף ל-App.css או לקובץ נפרד */
-.mystic-card {
-  background: linear-gradient(135deg, rgba(136, 10, 43, 0.85), #1b3457);
-  border-radius: 20px;
-  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2), 0px 20px 40px rgba(0, 0, 0, 0.3),
-    0px 30px 60px rgba(0, 0, 0, 0.4), 0px 40px 80px rgba(0, 0, 0, 0.5);
-  color: white;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.mystic-card:hover {
-  transform: scale(1.01);
-  box-shadow: 0px 15px 25px rgba(0, 0, 0, 0.3), 0px 30px 60px rgba(0, 0, 0, 0.4);
-}
-
-.mystic-button {
-  background: linear-gradient(90deg, #8a2be2, #4b0082);
-  color: white;
-  border: none;
-  padding: 10px 20px;
-  border-radius: 30px;
-  font-weight: bold;
-  transition: background 0.3s ease, transform 0.2s ease;
-}
-
-.mystic-button:hover {
-  background: linear-gradient(90deg, #4b0082, #8a2be2);
-  transform: scale(1.05);
-}
-
-.like-button {
-  width: 60px;
-  height: 60px;
-  font-size: 1.5rem;
-  transition: transform 0.3s ease;
-  background-color: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(4px);
-}
-
-.like-button:hover {
-  transform: scale(1.2);
-}
-
 .color-for-horoscop {
   color: white !important;
   font-weight: bold !important;
@@ -407,6 +364,43 @@ h3 {
 
 .item-product:active {
   transform: scale(0.95); /* הקטנה קלה בעת לחיצה */
+}
+
+.backround-numerological-calculation-page {
+  position: relative;
+  background-image: url("planet.png");
+  background-size: cover; /* מכסה את כל הרקע בתמונה */
+  background-position: center center; /* ממקם את התמונה במרכז */
+  background-attachment: fixed; /* הרקע יישאר קבוע בזמן גלילה */
+  min-height: 100vh; /* גובה העמוד שווה לגובה המסך */
+}
+
+/* הוספת שכבת צבע חצי שקוף */
+.backround-numerological-calculation-page::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5); /* צבע רקע שחור עם שקיפות */
+  z-index: 1; /* להבטיח שהשכבה תהיה מתחת לטקסט */
+  pointer-events: none; /* מאפשר לאלמנטים מתחת לשכבה להגיב לאירועים */
+}
+
+/* הצגת הטקסט מעל השכבה השקופה */
+.backround-numerological-calculation-page h2,
+.backround-numerological-calculation-page p {
+  position: relative;
+  z-index: 2; /* מוודא שהטקסט יהיה מעל לשכבה השקופה */
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7); /* הוספת צל לטקסט */
+}
+
+/* ניהול כפתורים ובחירות */
+.form-select,
+.btn {
+  position: relative;
+  z-index: 2; /* מבטיח שהכפתורים ובחירות יהיו מעל לשכבה השקופה */
 }
 
 @media (max-width: 550px) {

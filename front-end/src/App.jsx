@@ -38,7 +38,8 @@ function App() {
   const isHomePage =
     loction.pathname === "/" ||
     loction.pathname === "/zodiacs-signs" ||
-    loction.pathname.startsWith("/horoscop-page/");
+    loction.pathname.startsWith("/horoscop-page/") ||
+    loction.pathname === "/numerological-calculation";
 
   return (
     <>

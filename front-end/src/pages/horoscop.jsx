@@ -74,10 +74,7 @@ function Horoscop() {
     <>
       <div className="container">
         {horoscop && Object.keys(horoscop).length > 0 ? (
-          <div
-            key={horoscop?.id}
-            className="container shadow-lg border-1 p-2 my-4"
-          >
+          <div key={horoscop?.id} className="border-1 p-2 my-4">
             <HoroscopsContent
               key={id}
               sign={horoscop?.sign}

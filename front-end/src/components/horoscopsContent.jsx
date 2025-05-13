@@ -22,34 +22,24 @@ function HoroscopsContent({
   const { user } = useAuth();
 
   return (
-    <div className={`container rtl my-5 fw-bold`}>
-      <div className="card mystic-card p-4">
+    <div
+      className={`container rtl my-5 fw-bold book-frame color-my-services-text`}
+    >
+      <div className="p-4">
         <div className="card-body">
           <div className="text-center mb-3">
-            <h1 className="display-5 fw-bold text-light">{sign}</h1>
-            <h2 className="h4 text-warning">{title}</h2>
-            <h5 className="text-light">{subtitle}</h5>
+            <h1>{sign}</h1>
+            <h2 className="fs-2">{title}</h2>
+            <h5 className="fw-bold fs-4">{subtitle}</h5>
           </div>
 
           {horoscopPage && (
-            <p className="text-center text-light fs-5 px-md-5">{description}</p>
+            <p className="text-center fs-5 px-md-5">{description}</p>
           )}
 
-          <div className="text-center mb-4">
-            <img
-              src={url}
-              alt={alt}
-              className="img-fluid rounded-4 shadow"
-              style={{
-                maxHeight: horoscopPage ? "450px" : "300px",
-                objectFit: "cover",
-              }}
-            />
-          </div>
-
           <div className="text-center mb-3">
-            <h5 className="text-light">
-              לייקים: <span className="text-danger fw-bold">{likes}</span>
+            <h5>
+              לייקים: <span className="fw-bold">{likes}</span>
             </h5>
           </div>
 
@@ -64,15 +54,15 @@ function HoroscopsContent({
             </div>
           )}
 
-          <div className="d-flex justify-content-center mb-4">
-            <button
-              onClick={toggleLikeBuUser}
-              className={`btn btn-lg ${
-                isLiked ? "btn-danger" : "btn-outline-danger"
-              } rounded-circle like-button`}
-            >
-              {isLiked ? "❤️" : "🤍"}
-            </button>
+          <div className="d-flex justify-content-center mb-4 ">
+            <div className="d-flex justify-content-center mb-4">
+              <Btn
+                type="submit"
+                className="custom-bg-purple custom-gold-color"
+                description={isLiked ? "❤️" : "🤍"}
+                onClick={toggleLikeBuUser}
+              />
+            </div>
           </div>
 
           {horoscopPage && (
@@ -81,7 +71,7 @@ function HoroscopsContent({
                 <Btn
                   fn={backToMainPage}
                   description={"חזרה"}
-                  className="mystic-button w-100 color-for-horoscop"
+                  className=" w-100 color-for-horoscop custom-bg-purple"
                   type="button"
                 />
               </div>
@@ -92,7 +82,7 @@ function HoroscopsContent({
                     <Btn
                       fn={updateHoroscopPage}
                       description={"עדכן"}
-                      className="mystic-button w-100 color-for-horoscop"
+                      className=" w-100 color-for-horoscop"
                       type="button"
                     />
                   </div>
@@ -100,7 +90,7 @@ function HoroscopsContent({
                     <Btn
                       fn={deleteHoroscop}
                       description={"מחק"}
-                      className="btn btn-outline-danger w-100 fw-bold"
+                      className="btn w-100 fw-bold"
                       type="button"
                     />
                   </div>
