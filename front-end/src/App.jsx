@@ -30,6 +30,7 @@ import Shop from "./pages/products/shop";
 import AllProducts from "./pages/products/allProducts";
 import Product from "./pages/products/singleProduct";
 import SingleProduct from "./pages/products/singleProduct";
+import NumerologicalCalculation from "./pages/numerology/numerologicalClculation";
 
 // רכיב ראשי , כאן מוצגים כל הרכיבים של האפליקציה
 function App() {
@@ -180,6 +181,14 @@ function App() {
             <Route path="/shop" element={<Shop />} />
             <Route path="/shop/products/" element={<AllProducts />} />
             <Route path="/shop/products/:id" element={<SingleProduct />} />
+            <Route
+              path="/numerological-calculation"
+              element={
+                <ProtectedRouts>
+                  <NumerologicalCalculation />
+                </ProtectedRouts>
+              }
+            />
           </Routes>
         </main>
         <Footer />

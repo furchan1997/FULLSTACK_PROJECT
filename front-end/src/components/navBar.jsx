@@ -89,24 +89,32 @@ function NavBar() {
               דף הבית
             </NavLink>
 
-            <>
-              <li className="nav-item">
-                <NavLink
-                  className="nav-link custom-gold-color"
-                  to="/zodiacs-signs"
-                >
-                  מזלות כללים
-                </NavLink>
-              </li>
-            </>
-
-            <li className="nav-item">
-              <NavLink
-                className="nav-link custom-gold-color"
-                to="/horoscop-page"
+            <li className="nav-item dropdown">
+              <a
+                className="nav-link dropdown-toggle custom-gold-color"
+                href="#"
+                id="navbarDropdownMenuLink"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
               >
-                הורוסקופ
-              </NavLink>
+                מזלות
+              </a>
+              <ul
+                className="dropdown-menu dropdown-menu-end"
+                aria-labelledby="navbarDropdownMenuLink"
+              >
+                <li>
+                  <NavLink className="dropdown-item" to="/zodiacs-signs">
+                    מזלות כלליים
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink className="dropdown-item" to="/horoscop-page">
+                    הורוסקופ
+                  </NavLink>
+                </li>
+              </ul>
             </li>
 
             <li className="nav-item">
@@ -120,6 +128,19 @@ function NavBar() {
                 חנות
               </NavLink>
             </li>
+
+            {user && (
+              <>
+                <li className="nav-item">
+                  <NavLink
+                    className="nav-link custom-gold-color"
+                    to="/numerological-calculation"
+                  >
+                    חישוב נומורולוגי
+                  </NavLink>
+                </li>
+              </>
+            )}
           </ul>
           {/* הצגת קישורים עבור משתמש מחובר ועבור משתמש שאינו מחובר */}
           <ul className="navbar-nav ms-auto">
