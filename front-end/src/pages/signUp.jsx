@@ -236,19 +236,19 @@ function SignUp() {
             {...form.getFieldProps("address.zip")}
             error={form.touched.address?.zip && form.errors["address.zip"]}
           />
-          <div className="d-flex gap-3 align-items-center">
+          <div className="d-flex gap-3 align-items-center fw-bold">
+            <Btn
+              className="custom-bg-gold custom-purple-color fw-bold"
+              description={"התחבר/י"}
+              fn={handleSignIn}
+            />
+            <p className="m-0 rtl">יש לך חשבון קיים? </p>
+
             <Btn
               type={"submit"}
               className="custom-bg-purple custom-gold-color"
               description={"הרשם/י"}
               disabled={!form.isValid}
-            />
-
-            <p className="m-0">יש לך חשבון קיים? </p>
-            <Btn
-              className="custom-bg-gold custom-purple-color"
-              description={"התחבר/י"}
-              fn={handleSignIn}
             />
           </div>
         </form>

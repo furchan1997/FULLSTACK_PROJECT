@@ -29,12 +29,19 @@ function HoroscopsContent({
         <div className="card-body">
           <div className="text-center mb-3">
             <h1>{sign}</h1>
-            <h2 className="fs-2">{title}</h2>
+            <hr className="my-4 border border-1 border-dark opacity-25" />
+
+            <h2 className="fs-2 custom-purple-color">{title}</h2>
             <h5 className="fw-bold fs-4">{subtitle}</h5>
           </div>
 
+          <hr className="my-4 border border-1 border-dark opacity-25" />
+
           {horoscopPage && (
-            <p className="text-center fs-5 px-md-5">{description}</p>
+            <>
+              <p className="text-center fs-5 px-md-5">{description}</p>
+              <hr className="my-4 border border-1 border-dark opacity-25" />
+            </>
           )}
 
           <div className="text-center mb-3">
@@ -42,6 +49,8 @@ function HoroscopsContent({
               לייקים: <span className="fw-bold">{likes}</span>
             </h5>
           </div>
+
+          <hr className="my-4 border border-1 border-dark opacity-25" />
 
           {!horoscopPage && (
             <div className="d-flex justify-content-center mb-3">
@@ -71,7 +80,7 @@ function HoroscopsContent({
                 <Btn
                   fn={backToMainPage}
                   description={"חזרה"}
-                  className=" w-100 color-for-horoscop custom-bg-purple"
+                  className="w-100 custom-gold-color custom-bg-purple fs-5"
                   type="button"
                 />
               </div>
