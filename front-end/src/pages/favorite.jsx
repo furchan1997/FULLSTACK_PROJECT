@@ -82,7 +82,7 @@ function Favorite() {
         <div className="row my-5 gap-3 m-auto">
           {favorites.map((f) => (
             <div key={id} className="col-12">
-              <div className="card shadow-lg border-1 d-flex flex-column">
+              <div className="d-flex flex-column">
                 {/* רכיב לתצוגת פרטי הורוסקופ */}
                 <HoroscopsContent
                   key={f._id}
