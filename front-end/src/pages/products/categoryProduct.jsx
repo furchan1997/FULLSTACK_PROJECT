@@ -1,25 +1,37 @@
-import { useEffect } from "react";
 import { useProduct } from "../../context/products.context";
+import { useParams } from "react-router-dom";
+import { categoriesFn } from "../../components/common/filterdProducts";
+import { useEffect, useState } from "react";
 import Product from "../../components/product";
 import { useNavigate } from "react-router-dom";
 
-function AllProducts() {
-  const { getProducts, products } = useProduct();
+function CategoryProduct() {
+  const { category } = useParams();
+  const { products, getProducts } = useProduct();
+  const [categoryProduct, setCategoryProduct] = useState([]);
+
   const navigate = useNavigate();
 
+  // טוען מוצרים פעם אחת בלבד
   useEffect(() => {
     getProducts();
   }, []);
 
+  // מסנן מוצרים אחרי שנטענו
+  useEffect(() => {
+    if (products.length && category) {
+      const filtered = categoriesFn(products, category);
+      setCategoryProduct(filtered);
+    }
+  }, [products, category]);
+
   const handleClickToProduct = (ID) => {
     navigate(`/shop/products/item/${ID}`);
   };
-
-  console.log(products);
   return (
     <div className="container">
       <div className="row g-4 justify-content-center my-3">
-        {products.map((product) => (
+        {categoryProduct.map((product) => (
           <div key={product?._id} className="col-md-4 col-sm-12">
             <Product
               goToProduct={() => {
@@ -43,4 +55,4 @@ function AllProducts() {
   );
 }
 
-export default AllProducts;
+export default CategoryProduct;

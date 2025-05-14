@@ -11,7 +11,7 @@ function SingleProduct() {
     getProduct(id);
   }, []);
 
-  console.log(product);
+  console.log("sadasdas");
   return (
     <div className="container my-3 w-50">
       <Product

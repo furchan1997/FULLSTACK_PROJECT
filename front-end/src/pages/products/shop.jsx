@@ -1,13 +1,19 @@
 import { useEffect } from "react";
 import { useProduct } from "../../context/products.context";
 import { useNavigate } from "react-router-dom";
+import { useParams } from "react-router-dom";
 
 function Shop() {
   const { getCategories, categories } = useProduct();
+
   const navigate = useNavigate();
 
   const handleClickToProducts = () => {
     navigate("/shop/products/");
+  };
+
+  const handleClickToCategory = (_categorie) => {
+    navigate(`/shop/products/category/${_categorie}`);
   };
 
   useEffect(() => {
@@ -25,7 +31,11 @@ function Shop() {
           הצג הכל
         </div>
         {categories.map((categorie) => (
-          <div key={categorie} className="item-product">
+          <div
+            key={categorie}
+            className="item-product"
+            onClick={() => handleClickToCategory(categorie)}
+          >
             {categorie}
           </div>
         ))}
