@@ -3,12 +3,16 @@ import { Link, NavLink, useLocation, useNavigate } from "react-router-dom";
 import { useAuth } from "../context/auth.context";
 import { useEffect, useState } from "react";
 import { useContent } from "../context/contents.context";
+import { useProduct } from "../context/products.context";
+import { HashLink } from "react-router-hash-link";
 
 function NavBar() {
   const { user, logOut, userDetalis } = useAuth();
   const { handleSearchResult, horoscops } = useContent();
   const [searchTerm, setSearchTerm] = useState("");
   const location = useLocation();
+  const { categories, getCategories } = useProduct();
+
   const handleSearchHoroscop = () => {
     // החזרת מערך חדש ומסונן על ידי הערכים של המפתות הקיימים באובייקט של הורוסקופ
 
@@ -35,6 +39,10 @@ function NavBar() {
     logOut();
   };
 
+  useEffect(() => {
+    getCategories();
+  }, []);
+
   return (
     <nav className="navbar navbar-expand-lg custom-bg-purple navbar-dark">
       <div className="container-fluid">
@@ -57,19 +65,6 @@ function NavBar() {
           <span className="navbar-toggler-icon"></span>
         </button>
 
-        {/* 🔹 שדה החיפוש */}
-
-        {/* <form role="search" onSubmit={(ev) => ev.preventDefault()}>
-          <input
-            className="form-control"
-            type="search"
-            placeholder="חפש הורוסקופים"
-            aria-label="Search"
-            value={searchTerm}
-            onChange={(ev) => setSearchTerm(ev.target.value)}
-          />
-        </form> */}
-        {/* הצגת קישורים עבור מנהל בלבד */}
         <div className="collapse navbar-collapse" id="navbarsExample02">
           <ul className="navbar-nav me-auto">
             {user?.isAdmin ? (
@@ -89,7 +84,7 @@ function NavBar() {
               דף הבית
             </NavLink>
 
-            <li className="nav-item dropdown">
+            <li className="nav-item dropdown ">
               <a
                 className="nav-link dropdown-toggle custom-gold-color"
                 href="#"
@@ -101,32 +96,120 @@ function NavBar() {
                 מזלות
               </a>
               <ul
-                className="dropdown-menu dropdown-menu-end"
+                className="dropdown-menu dropdown-menu-end custom-bg-purple"
                 aria-labelledby="navbarDropdownMenuLink"
               >
                 <li>
-                  <NavLink className="dropdown-item" to="/zodiacs-signs">
+                  <NavLink
+                    className="dropdown-item custom-gold-color"
+                    to="/zodiacs-signs"
+                  >
                     מזלות כלליים
                   </NavLink>
                 </li>
                 <li>
-                  <NavLink className="dropdown-item" to="/horoscop-page">
+                  <NavLink
+                    className="dropdown-item custom-gold-color"
+                    to="/horoscop-page"
+                  >
                     הורוסקופ
                   </NavLink>
                 </li>
               </ul>
             </li>
-
-            <li className="nav-item">
-              <NavLink className="nav-link custom-gold-color" to="/My-services">
-                השירותים שלי
-              </NavLink>
+            <li className="nav-item dropdown ">
+              <a
+                className="nav-link dropdown-toggle custom-gold-color"
+                href="#"
+                id="navbarDropdownMenuLink"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                חנות
+              </a>
+              <ul
+                className="dropdown-menu dropdown-menu-end custom-bg-purple"
+                aria-labelledby="navbarDropdownMenuLink"
+              >
+                <li>
+                  <NavLink
+                    className="dropdown-item custom-gold-color"
+                    to="/shop"
+                  >
+                    המוצרים שלי
+                  </NavLink>
+                </li>
+                {categories.map((category) => (
+                  <li key={category}>
+                    <NavLink
+                      className="dropdown-item custom-gold-color"
+                      to={`/shop/products/category/${category}`}
+                    >
+                      {category}
+                    </NavLink>
+                  </li>
+                ))}
+              </ul>
             </li>
 
-            <li className="nav-item">
-              <NavLink className="nav-link custom-gold-color" to="/shop">
-                חנות
-              </NavLink>
+            <li className="nav-item dropdown ">
+              <a
+                className="nav-link dropdown-toggle custom-gold-color"
+                href="#"
+                id="navbarDropdownMenuLink"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                השירותים שלי
+              </a>
+              <ul
+                className="dropdown-menu dropdown-menu-end custom-bg-purple"
+                aria-labelledby="navbarDropdownMenuLink"
+              >
+                <li>
+                  <NavLink
+                    className="dropdown-item custom-gold-color"
+                    to="/My-services"
+                  >
+                    כל השירותים
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink
+                    className="dropdown-item custom-gold-color"
+                    to="/My-services/openin-cards"
+                  >
+                    פתיחה בקלפים
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink
+                    className="dropdown-item custom-gold-color"
+                    to="/My-services/Astrological-map"
+                  >
+                    מפה אסטרולוגית
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink
+                    className="dropdown-item custom-gold-color"
+                    to="/My-services/Lead-cleaning"
+                  >
+                    ניקוי אנרגטי
+                  </NavLink>
+                </li>
+                <li>
+                  <HashLink
+                    smooth
+                    className="dropdown-item custom-gold-color"
+                    to={"/My-services/#form"}
+                  >
+                    צור/י קשר
+                  </HashLink>
+                </li>
+              </ul>
             </li>
 
             {user && (

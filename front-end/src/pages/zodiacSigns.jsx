@@ -50,20 +50,17 @@ function ZodiacsSigns() {
     scorpio: "scorpion.png",
     sagittarius: "sagittarius.png",
   };
-  console.log(backgroundImages);
 
   // הצגת כל המזלות או מזל ספציפי לפי שם המזל
   const filterdContent = selectedSign
     ? { [selectedSign]: content[selectedSign] }
     : content;
-  console.log(filterdContent);
 
   const contentArray = Object.entries(content).map(([key, value]) => ({
     zodiacKey: key, // לדוגמה: "aries"
     ...value, // כל המידע הפנימי
   }));
 
-  console.log(contentArray);
   if (error) {
     return (
       <div className="rtl">

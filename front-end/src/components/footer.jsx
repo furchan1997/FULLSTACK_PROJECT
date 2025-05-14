@@ -1,5 +1,7 @@
 import { NavLink } from "react-router-dom";
 import Logo from "./logo";
+import { HashLink } from "react-router-hash-link";
+
 // רכיב פוטר שבו מוצג קישור למעבר אל תקנון ואודות האתר + אמצעי התקשות אל מנהלת האתר ברשתות החברתיות + כל הזכיות שמורות
 function Footer() {
   return (
@@ -66,6 +68,9 @@ function Footer() {
           <NavLink to={"/My-services"} className="footer">
             השירותים שלי
           </NavLink>
+          <HashLink smooth to={"/My-services/#form"} className="footer">
+            צור/י קשר
+          </HashLink>
         </div>
       </div>
     </footer>

@@ -15,6 +15,15 @@
   font-weight: bold !important;
 }
 
+/* מבטל רקע בוהק של פריט שנלחץ בתפריט */
+.dropdown-menu .dropdown-item.active,
+.dropdown-menu .dropdown-item:focus,
+.dropdown-menu .dropdown-item:hover {
+  background-color: transparent !important;
+  color: rgba(255, 54, 108, 0.9) !important; /* גוון זהוב ברור יותר */
+  font-weight: bold;
+}
+
 h3 {
   font-size: 1rem !important;
   font-weight: bold !important;
@@ -329,8 +338,7 @@ h3 {
 .color-my-services-text {
   color: #1c0222;
 }
-a
-.color-for-horoscop {
+a .color-for-horoscop {
   color: white !important;
   font-weight: bold !important;
 }

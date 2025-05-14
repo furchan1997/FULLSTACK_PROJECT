@@ -12,12 +12,9 @@ export function ProductProvider({ children }) {
   const [categories, setCategories] = useState([]);
 
   const handleError = (err) => {
-    console.log("שגיאה:", err);
-
     setError(
       err?.response?.data?.message || err?.message || "אירעה שגיאה כללית"
     );
-    console.log(error);
   };
 
   const getCategories = async () => {
@@ -26,7 +23,6 @@ export function ProductProvider({ children }) {
       const response = await productService.getCategories();
       setCategories(response.data);
     } catch (err) {
-      console.log(err);
       handleError(err);
     } finally {
       setLoading(false);

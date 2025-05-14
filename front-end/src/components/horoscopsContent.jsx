@@ -90,16 +90,16 @@ function HoroscopsContent({
                   <div className="col-12 col-sm-6 col-md-4">
                     <Btn
                       fn={updateHoroscopPage}
-                      description={"עדכן"}
-                      className=" w-100 color-for-horoscop"
+                      description={"עדכני"}
+                      className="w-100 custom-gold-color custom-bg-purple fs-5"
                       type="button"
                     />
                   </div>
                   <div className="col-12 col-sm-6 col-md-4">
                     <Btn
                       fn={deleteHoroscop}
-                      description={"מחק"}
-                      className="btn w-100 fw-bold"
+                      description={"מחקי"}
+                      className="w-100 custom-gold-color custom-bg-purple fs-5"
                       type="button"
                     />
                   </div>

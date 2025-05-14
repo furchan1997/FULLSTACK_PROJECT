@@ -12,7 +12,6 @@ function NumerologicalCalculation() {
   const [selectedYear, setSelectedYear] = useState("");
   const [result, setResult] = useState(null);
   const { userDetalis } = useAuth();
-  console.log(userDetalis);
 
   const dayPicker = () => {
     let dayArr = [];
