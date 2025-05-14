@@ -53,14 +53,20 @@ function AdminPanel() {
           fn={() => handleClick("/admin/users")}
         />
         <Btn
-          description={"צור הורוסקופ חדש"}
+          description={"צרי הורוסקופ חדש"}
           className={"custom-bg-gold"}
           type={"submit"}
           fn={() => handleClick("/admin/create-horoscop")}
         />
 
         <Btn
-          description={"צפה בהודעות מהלקוחות"}
+          description={"צפי בהודעות מהלקוחות"}
+          className={"custom-bg-gold"}
+          type={"submit"}
+          fn={() => handleClick("/admin/inbox")}
+        />
+        <Btn
+          description={"צרי מוצר חדש"}
           className={"custom-bg-gold"}
           type={"submit"}
           fn={() => handleClick("/admin/inbox")}

@@ -3,13 +3,13 @@ export const alertDeleting = async (...fns) => {
     "האם את/ה בטוח שברצונך למחוק? פעולה זו אינה ניתנת לשחזור."
   );
 
-  if (!confirmMsg) return;
+  if (!confirmMsg) return false;
 
-  if (confirmMsg) {
-    fns.forEach(async (fn) => {
-      await fn();
-    });
+  for (const fn of fns) {
+    await fn();
   }
+
+  return true;
 };
 
 export default alertDeleting;

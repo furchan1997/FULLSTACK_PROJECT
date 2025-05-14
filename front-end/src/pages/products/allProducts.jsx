@@ -4,7 +4,7 @@ import Product from "../../components/product";
 import { useNavigate } from "react-router-dom";
 
 function AllProducts() {
-  const { getProducts, products } = useProduct();
+  const { getProducts, products, error, loading } = useProduct();
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -15,11 +15,26 @@ function AllProducts() {
     navigate(`/shop/products/item/${ID}`);
   };
 
-  console.log(products);
+  if (error) {
+    return (
+      <div className="rtl">
+        <p>שגיאה: {error}</p>
+      </div>
+    );
+  }
+
+  if (loading) {
+    return <p>טוען...</p>;
+  }
+
+  if (products?.length === 0) {
+    return <div className="container rtl">אין מוצרים כרגע...</div>;
+  }
+
   return (
     <div className="container">
       <div className="row g-4 justify-content-center my-3">
-        {products.map((product) => (
+        {products?.map((product) => (
           <div key={product?._id} className="col-md-4 col-sm-12">
             <Product
               goToProduct={() => {

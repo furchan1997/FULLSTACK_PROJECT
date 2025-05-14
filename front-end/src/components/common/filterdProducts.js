@@ -1,7 +1,6 @@
 export function categoriesFn(products, category) {
-  const productsByCatregory = products.filter(
-    (product) => product.category === category
+  const normalizedCategory = category?.trim();
+  return products.filter(
+    (product) => product.category?.trim() === normalizedCategory
   );
-
-  return productsByCatregory;
 }

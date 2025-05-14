@@ -7,7 +7,7 @@ import { useNavigate } from "react-router-dom";
 
 function CategoryProduct() {
   const { category } = useParams();
-  const { products, getProducts } = useProduct();
+  const { products, getProducts, error, loading } = useProduct();
   const [categoryProduct, setCategoryProduct] = useState([]);
 
   const navigate = useNavigate();
@@ -19,15 +19,36 @@ function CategoryProduct() {
 
   // מסנן מוצרים אחרי שנטענו
   useEffect(() => {
-    if (products.length && category) {
+    if (!loading && products.length && category) {
       const filtered = categoriesFn(products, category);
+
       setCategoryProduct(filtered);
     }
-  }, [products, category]);
+  }, [loading, products, category]);
 
   const handleClickToProduct = (ID) => {
     navigate(`/shop/products/item/${ID}`);
   };
+
+  if (error) {
+    return (
+      <div className="rtl">
+        <p>שגיאה: {error}</p>
+      </div>
+    );
+  }
+
+  if (loading) {
+    return <p>טוען...</p>;
+  }
+
+  if (!categoryProduct.length) {
+    return (
+      <p className="rtl">אין מוצרים זמינים בקטגוריה הזו, נסו שוב מאוחר יותר</p>
+    );
+  }
+
+  console.log(categoryProduct);
   return (
     <div className="container">
       <div className="row g-4 justify-content-center my-3">

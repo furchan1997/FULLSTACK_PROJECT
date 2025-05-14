@@ -24,14 +24,14 @@ Content-Type: application/json
 
 
 {
-  "name": " נרות",
+  "name": " קמעות",
   "description": "קלפים מיוחדים עם תמונות של חיות מיסטיות המאפשרות חיזוי עתידות.",
   "price": 150,
   "image": {
     "url": "https://img.fruugo.com/product/4/68/1096370684_0340_0340.jpg",
     "alt": "טארוט"
   },
-  "category": "נרות",
+  "category": "קמעות",
   "quantityInStock": 10
 }
 
@@ -103,7 +103,7 @@ Content-Type: application/json
 {
   "firstName": "שני",
   "lastName": "eee",
-  "email": "arie3@gmail.com",
+  "email": "arie333@gmail.com",
   "password": "Qweasd1234560!!!",
   "phone": "0523456789",
   "address": {

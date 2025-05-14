@@ -30,7 +30,7 @@ const productSchema = new mongoose.Schema({
   category: {
     type: String,
     required: true,
-    enum: ["קלפים", "נרות", "קמעות", "מפות", "תכשיטים", "אחר"],
+    enum: ["קלפים", "נרות", "קמעות", "מפות", "תכשיטים"],
   },
   quantityInStock: {
     type: Number,

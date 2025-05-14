@@ -1,3 +1,5 @@
+import { useAuth } from "../context/auth.context";
+import { useProduct } from "../context/products.context";
 import Btn from "./btn";
 
 function Product({
@@ -11,7 +13,11 @@ function Product({
   goToProduct,
   isProductPage = false,
   addToCart,
+  deleteBtn = () => {},
+  updateBtn,
 }) {
+  const { user } = useAuth();
+
   const handleCardClick = (e) => {
     // אם המשתמש לחץ על כפתור בתוך הכרטיס, לא נבצע ניווט
     if (e.target.closest("button")) return;
@@ -27,6 +33,22 @@ function Product({
       }
       onClick={handleCardClick}
     >
+      {user?.isAdmin && isProductPage && (
+        <div className="d-flex justify-content-between ">
+          <Btn
+            type={"button"}
+            className="custom-bg-purple custom-purple-color fw-bold"
+            description={"🗑️"}
+            fn={deleteBtn}
+          />
+          <Btn
+            type={"button"}
+            className="custom-bg-gold custom-purple-color fw-bold"
+            description={"ערכי מוצר"}
+            fn={updateBtn}
+          />
+        </div>
+      )}
       <div className="d-flex justify-content-center">
         <img
           src={url}

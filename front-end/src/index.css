@@ -329,7 +329,7 @@ h3 {
 .color-my-services-text {
   color: #1c0222;
 }
-
+a
 .color-for-horoscop {
   color: white !important;
   font-weight: bold !important;
@@ -337,8 +337,7 @@ h3 {
 
 .container-products {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  grid-template-rows: repeat(3, 150px);
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: 15px;
 }
 
