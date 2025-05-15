@@ -12,8 +12,8 @@ export async function getProduct(ID) {
   return httpService.get(`/shop/products/${ID}`);
 }
 
-export async function createProduct() {
-  return httpService.post("/shop/products");
+export async function createProduct(product) {
+  return httpService.post("/shop/products/", product);
 }
 
 export async function updateProduct(ID) {

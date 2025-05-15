@@ -40,7 +40,7 @@ function AdminPanel() {
   const handleClick = (route) => {
     navigate(route);
   };
-  console.log("from react", msgCount);
+
   return (
     <div className="container" dir="rtl">
       <h3>שלום אדמין!</h3>
@@ -69,7 +69,7 @@ function AdminPanel() {
           description={"צרי מוצר חדש"}
           className={"custom-bg-gold"}
           type={"submit"}
-          fn={() => handleClick("/admin/inbox")}
+          fn={() => handleClick("/admin/create-product")}
         />
 
         {displayAlert ? (

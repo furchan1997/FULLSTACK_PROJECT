@@ -68,14 +68,12 @@ function NumerologicalCalculation() {
   }, []);
 
   return (
-    <div className="backround-numerological-calculation-page rtl text-white p-3">
-      <h2 className="text-center mb-4  fw-bold">
-        חישוב נומרולוגי - מספר גורל
-      </h2>
+    <div className="backround-numerological-calculation-page rtl text-white p-4">
+      <h2 className="text-center mb-4 fw-bold">חישוב נומרולוגי - מספר גורל</h2>
 
-      <div className="d-flex flex-column flex-lg-row my-5">
+      <div className="d-flex flex-column flex-md-row gap-5">
         {/* הבחירות בצד שמאל */}
-        <div className="d-flex flex-column gap-3 w-75 w-lg-50">
+        <div className="d-flex flex-column gap-3 w-50 w-lg-50">
           <select
             name="day"
             value={selectedDay}
@@ -127,20 +125,15 @@ function NumerologicalCalculation() {
           <Btn
             type={"button"}
             disabled={!selectedDay || !selectedMonth || !selectedYear}
-            className="custom-bg-gold custom-purple-color w-100  fw-bold"
+            className="custom-bg-gold custom-purple-color w-100 fw-bold"
             description={"חשב/י"}
             onClick={handleDateResult}
           />
         </div>
 
-        {/* כפתור באמצע */}
-        <div className="d-flex justify-content-center align-items-center w-100 w-lg-25">
-          {/* אין צורך בכפתור נוסף באמצע, כל הפוקוס על כפתור החישוב */}
-        </div>
-
         {/* תוצאה בצד שמאל */}
-        <div className="d-flex w-100 w-lg-25 justify-content-start">
-          <p className="m-0 fw-bold">
+        <div className="d-flex w-100">
+          <p className="fw-bold fs-5">
             {!result ? (
               !selectedDay || !selectedMonth || !selectedYear ? (
                 "בחר/י יום, חודש ושנה"
