@@ -70,7 +70,7 @@ function NumerologicalCalculation() {
   return (
     <div className="backround-numerological-calculation-page rtl text-white p-3">
       <h2 className="text-center mb-4  fw-bold">
-        חישוב נומורולוגי - מספר גורל
+        חישוב נומרולוגי - מספר גורל
       </h2>
 
       <div className="d-flex flex-column flex-lg-row my-5">

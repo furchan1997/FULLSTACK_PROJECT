@@ -219,7 +219,7 @@ function NavBar() {
                     className="nav-link custom-gold-color"
                     to="/numerological-calculation"
                   >
-                    חישוב נומורולוגי
+                    חישוב נומרולוגי
                   </NavLink>
                 </li>
               </>
