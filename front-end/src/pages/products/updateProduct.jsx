@@ -1,26 +1,31 @@
 import Btn from "../../components/btn";
 import Input from "../../components/input";
+import { useNavigate, useParams } from "react-router-dom";
 import { Formik, useFormik } from "formik";
-import { useProduct } from "../../context/products.context";
 import joi from "joi";
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useProduct } from "../../context/products.context";
+import { useEffect, useState } from "react";
 
-function CreateProduct() {
-  const { createProduct, loading, error } = useProduct();
+function UpdateProduct() {
+  const { updateProduct, loading, error, product } = useProduct();
   const navigate = useNavigate();
+  const { id } = useParams();
+
+  useEffect(() => {}, [product]);
 
   const form = useFormik({
     initialValues: {
-      name: "מוצר",
-      description: "מוצר",
+      name: product?.name || "",
+      description: product?.description || "",
       image: {
-        url: "https://r2.starryai.com/results/907419597/93bf1e0e-4ec4-4644-8abd-685cfbba7a17.webp",
-        alt: "מוצר",
+        url:
+          product?.image?.url ||
+          "https://r2.starryai.com/results/907419597/93bf1e0e-4ec4-4644-8abd-685cfbba7a17.webp",
+        alt: product?.image?.alt || "מוצר",
       },
-      price: "150",
-      category: "קמעות",
-      quantityInStock: "10",
+      price: product?.price || "150",
+      category: product?.category || "קמעות",
+      quantityInStock: product?.quantityInStock || "10",
     },
 
     validate(values) {
@@ -51,9 +56,9 @@ function CreateProduct() {
     },
 
     async onSubmit(value) {
-      const success = await createProduct(value);
+      const success = await updateProduct(id, value);
       if (success) {
-        navigate("/shop");
+        navigate(`/shop/products/item/${id}`);
       }
     },
   });
@@ -65,10 +70,9 @@ function CreateProduct() {
       </div>
     );
   }
-
   return (
     <div className="container">
-      <p className="fs-1 fw-bold text-center">Create product</p>
+      <p className="fs-1 fw-bold text-center">Update product</p>
       <div className="w-75 w-md-50 m-auto d-flex flex-column">
         <form onSubmit={form.handleSubmit} autoComplete="off" noValidate>
           {error && <div className="alert alert-danger">Error: {error}</div>}
@@ -142,7 +146,7 @@ function CreateProduct() {
             <Btn
               type={"submit"}
               className="custom-bg-purple custom-gold-color ms-auto"
-              description={"צרי מוצר חדש"}
+              description={"ערכי מוצר קיים"}
               disabled={!form.isValid}
             />
           </div>
@@ -152,4 +156,4 @@ function CreateProduct() {
   );
 }
 
-export default CreateProduct;
+export default UpdateProduct;

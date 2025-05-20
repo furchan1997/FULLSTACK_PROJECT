@@ -375,7 +375,7 @@ a .color-for-horoscop {
 
 .backround-numerological-calculation-page {
   position: relative;
-  background-image: url("planet.png");
+  background-image: url("/planet.png");
   background-size: cover; /* מכסה את כל הרקע בתמונה */
   background-position: center center; /* ממקם את התמונה במרכז */
   background-attachment: fixed; /* הרקע יישאר קבוע בזמן גלילה */

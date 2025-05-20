@@ -34,7 +34,7 @@ function Product({
       onClick={handleCardClick}
     >
       {user?.isAdmin && isProductPage && (
-        <div className="d-flex justify-content-between ">
+        <div className="d-flex justify-content-between p-3">
           <Btn
             type={"button"}
             className="custom-bg-purple custom-purple-color fw-bold"

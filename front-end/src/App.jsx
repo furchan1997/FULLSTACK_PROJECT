@@ -33,6 +33,7 @@ import SingleProduct from "./pages/products/singleProduct";
 import NumerologicalCalculation from "./pages/numerology/numerologicalClculation";
 import CategoryProduct from "./pages/products/categoryProduct";
 import CreateProduct from "./pages/products/createProduct";
+import UpdateProduct from "./pages/products/updateProduct";
 
 // רכיב ראשי , כאן מוצגים כל הרכיבים של האפליקציה
 function App() {
@@ -161,6 +162,14 @@ function App() {
               element={
                 <ProtectedRouts isAdmin>
                   <CreateProduct />
+                </ProtectedRouts>
+              }
+            ></Route>
+            <Route
+              path="/admin/update-product/:id"
+              element={
+                <ProtectedRouts isAdmin>
+                  <UpdateProduct />
                 </ProtectedRouts>
               }
             ></Route>

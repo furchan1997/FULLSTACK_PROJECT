@@ -11,12 +11,18 @@ export function ProductProvider({ children }) {
   const [product, setProduct] = useState({});
   const [categories, setCategories] = useState([]);
 
-  const handleError = (err) => {
-    setError(
-      err?.response?.data?.message || err?.message || "אירעה שגיאה כללית"
-    );
+  const handleError = (
+    err,
+    fallbackMessage = "אירעה שגיאה, נסה שנית מאוחר יותר"
+  ) => {
+    const message =
+      err?.response?.data?.message || err?.message || fallbackMessage;
 
-    throw err;
+    setError(message);
+    console.error("שגיאה:", message, err);
+
+    // במקום לזרוק שגיאה, נחזיר false
+    return false;
   };
 
   const getCategories = async () => {
@@ -26,7 +32,7 @@ export function ProductProvider({ children }) {
       const response = await productService.getCategories();
       setCategories(response.data);
     } catch (err) {
-      handleError(err);
+      return handleError(err);
     } finally {
       setLoading(false);
     }
@@ -40,8 +46,7 @@ export function ProductProvider({ children }) {
       const response = await productService.getProducts();
       setProducts(response.data.products);
     } catch (err) {
-      console.log(err);
-      handleError(err);
+      return handleError(err);
     } finally {
       setLoading(false);
     }
@@ -55,7 +60,7 @@ export function ProductProvider({ children }) {
       const response = await productService.getProduct(ID);
       setProduct(response?.data?.product);
     } catch (err) {
-      handleError(err);
+      return handleError(err);
     } finally {
       setLoading(false);
     }
@@ -68,16 +73,41 @@ export function ProductProvider({ children }) {
     try {
       const response = await productService.createProduct(product);
       setProduct(response.data);
+      return response.data;
     } catch (err) {
-      handleError(err);
+      return handleError(err);
     } finally {
       setLoading(false);
     }
   };
 
-  const updateProduct = async (ID) => {};
+  const updateProduct = async (ID, DATA) => {
+    setLoading(true);
+    setError(null);
 
-  const deleteProducts = async () => {};
+    try {
+      const response = await productService.updateProduct(ID, DATA);
+      return response.data;
+    } catch (err) {
+      return handleError(err);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const deleteProducts = async () => {
+    setLoading(true);
+    setError(null);
+
+    try {
+      const response = await productService.deleteProducts();
+      return response.data;
+    } catch (err) {
+      return handleError(err);
+    } finally {
+      setLoading(false);
+    }
+  };
 
   const deleteProduct = async (ID) => {
     setLoading(true);
@@ -87,8 +117,7 @@ export function ProductProvider({ children }) {
       const response = await productService.deleteProduct(ID);
       return response.data;
     } catch (err) {
-      handleError(err);
-      console.log(err);
+      return handleError(err);
     } finally {
       setLoading(false);
     }

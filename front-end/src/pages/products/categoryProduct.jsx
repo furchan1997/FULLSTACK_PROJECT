@@ -19,7 +19,7 @@ function CategoryProduct() {
 
   // מסנן מוצרים אחרי שנטענו
   useEffect(() => {
-    if (!loading && products.length && category) {
+    if (!loading && products?.length && category) {
       const filtered = categoriesFn(products, category);
 
       setCategoryProduct(filtered);
@@ -30,25 +30,33 @@ function CategoryProduct() {
     navigate(`/shop/products/item/${ID}`);
   };
 
-  if (error) {
+  if (loading) {
     return (
-      <div className="rtl">
-        <p>שגיאה: {error}</p>
+      <div className="container rtl">
+        <p className="fw-bold fs-1 text-center">טוען...</p>{" "}
       </div>
     );
   }
 
-  if (loading) {
-    return <p>טוען...</p>;
-  }
-
-  if (!categoryProduct.length) {
+  if (error) {
     return (
-      <p className="rtl">אין מוצרים זמינים בקטגוריה הזו, נסו שוב מאוחר יותר</p>
+      <div className="container rtl">
+        <p className="fw-bold fs-1 text-center">שגיאה: {error}</p>{" "}
+        {/* מציג שגיאה אם ישנה בעיה */}
+      </div>
     );
   }
 
-  console.log(categoryProduct);
+  if (!categoryProduct || !products) {
+    return (
+      <div className="container rtl">
+        <p className="fw-bold fs-3 text-center">
+          אין מוצרים זמינים בקטגוריה הזו, נסו שוב מאוחר יותר
+        </p>
+      </div>
+    );
+  }
+
   return (
     <div className="container">
       <div className="row g-4 justify-content-center my-3">

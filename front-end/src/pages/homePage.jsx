@@ -130,7 +130,7 @@ function HomePage() {
             >
               <img
                 className="social-icon"
-                src="./LOGOS/instagram.png"
+                src="/LOGOS/instagram.png"
                 alt="instagram-logo"
               />
             </a>
@@ -141,7 +141,7 @@ function HomePage() {
             >
               <img
                 className="social-icon"
-                src="./LOGOS/youtube.png"
+                src="/LOGOS/youtube.png"
                 alt="youtube-logo"
               />
             </a>
@@ -152,7 +152,7 @@ function HomePage() {
             >
               <img
                 className="social-icon"
-                src="./LOGOS/tiktok.png"
+                src="/LOGOS/tiktok.png"
                 alt="tiktok-logo"
               />
             </a>
@@ -163,7 +163,7 @@ function HomePage() {
             >
               <img
                 className="social-icon"
-                src="./LOGOS/whatsapp.png"
+                src="/LOGOS/whatsapp.png"
                 alt="whatsapp-logo"
               />
             </a>

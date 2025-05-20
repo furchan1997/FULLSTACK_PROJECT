@@ -15,20 +15,31 @@ function AllProducts() {
     navigate(`/shop/products/item/${ID}`);
   };
 
-  if (error) {
+  if (loading) {
     return (
-      <div className="rtl">
-        <p>שגיאה: {error}</p>
+      <div className="container rtl">
+        <p className="fw-bold fs-1 text-center">טוען...</p>{" "}
       </div>
     );
   }
 
-  if (loading) {
-    return <p>טוען...</p>;
+  if (error) {
+    return (
+      <div className="container rtl">
+        <p className="fw-bold fs-1 text-center">שגיאה: {error}</p>{" "}
+        {/* מציג שגיאה אם ישנה בעיה */}
+      </div>
+    );
   }
 
-  if (products?.length === 0) {
-    return <div className="container rtl">אין מוצרים כרגע...</div>;
+  if (products?.length === 0 || !products) {
+    return (
+      <div className="container rtl">
+        <p className="fw-bold fs-3 text-center">
+          אין מוצרים זמינים בקטגוריה הזו, נסו שוב מאוחר יותר
+        </p>
+      </div>
+    );
   }
 
   return (
