@@ -7,7 +7,8 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 function CreateProduct() {
-  const { createProduct, loading, error } = useProduct();
+  const { createProduct, loading, error, getCategories, categories } =
+    useProduct();
   const navigate = useNavigate();
 
   const form = useFormik({
@@ -91,16 +92,19 @@ function CreateProduct() {
             error={form.touched.description && form.errors.description}
             required
           />
-          <Input
-            label={"קטגוריה"}
-            type="text"
-            id="category"
-            name="category"
-            placeholder={'["קלפים", "נרות", "קמעות", "מפות", "תכשיטים"]'}
+
+          <select
+            name="categorys"
+            id="categorys"
+            className="form-select"
             {...form.getFieldProps("category")}
-            error={form.touched.category && form.errors.category}
-            required
-          />
+          >
+            {categories.map((category, index) => (
+              <option key={index} value={category}>
+                {category}
+              </option>
+            ))}
+          </select>
           <Input
             label={"מחיר"}
             type={"text"}
