@@ -37,6 +37,12 @@ export async function likeHoroscop(ID) {
   return response.data;
 }
 
+// שליפת סוגי המזלות
+export async function getCategories() {
+  const response = await httpService.get("/content/horoscops/signs");
+  return response.data;
+}
+
 // ייצוא הפונקציות של בקשות וקריאות לשרת אל הקונטקסט של ניהול הורוסקופים
 const contentService = {
   getAllContents,
@@ -45,6 +51,7 @@ const contentService = {
   updateHoroscop,
   deleteHoroscop,
   likeHoroscop,
+  getCategories,
 };
 
 export default contentService;

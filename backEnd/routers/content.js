@@ -24,6 +24,15 @@ router.get("/horoscops", authMW, verifyUserExists, async (req, res, next) => {
   }
 });
 
+router.get("/horoscops/signs", async (req, res, next) => {
+  try {
+    const signs = Content.schema.path("sign").enumValues;
+    res.json(signs);
+  } catch (err) {
+    next(err);
+  }
+});
+
 // קבלת תוכן דינמי עבור משתמש רשום בלבד לפי מזהה התוכן
 router.get(
   "/horoscops/:id",

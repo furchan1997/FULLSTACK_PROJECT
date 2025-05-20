@@ -5,6 +5,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import joi from "joi";
 import { useContent } from "../../context/contents.context";
+import Select from "../../components/select";
 
 // רכיב עבור עריכת תוכן , יחד עם ניהול טפסים עם פורמיק וניהול ולידציות עם ג'וי
 // את הבקשה לשרת עם הערכים שבטופס והמזהה של התוכן הקיים מקבל מהקונטקטס
@@ -13,8 +14,21 @@ function UpdateHoroscop() {
   const navigate = useNavigate();
 
   const { id } = useParams();
-  const { updateHoroscop, horoscop, getHoroscop, error, loading } =
-    useContent();
+  const {
+    updateHoroscop,
+    horoscop,
+    getHoroscop,
+    error,
+    loading,
+    getSigns,
+    zodiacSigns,
+  } = useContent();
+
+  const { sign } = useParams();
+
+  useEffect(() => {
+    getSigns();
+  }, []);
 
   useEffect(() => {
     getHoroscop(id);
@@ -64,7 +78,7 @@ function UpdateHoroscop() {
     },
     async onSubmit(values) {
       await updateHoroscop(id, values);
-      navigate(`/horoscops/${id}`);
+      navigate(`/horoscops/${sign}/${id}`);
     },
   });
   if (loading || !horoscop) {
@@ -87,12 +101,20 @@ function UpdateHoroscop() {
           >
             {error && <div className="alert alert-danger">שגיאה: {error}</div>}
 
-            <Input
+            {/* <Input
               label="סימן"
               name="sign"
               type="text"
               id="sign"
               required
+              error={form.touched.sign && form.errors.sign}
+              {...form.getFieldProps("sign")}
+            /> */}
+
+            <Select
+              label={"בחרי מזל מהאפשריות"}
+              name={"sign"}
+              option={zodiacSigns}
               error={form.touched.sign && form.errors.sign}
               {...form.getFieldProps("sign")}
             />

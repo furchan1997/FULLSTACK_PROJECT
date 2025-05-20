@@ -5,9 +5,13 @@ const adminAuthMW = require("../middleware/adminAuth");
 const { Product, validateProduct } = require("../models/product");
 
 // קבלת קטגוריות
-router.get("/categories", (req, res) => {
-  const categories = Product.schema.path("category").enumValues;
-  res.json(categories);
+router.get("/categories", (req, res, next) => {
+  try {
+    const categories = Product.schema.path("category").enumValues;
+    res.json(categories);
+  } catch (err) {
+    next(err);
+  }
 });
 
 // קבלת מוצרים

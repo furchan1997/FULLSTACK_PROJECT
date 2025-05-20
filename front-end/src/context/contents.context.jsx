@@ -20,9 +20,26 @@ export function ContentProvider({ children }) {
   const { user, logOut } = useAuth();
   const [searchResult, setSearchResult] = useState([]);
   const navigate = useNavigate();
+  const [zodiacSigns, setZodiacSign] = useState();
 
   const handleSearchResult = (result) => {
     setSearchResult(result);
+  };
+
+  const getSigns = async () => {
+    setError(null);
+    setLoading(true);
+    try {
+      const response = await contentService.getCategories();
+      setZodiacSign(response);
+    } catch (err) {
+      setError(
+        err?.response?.data?.message || err?.message || "Something went wrong"
+      );
+      throw err;
+    } finally {
+      setLoading(false);
+    }
   };
 
   const getHoroscops = async () => {
@@ -199,6 +216,8 @@ export function ContentProvider({ children }) {
         updateHoroscop,
         deleteHoroscop,
         setError,
+        getSigns,
+        zodiacSigns,
       }}
     >
       {children}

@@ -5,6 +5,7 @@ import { useProduct } from "../../context/products.context";
 import joi from "joi";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import Select from "../../components/select";
 
 function CreateProduct() {
   const { createProduct, loading, error, getCategories, categories } =
@@ -93,18 +94,14 @@ function CreateProduct() {
             required
           />
 
-          <select
-            name="categorys"
-            id="categorys"
-            className="form-select"
+          <Select
+            label={"בחרי מוצר"}
+            name={"category"}
+            option={categories}
+            error={form.touched.category && form.errors.category}
             {...form.getFieldProps("category")}
-          >
-            {categories.map((category, index) => (
-              <option key={index} value={category}>
-                {category}
-              </option>
-            ))}
-          </select>
+          />
+
           <Input
             label={"מחיר"}
             type={"text"}

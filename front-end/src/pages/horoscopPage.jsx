@@ -8,7 +8,11 @@ import { signs } from "../components/common/HoroscopeFltered";
 // עמוד בחירת מזל ומעבר אל ההורוסקופים שלו
 function HoroscopPage() {
   const { user } = useAuth(); // מקבל מידע על המשתמש מהקונטקסט
-  const { error, loading } = useContent(); // מקבל מידע ופונקציות מהקונטקסט של התוכן
+  const { error, loading, zodiacSigns, getSigns } = useContent(); // מקבל מידע ופונקציות מהקונטקסט של התוכן
+
+  useEffect(() => {
+    getSigns();
+  }, []);
 
   const navigate = useNavigate(); // מאפשר ניווט לדפים שונים
 
@@ -16,7 +20,7 @@ function HoroscopPage() {
     navigate("/sign-in"); // מעביר לדף ההתחברות
   };
 
-  const { sign } = useParams();
+  // const { sign } = useParams();
 
   if (loading) {
     return (
@@ -46,23 +50,21 @@ function HoroscopPage() {
     return <div>שגיאה: {error}</div>; // מציג שגיאה אם ישנה בעיה
   }
 
-  if (!sign) {
-    return (
-      <div className="book-frame" data-page="zodiacs">
-        <div className="zodiacs-grid">
-          {signs.map((sign) => (
-            <div
-              key={sign.id}
-              className="item"
-              onClick={() => navigate(`/horoscop-page/${sign?.id}`)}
-            >
-              {sign.name}
-            </div>
-          ))}
-        </div>
+  return (
+    <div className="book-frame" data-page="zodiacs">
+      <div className="zodiacs-grid">
+        {zodiacSigns.map((sign) => (
+          <div
+            key={sign}
+            className="item"
+            onClick={() => navigate(`/horoscop-page/${sign}`)}
+          >
+            {sign}
+          </div>
+        ))}
       </div>
-    );
-  }
+    </div>
+  );
 }
 
 export default HoroscopPage;

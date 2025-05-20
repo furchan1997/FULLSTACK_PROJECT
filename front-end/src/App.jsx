@@ -69,7 +69,7 @@ function App() {
             />
 
             <Route
-              path="/horoscops/:id"
+              path="/horoscops/:sign/:id"
               element={
                 <ProtectedRouts>
                   <Horoscop />

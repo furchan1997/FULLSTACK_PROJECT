@@ -4,13 +4,20 @@ import { useFormik } from "formik";
 import { useNavigate } from "react-router-dom";
 import joi from "joi";
 import { useContent } from "../../context/contents.context";
+import { useEffect } from "react";
+import Select from "../../components/select";
 
 // רכיב עבור יצירת תוכן חדש , יחד עם ניהול טפסים עם פורמיק וניהול ולידציות עם ג'וי
 // את הבקשה לשרת עם הערכים שבטופס מקבל מהקונטקטס
 
 function CreateHoroscop() {
   const navigate = useNavigate();
-  const { error, loading, createHoroscop } = useContent();
+  const { error, loading, createHoroscop, getSigns, zodiacSigns } =
+    useContent();
+
+  useEffect(() => {
+    getSigns();
+  }, []);
 
   const form = useFormik({
     validateOnMount: true,
@@ -79,12 +86,20 @@ function CreateHoroscop() {
           >
             {error && <div className="alert alert-danger">שגיאה: {error}</div>}
 
-            <Input
+            {/* <Input
               label="סימן"
               name="sign"
               type="text"
               id="sign"
               required
+              error={form.touched.sign && form.errors.sign}
+              {...form.getFieldProps("sign")}
+            /> */}
+
+            <Select
+              label={"בחרי מזל"}
+              name={"zodiacSigns"}
+              option={zodiacSigns}
               error={form.touched.sign && form.errors.sign}
               {...form.getFieldProps("sign")}
             />

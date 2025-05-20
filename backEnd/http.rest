@@ -7,6 +7,9 @@
 
 @userForDeleting=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3YWJhMmI1NmY2ZWRiNjMxNWIzYzA1ZSIsImlzQWRtaW4iOmZhbHNlLCJpYXQiOjE3MzkzMDE1NjV9.zZ6U7SZ2nwa_NTjo2NSgvE_Mhf8Vi9mHACpaWS1rv-U
 
+###
+
+GET  {{local}}/content/horoscops/signs
 
 ###
 

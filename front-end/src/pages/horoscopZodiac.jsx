@@ -14,7 +14,6 @@ function HoroscopZodiac() {
     horoscops,
     likeHoroscop,
     fetchToLike,
-    searchResult,
     handleSearchResult,
   } = useContent();
   const { user } = useAuth();
@@ -30,13 +29,20 @@ function HoroscopZodiac() {
     if (!ID) {
       alert(`ERROR: ${error}`); // אם אין מזהה, מציג שגיאה
     }
-    navigate(`/horoscops/${ID}`); // מעביר לדף ההורוסקופ הספציפי
+    navigate(`/horoscops/${sign}/${ID}`); // מעביר לדף ההורוסקופ הספציפי
   };
 
-  const filteredHoroscop = horoscops.filter((h) => h.sign === sign);
+  const normalizedSign = decodeURIComponent(sign).trim();
+  const filteredHoroscop = horoscops.filter(
+    (h) => h.sign.trim() === normalizedSign
+  );
 
   if (filteredHoroscop.length === 0) {
-    return <div>אין ההורוסקופים כרגע...</div>;
+    return (
+      <div className="rtl text-center mt-5">
+        <h4>אין הורוסקופים זמינים עבור מזל {sign}</h4>
+      </div>
+    );
   }
 
   if (loading) {
@@ -59,8 +65,8 @@ function HoroscopZodiac() {
     <div className="horoscop-page-image">
       <div className="container py-5">
         <div className="row g-4 justify-content-center">
-          {filteredHoroscop.map((horoscop, id) => (
-            <div key={id} className="col-md-4 col-sm-12">
+          {filteredHoroscop.map((horoscop) => (
+            <div key={horoscop._id} className="col-md-4 col-sm-12">
               <HoroscopsCard
                 sign={horoscop?.sign}
                 title={horoscop?.title}

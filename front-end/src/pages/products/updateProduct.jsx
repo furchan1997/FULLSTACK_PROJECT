@@ -5,9 +5,10 @@ import { Formik, useFormik } from "formik";
 import joi from "joi";
 import { useProduct } from "../../context/products.context";
 import { useEffect, useState } from "react";
+import Select from "../../components/select";
 
 function UpdateProduct() {
-  const { updateProduct, loading, error, product } = useProduct();
+  const { updateProduct, loading, error, product, categories } = useProduct();
   const navigate = useNavigate();
   const { id } = useParams();
 
@@ -95,15 +96,13 @@ function UpdateProduct() {
             error={form.touched.description && form.errors.description}
             required
           />
-          <Input
-            label={"קטגוריה"}
-            type="text"
-            id="category"
-            name="category"
-            placeholder={'["קלפים", "נרות", "קמעות", "מפות", "תכשיטים"]'}
-            {...form.getFieldProps("category")}
+
+          <Select
+            label={"בחרי מוצר"}
+            name={"category"}
+            option={categories}
             error={form.touched.category && form.errors.category}
-            required
+            {...form.getFieldProps("category")}
           />
           <Input
             label={"מחיר"}

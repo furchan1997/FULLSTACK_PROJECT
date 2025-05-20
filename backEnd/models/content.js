@@ -5,8 +5,20 @@ const _ = require("lodash");
 const contentSchema = new mongoose.Schema({
   sign: {
     type: String,
-    minlength: 2,
-    maxlength: 256,
+    enum: [
+      "טלה", // Aries
+      "שור", // Taurus
+      "תאומים", // Gemini
+      "סרטן", // Cancer
+      "אריה", // Leo
+      "בתולה", // Virgo
+      "מאזניים", // Libra
+      "עקרב", // Scorpio
+      "קשת", // Sagittarius
+      "גדי", // Capricorn
+      "דלי", // Aquarius
+      "דגים", // Pisces
+    ],
     required: true,
   },
   title: {
@@ -43,6 +55,7 @@ const contentSchema = new mongoose.Schema({
     type: Array,
     default: [],
   },
+
   createdAt: {
     type: Date,
     default: Date.now,
