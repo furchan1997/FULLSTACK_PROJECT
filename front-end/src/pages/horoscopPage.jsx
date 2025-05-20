@@ -53,7 +53,7 @@ function HoroscopPage() {
   return (
     <div className="book-frame" data-page="zodiacs">
       <div className="zodiacs-grid">
-        {zodiacSigns.map((sign) => (
+        {zodiacSigns?.map((sign) => (
           <div
             key={sign}
             className="item"

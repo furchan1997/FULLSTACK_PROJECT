@@ -101,16 +101,6 @@ function UpdateHoroscop() {
           >
             {error && <div className="alert alert-danger">שגיאה: {error}</div>}
 
-            {/* <Input
-              label="סימן"
-              name="sign"
-              type="text"
-              id="sign"
-              required
-              error={form.touched.sign && form.errors.sign}
-              {...form.getFieldProps("sign")}
-            /> */}
-
             <Select
               label={"בחרי מזל מהאפשריות"}
               name={"sign"}
