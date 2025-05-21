@@ -14,6 +14,7 @@ const authRouter = require("../routers/auth");
 const contentRouter = require("../routers/content");
 const createContactRouter = require("../routers/createContact");
 const productsRouter = require("../routers/products");
+const adminLoger = require("../routers/adminLoger");
 
 app.use(cors());
 app.use(express.json());
@@ -24,6 +25,7 @@ app.use("/auth", authRouter);
 app.use("/content", contentRouter);
 app.use("/create-contact", createContactRouter);
 app.use("/shop", productsRouter);
+app.use("/admin-loger", adminLoger);
 
 // Middleware לטיפול בנתיבים לא קיימים
 app.use((req, res, next) => {

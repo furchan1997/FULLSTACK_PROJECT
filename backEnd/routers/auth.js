@@ -6,6 +6,15 @@ const joi = require("joi");
 const { emailRegex } = require("../regex/regexSchema");
 const bcrypt = require("bcrypt");
 const { User } = require("../models/users");
+const fs = require("fs");
+const path = require("path");
+
+const logDir = "logs";
+const logFilePath = path.join(logDir, "login.log");
+
+if (!fs.existsSync(logDir)) {
+  fs.mkdirSync(logDir);
+}
 
 router.post("/login", async (req, res, next) => {
   try {
@@ -32,6 +41,17 @@ router.post("/login", async (req, res, next) => {
       res.status(400).send({ message: "Please check your input." });
       return;
     }
+
+    // יצירת לוגר של משתמשים מחוברים
+
+    user.lastLogin = new Date();
+    await user.save();
+
+    const log = `${user.firstName} ${user.lastName} ${
+      req.ip
+    }  ${new Date().toISOString()}\n`;
+
+    fs.appendFileSync(logFilePath, log);
 
     // PROCESS
     const token = jwt.sign(

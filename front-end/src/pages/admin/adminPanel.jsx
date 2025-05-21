@@ -2,48 +2,48 @@ import { useNavigate } from "react-router-dom";
 import Btn from "../../components/btn";
 import { useEffect, useState } from "react";
 import userService from "../../services/userService";
+import logerService from "../../services/logerService";
 // הרכיב הבא הינו עבור מנהל בלבד שבו יוצגו כפתורים וקישורים אל פעולות מנהל כמו ניהול משתמשים ויצירת הורוסקופ חדש
 // חשוב לציין שעריכה ומחיקה של הורוסקופים לא נמצא כאן אלא נמצא בעמוד הורוסקופ
 function AdminPanel() {
+  const [loginLoger, setLoginLoger] = useState("");
   const navigate = useNavigate();
-
-  const [msgCount, setMsgCount] = useState(0);
-  const [displayAlert, setDisplayAlert] = useState(false);
-
-  useEffect(() => {
-    const fetchInitialMsgCount = async () => {
-      try {
-        const { data } = await userService.msgAlert();
-        setMsgCount(data.count); // אתחול
-      } catch (err) {
-        console.log(err);
-      }
-    };
-    fetchInitialMsgCount();
-  }, []);
-  useEffect(() => {
-    const intervalAlert = setInterval(async () => {
-      try {
-        const { data } = await userService.msgAlert();
-        if (data.count > msgCount) {
-          setDisplayAlert(true); // הודעה חדשה
-          setMsgCount(data.count); // עדכון הספירה
-        }
-      } catch (err) {
-        console.log(err);
-      }
-    }, 10000); // נניח כל 10 שניות
-
-    return () => clearInterval(intervalAlert);
-  }, [msgCount]);
 
   const handleClick = (route) => {
     navigate(route);
   };
 
+  useEffect(() => {
+    const fatch = async () => {
+      try {
+        const dataLog = await logerService.loginLoger();
+        console.log(dataLog);
+        setLoginLoger(dataLog);
+      } catch (err) {
+        console.log(err);
+      }
+    };
+    fatch();
+  }, []);
+
+  const logLines = loginLoger.split("\n").filter((line) => line.trim() !== "");
+  const logObjects = logLines.map((line) => {
+    const parts = line.trim().split(/\s+/);
+
+    return {
+      firstName: parts[0],
+      lastName: parts[1],
+      IP: parts[2],
+      date: parts[3],
+    };
+  });
+
+  console.log(logObjects);
+  // console.log(separationParts);
+
   return (
-    <div className="container" dir="rtl">
-      <h3>שלום אדמין!</h3>
+    <div className="container d-flex flex-column gap-3 align-items-center rtl">
+      <h3 className="text-center mt-3">שלום אדמין!</h3>
 
       <div className="d-flex gap-1 flex-wrap">
         <Btn
@@ -71,12 +71,20 @@ function AdminPanel() {
           type={"submit"}
           fn={() => handleClick("/admin/create-product")}
         />
+      </div>
 
-        {displayAlert ? (
-          <div className="alert alert-info">🔔 יש הודעה חדשה מלקוח!</div>
-        ) : (
-          <div className="alert alert-info">אין הודעות חדשות בינתיים</div>
-        )}
+      <div>
+        <h2 className="fs-2 fw-bold">מתשמשים מחוברים</h2>
+
+        {logObjects.map((log) => (
+          <ul key={`${log.IP}-${log.date}`}>
+            <li className="fs-2">{log.firstName}</li>
+            <li className="fs-2">{log.lastName}</li>
+            <li style={{ color: "gray" }}>{log.IP}</li>
+            <li>{log.date}</li>
+            <li>{new Date().getFullYear()}</li>
+          </ul>
+        ))}
       </div>
     </div>
   );

@@ -9,6 +9,10 @@
 
 ###
 
+GET  {{local}}/admin-loger/login-log
+
+###
+
 GET  {{local}}/content/horoscops/signs
 
 ###
@@ -106,7 +110,7 @@ Content-Type: application/json
 {
   "firstName": "שני",
   "lastName": "eee",
-  "email": "arie333@gmail.com",
+  "email": "arie9@gmail.com",
   "password": "Qweasd1234560!!!",
   "phone": "0523456789",
   "address": {
@@ -133,8 +137,8 @@ Content-Type: application/json
 
 
 {
-  "email": "admin@admin.com",
-  "password": "Admin1234!"
+  "email": "arie9@gmail.com",
+  "password": "Qweasd1234560!!!"
 }
 
 ###
