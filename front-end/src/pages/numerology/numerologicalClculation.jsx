@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
 import Btn from "../../components/btn";
-import Input from "../../components/input";
+import { numerologyNum } from "../numerology/numerologyNums.js";
 import { useAuth } from "../../context/auth.context";
+import NumerologyNum from "../../components/numerologyNum";
 
 function NumerologicalCalculation() {
   const [days, setDays] = useState([]);
@@ -58,7 +59,7 @@ function NumerologicalCalculation() {
   };
 
   const handleDateResult = () => {
-    setResult(sumDigit());
+    setResult(String(sumDigit()));
   };
 
   useEffect(() => {
@@ -66,6 +67,11 @@ function NumerologicalCalculation() {
     monthPicker();
     yearsPicker();
   }, []);
+
+  const num = Object.keys(numerologyNum).filter(
+    (num) => num === String(result)
+  );
+  const res = numerologyNum[result];
 
   return (
     <div className="backround-numerological-calculation-page rtl text-white p-4">
@@ -142,20 +148,27 @@ function NumerologicalCalculation() {
               )
             ) : (
               <>
-                היי {userDetalis?.firstName}, מספר הגורל שלך הינו: {result} וזה
-                אומר כך: <br /> Lorem ipsum dolor sit, amet consectetur
-                adipisicing elit. Excepturi atque repudiandae, veniam recusandae
-                quis corporis? Minima placeat sunt, ea quae atque debitis. Sint
-                maiores earum neque deserunt delectus similique quidem? Suscipit
-                minus omnis inventore assumenda laboriosam facilis dolor
-                perspiciatis? Ut nobis exercitationem illum fugit, autem nulla
-                rem reprehenderit, consectetur vitae in sint tempore tempora
-                enim dolor laboriosam ipsa nisi sed? Ea culpa, repudiandae
-                inventore veniam, distinctio placeat recusandae quo tempora
-                delectus similique reprehenderit. Eum at voluptatem reiciendis
-                possimus ea, commodi voluptas sed beatae est illo molestias
-                pariatur dicta. Ex, vitae?
-                <br />
+                היי {userDetalis?.firstName}, מספר הגורל שלך הינו: {result}
+                {
+                  <NumerologyNum
+                    number={result}
+                    description={numerologyNum[result].description}
+                    positiveDescription={
+                      numerologyNum[result].positiveDescription
+                    }
+                    negativeDesription={
+                      numerologyNum[result].negativeDesription
+                    }
+                    womanDestiption={numerologyNum[result].womanDestiption}
+                    menDecription={numerologyNum[result].menDecription}
+                    relationshipsAPartnershipsDes={
+                      numerologyNum[result].relationshipsAPartnershipsDes
+                    }
+                    whyShouldDate={numerologyNum[result].whyShouldDate}
+                    whyNoShouldDate={numerologyNum[result].whyNoShouldDate}
+                    workAcareer={numerologyNum[result].workAcareer}
+                  />
+                }
               </>
             )}
           </p>
