@@ -12,7 +12,7 @@ function NumerologyNum({
 }) {
   return (
     <div className="container my-4 text-end">
-      <div className="card shadow rounded-4 p-4 bg-light">
+      <div className="card shadow rounded-4 p-2 bg-light">
         <h2 className="text-primary fw-bold">מס' נומרולוגי: {number}</h2>
 
         <hr />

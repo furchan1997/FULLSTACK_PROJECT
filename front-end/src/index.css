@@ -397,10 +397,11 @@ a .color-for-horoscop {
 
 /* הצגת הטקסט מעל השכבה השקופה */
 .backround-numerological-calculation-page h2,
-.backround-numerological-calculation-page p {
+.backround-numerological-calculation-page p,
+.backround-numerological-calculation-page ul li {
   position: relative;
   z-index: 2; /* מוודא שהטקסט יהיה מעל לשכבה השקופה */
-  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7); /* הוספת צל לטקסט */
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.4); /* הצללה מעודנת יותר */
 }
 
 /* ניהול כפתורים ובחירות */
