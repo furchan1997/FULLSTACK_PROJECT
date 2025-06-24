@@ -68,10 +68,29 @@ function NumerologicalCalculation() {
     yearsPicker();
   }, []);
 
-  const num = Object.keys(numerologyNum).filter(
-    (num) => num === String(result)
-  );
-  const res = numerologyNum[result];
+  const fixTexts = (text = "") => {
+    return text
+      .replace(/\(/g, "TEMP_OPEN")
+      .replace(/\)/g, "(")
+      .replace(/TEMP_OPEN/g, ")");
+  };
+
+  const fixedData = result &&
+    numerologyNum[result] && {
+      description: fixTexts(numerologyNum[result].description),
+      positiveDescription:
+        numerologyNum[result].positiveDescription.map(fixTexts),
+      negativeDesription:
+        numerologyNum[result].negativeDesription.map(fixTexts),
+      womanDestiption: fixTexts(numerologyNum[result].womanDestiption),
+      menDecription: fixTexts(numerologyNum[result].menDecription),
+      relationshipsAPartnershipsDes: fixTexts(
+        numerologyNum[result].relationshipsAPartnershipsDes
+      ),
+      whyShouldDate: fixTexts(numerologyNum[result].whyShouldDate),
+      whyNoShouldDate: fixTexts(numerologyNum[result].whyNoShouldDate),
+      workAcareer: fixTexts(numerologyNum[result].workAcareer),
+    };
 
   return (
     <div className="backround-numerological-calculation-page rtl text-white p-4">
@@ -139,7 +158,7 @@ function NumerologicalCalculation() {
 
         {/* תוצאה בצד שמאל */}
         <div className="d-flex w-100">
-          <p className="fw-bold fs-5">
+          <h3 className="fw-bold fs-5">
             {!result ? (
               !selectedDay || !selectedMonth || !selectedYear ? (
                 "בחר/י יום, חודש ושנה"
@@ -152,26 +171,22 @@ function NumerologicalCalculation() {
                 {
                   <NumerologyNum
                     number={result}
-                    description={numerologyNum[result].description}
-                    positiveDescription={
-                      numerologyNum[result].positiveDescription
-                    }
-                    negativeDesription={
-                      numerologyNum[result].negativeDesription
-                    }
-                    womanDestiption={numerologyNum[result].womanDestiption}
-                    menDecription={numerologyNum[result].menDecription}
+                    description={fixedData?.description}
+                    positiveDescription={fixedData?.positiveDescription}
+                    negativeDesription={fixedData?.negativeDesription}
+                    womanDestiption={fixedData?.womanDestiption}
+                    menDecription={fixedData?.menDecription}
                     relationshipsAPartnershipsDes={
-                      numerologyNum[result].relationshipsAPartnershipsDes
+                      fixedData?.relationshipsAPartnershipsDes
                     }
-                    whyShouldDate={numerologyNum[result].whyShouldDate}
-                    whyNoShouldDate={numerologyNum[result].whyNoShouldDate}
-                    workAcareer={numerologyNum[result].workAcareer}
+                    whyShouldDate={fixedData?.whyShouldDate}
+                    whyNoShouldDate={fixedData?.whyNoShouldDate}
+                    workAcareer={fixedData?.workAcareer}
                   />
                 }
               </>
             )}
-          </p>
+          </h3>
         </div>
       </div>
     </div>

@@ -21,10 +21,18 @@ function NumerologyNum({
         <p>{description}</p>
 
         <h4 className="mt-4 text-success">תכונות חיוביות של ה-{number} ✅</h4>
-        <p>{positiveDescription}</p>
+        <ul>
+          {positiveDescription?.map((des, index) => (
+            <li key={index}>{des}</li>
+          ))}
+        </ul>
 
         <h4 className="mt-4 text-danger">⚠ בפן הקצת פחות חיובי:</h4>
-        <p>{negativeDesription}</p>
+        <ul>
+          {negativeDesription?.map((des, index) => (
+            <li key={index}>{des}</li>
+          ))}
+        </ul>
 
         <h4 className="mt-4 text-info">נשים בספרה {number}:</h4>
         <p>{womanDestiption}</p>
