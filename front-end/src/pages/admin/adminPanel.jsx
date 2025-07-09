@@ -9,7 +9,7 @@ function AdminPanel() {
   const [loginLoger, setLoginLoger] = useState("");
   const navigate = useNavigate();
 
-  const handleClick = (route) => {
+  const handleClick = (route) => { 
     navigate(route);
   };
 

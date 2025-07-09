@@ -28,13 +28,13 @@ import LeadCleaning from "./pages/serviceType/leadCleaning";
 import Inbox from "./pages/admin/Inbox";
 import Shop from "./pages/products/shop";
 import AllProducts from "./pages/products/allProducts";
-import Product from "./pages/products/singleProduct";
 import SingleProduct from "./pages/products/singleProduct";
 import NumerologicalCalculation from "./pages/numerology/numerologicalClculation";
 import CategoryProduct from "./pages/products/categoryProduct";
 import CreateProduct from "./pages/products/createProduct";
 import UpdateProduct from "./pages/products/updateProduct";
-
+import React from "react";
+import { MarginalComponent } from "./components/common/lazyComponents";
 // רכיב ראשי , כאן מוצגים כל הרכיבים של האפליקציה
 function App() {
   const loction = useLocation();
@@ -53,7 +53,7 @@ function App() {
         </header>
         <main className={`${isHomePage ? "flex-fill" : "flex-fill mb-2"}`}>
           <Routes>
-            <Route path="/" element={<HomePage />} />
+            <Route path="/" element={<MarginalComponent name={"homePage"} />} />
             <Route path="/sign-up" element={<SignUp />} />
             <Route path="/sign-in" element={<SignIn />} />
 
@@ -110,7 +110,7 @@ function App() {
               path="/admin"
               element={
                 <ProtectedRouts isAdmin>
-                  <AdminPanel />
+                  <MarginalComponent name="adminPanel" />
                 </ProtectedRouts>
               }
             />
@@ -119,7 +119,7 @@ function App() {
               path="/admin/users"
               element={
                 <ProtectedRouts isAdmin>
-                  <Users />
+                  <MarginalComponent name={"users"} />
                 </ProtectedRouts>
               }
             />
@@ -127,7 +127,7 @@ function App() {
               path="/admin/users/:id"
               element={
                 <ProtectedRouts isAdmin>
-                  <UserDetalis />
+                  <MarginalComponent name={"userDetalis"} />
                 </ProtectedRouts>
               }
             />
@@ -136,7 +136,7 @@ function App() {
               path="/admin/create-horoscop"
               element={
                 <ProtectedRouts isAdmin>
-                  <CreateHoroscop />
+                  <MarginalComponent name={"createHoroscop"} />
                 </ProtectedRouts>
               }
             />
