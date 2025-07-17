@@ -32,7 +32,11 @@ app.get("/", (req, res) => {
 app.use("/users", usersRouter);
 app.use("/auth", authRouter);
 app.use("/content", contentRouter);
-app.use("/create-contact", createContactRouter);
+try {
+  app.use("/create-contact", createContactRouter);
+} catch (err) {
+  console.log("ERROR IN CREATR-CONTACT:", err);
+}
 app.use("/shop", productsRouter);
 app.use("/admin-loger", adminLoger);
 
