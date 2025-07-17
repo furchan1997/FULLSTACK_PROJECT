@@ -25,6 +25,4 @@ jobs:
           environment_name: astro-web-server-env
           region: eu-north-1
           version_label: ${{ github.sha }}
-          bucket_name: deploy-astro-website
-          bucket_key: deployments/deploy.zip
-          zip_file: deploy.zip
+          deployment_package: deploy.zip
