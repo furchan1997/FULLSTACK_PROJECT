@@ -4,7 +4,7 @@
   "main": "scripts/app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node .",
+    "start": "node scripts/app.js",
     "dev": "nodemon ."
   },
   "keywords": [],

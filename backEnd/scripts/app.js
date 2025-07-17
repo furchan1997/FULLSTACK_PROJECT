@@ -6,7 +6,7 @@ const mongoose = require("mongoose");
 const cors = require("cors");
 
 const URL = process.env.CONNECTION_STRING_ATLAS;
-const PORT = 3000;
+const PORT = process.env.PORT;
 require("../data/createAdmin");
 
 const usersRouter = require("../routers/users");
