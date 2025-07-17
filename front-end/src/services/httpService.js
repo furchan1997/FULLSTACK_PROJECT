@@ -1,4 +1,3 @@
-import config from "../config.json";
 import axios from "axios";
 
 // הקובץ מגדיר שירות HTTP מותאם אישית
