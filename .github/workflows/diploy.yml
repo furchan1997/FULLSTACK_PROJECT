@@ -13,6 +13,11 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
+      - name: Create deployment ZIP from backEnd folder
+        run: |
+          cd backEnd
+          zip -r deploy.zip . -x "node_modules/*"
+
       - name: Deploy to Elastic Beanstalk
         uses: einaregilsson/beanstalk-deploy@v20
         with:
