@@ -27,4 +27,4 @@ jobs:
           environment_name: astro-web-server-env
           region: eu-north-1
           version_label: ${{ github.sha }}
-          deployment_package: deploy.zip
+          deployment_package: backEnd/deploy.zip
