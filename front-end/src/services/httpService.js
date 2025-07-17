@@ -3,7 +3,10 @@ import axios from "axios";
 
 // הקובץ מגדיר שירות HTTP מותאם אישית
 //  שמבוסס על אקסיוס, ומטרתו לספק ממשק אחיד ונוח לביצע בקשות HTTP בפרויקט.
-axios.defaults.baseURL = config.apiURL;
+const apiUrl = import.meta.env.REACT_APP_API_URL;
+
+axios.defaults.url = apiUrl;  
+
 // הגדרת פונקציה לניהול כותרות
 // מאפשרת להגדיר כותרות ברירת מחדל לכל בקשה יוצאת
 export function setDefaultCommonHeaders(headerName, value) {
