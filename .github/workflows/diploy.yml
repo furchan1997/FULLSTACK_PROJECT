@@ -16,15 +16,19 @@ jobs:
       - name: Zip source code
         run: zip -r deploy.zip . -x "node_modules/*"
 
+      - name: Debug AWS secrets
+        run: |
+          echo "AWS_ACCESS_KEY is set"
+          echo "AWS_SECRET_KEY is set"
+        env:
+          AWS_ACCESS_KEY: ${{ secrets.AWS_ACCESS_KEY }}
+          AWS_SECRET_KEY: ${{ secrets.AWS_SECRET_KEY }}
+
       - name: Deploy to Elastic Beanstalk
         uses: einaregilsson/beanstalk-deploy@v20
         with:
-          run: |
-          echo "AWS_ACCESS_KEY is set"
-          echo "AWS_SECRET_KEY is set"
-         env:
-          AWS_ACCESS_KEY: ${{ secrets.AWS_ACCESS_KEY }}
-          AWS_SECRET_KEY: ${{ secrets.AWS_SECRET_KEY }}
+          aws_access_key: ${{ secrets.AWS_ACCESS_KEY }}
+          aws_secret_key: ${{ secrets.AWS_SECRET_KEY }}
           application_name: astro-web-server
           environment_name: astro-web-server-env
           region: eu-north-1
