@@ -4,7 +4,7 @@ import axios from "axios";
 //  שמבוסס על אקסיוס, ומטרתו לספק ממשק אחיד ונוח לביצע בקשות HTTP בפרויקט.
 const apiUrl = import.meta.env.REACT_APP_API_URL;
 
-axios.defaults.url = apiUrl;  
+axios.defaults.baseURL = apiUrl;
 
 // הגדרת פונקציה לניהול כותרות
 // מאפשרת להגדיר כותרות ברירת מחדל לכל בקשה יוצאת
