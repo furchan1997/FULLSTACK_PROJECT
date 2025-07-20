@@ -20,9 +20,13 @@ app.use(
   cors({
     origin: "*", // לפחות לשלב בדיקות
     methods: ["GET", "POST", "PUT", "DELETE"],
+    allowedHeaders: ["Content-Type", "x-auth-token"],
     credentials: true,
   })
 );
+
+app.options("*", cors()); // ⚠️ תומך בבקשות preflight
+
 app.use(express.json());
 app.use(require("morgan")("dev"));
 

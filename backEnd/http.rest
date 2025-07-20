@@ -110,7 +110,7 @@ Content-Type: application/json
 {
   "firstName": "שני",
   "lastName": "eee",
-  "email": "arie9@gmail.com",
+  "email": "arie999@gmail.com",
   "password": "Qweasd1234560!!!",
   "phone": "0523456789",
   "address": {
@@ -137,7 +137,7 @@ Content-Type: application/json
 
 
 {
-  "email": "arie9@gmail.com",
+  "email": "arie999@gmail.com",
   "password": "Qweasd1234560!!!"
 }
 
