@@ -16,16 +16,17 @@ const createContactRouter = require("../routers/createContact");
 const productsRouter = require("../routers/products");
 const adminLoger = require("../routers/adminLoger");
 
-app.use(
-  cors({
-    origin: "*", // לפחות לשלב בדיקות
-    methods: ["GET", "POST", "PUT", "DELETE"],
-    allowedHeaders: ["Content-Type", "x-auth-token"],
-    credentials: true,
-  })
-);
+const corsOptions = {
+  origin: "https://d233qqtyn4oxpf.cloudfront.net",
+  methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+  allowedHeaders: ["Content-Type", "x-auth-token"],
+  credentials: true,
+};
 
-app.options("*", cors()); // ⚠️ תומך בבקשות preflight
+app.use(cors(corsOptions));
+
+// חובה — תומך ב־OPTIONS לכל הנתיבים
+app.options("*", cors(corsOptions));
 
 app.use(express.json());
 app.use(require("morgan")("dev"));
