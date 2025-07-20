@@ -11,7 +11,7 @@ function NavBar() {
   const { handleSearchResult, horoscops } = useContent();
   const [searchTerm, setSearchTerm] = useState("");
   const location = useLocation();
-  const { categories, getCategories } = useProduct();
+  // const { categories, getCategories } = useProduct();
 
   const handleSearchHoroscop = () => {
     // החזרת מערך חדש ומסונן על ידי הערכים של המפתות הקיימים באובייקט של הורוסקופ
@@ -39,9 +39,10 @@ function NavBar() {
     logOut();
   };
 
-  useEffect(() => {
-    getCategories();
-  }, []);
+  // useEffect(() => {
+  //   getCategories();
+  // }, []);
+  // console.log(categories);
 
   return (
     <nav className="navbar navbar-expand-lg custom-bg-purple navbar-dark">
@@ -117,7 +118,7 @@ function NavBar() {
                 </li>
               </ul>
             </li>
-            <li className="nav-item dropdown ">
+            {/* <li className="nav-item dropdown ">
               <a
                 className="nav-link dropdown-toggle custom-gold-color"
                 href="#"
@@ -151,7 +152,7 @@ function NavBar() {
                   </li>
                 ))}
               </ul>
-            </li>
+            </li> */}
 
             <li className="nav-item dropdown ">
               <a

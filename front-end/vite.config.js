@@ -6,6 +6,7 @@ export default defineConfig({
   plugins: [react()],
   base: "./", // חשוב מאוד
   build: {
+    outDir: "dist",
     rollupOptions: {
       output: {
         manualChunks(id) {

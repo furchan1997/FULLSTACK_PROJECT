@@ -1,5 +1,5 @@
 import { createContext, useContext, useEffect, useState } from "react";
-import * as productService from "../services/productService.js";
+import productService from "../services/productService";
 
 export const ProductContext = createContext();
 ProductContext.displayName = "Product";
@@ -30,6 +30,7 @@ export function ProductProvider({ children }) {
     setError(null);
     try {
       const response = await productService.getCategories();
+      console.log(response);
       setCategories(response.data);
     } catch (err) {
       return handleError(err);

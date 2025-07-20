@@ -28,7 +28,7 @@ export async function deleteProduct(ID) {
   return httpService.delete(`/shop/products/${ID}`);
 }
 
-const productService = {
+export const productService = {
   getCategories,
   getProducts,
   getProduct,
@@ -37,3 +37,5 @@ const productService = {
   deleteProducts,
   deleteProduct,
 };
+
+export default productService;

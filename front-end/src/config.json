@@ -1,3 +1,3 @@
 {
-  "apiURL": "http://astro-web-server-env.eba-uycxtyya.eu-north-1.elasticbeanstalk.com"
+  "apiURL": "http://localhost:8080"
 }
