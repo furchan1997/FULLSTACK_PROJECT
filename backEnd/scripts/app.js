@@ -20,6 +20,7 @@ app.use(
   cors({
     origin: "*", // לפחות לשלב בדיקות
     methods: ["GET", "POST", "PUT", "DELETE"],
+    credentials: true,
   })
 );
 app.use(express.json());

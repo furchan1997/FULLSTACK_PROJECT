@@ -81,7 +81,7 @@ Content-Type: application/json
 
 ###
 
-GET  {{local}}/create-contact//messages-count
+GET  {{local}}/create-contact/messages-count
 x-auth-token:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3ZTk5M2E4YWM0MTQyYWZiMDc2MjliMCIsImlzQWRtaW4iOnRydWUsImlhdCI6MTc0NjQ3ODE1NH0.u7MDH-X2M7scQTpgPBZyw_p4q5R-RvrIKuCa4pn9tNM
 
 ###
