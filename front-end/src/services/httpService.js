@@ -3,7 +3,7 @@ import { apiURL } from "../config.json";
 // הקובץ מגדיר שירות HTTP מותאם אישית
 //  שמבוסס על אקסיוס, ומטרתו לספק ממשק אחיד ונוח לביצע בקשות HTTP בפרויקט.
 const apiUrl = import.meta.env.VITE_API_URL;
-
+// const loacalServer = apiURL;
 const instance = axios.create({
   baseURL: apiUrl,
   withCredentials: false,
