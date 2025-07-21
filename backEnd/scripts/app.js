@@ -17,7 +17,6 @@ const productsRouter = require("../routers/products");
 const adminLoger = require("../routers/adminLoger");
 
 const corsOptions = {
-  origin: "https://d233qqtyn4oxpf.cloudfront.net",
   methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
   allowedHeaders: ["Content-Type", "x-auth-token"],
   credentials: true,
