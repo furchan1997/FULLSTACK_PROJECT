@@ -1,4 +1,4 @@
-@local=http://server-astro-app-env.eba-gepn72cr.eu-north-1.elasticbeanstalk.com
+@local=https://api.edenque.com
 @user=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3YWI5ZWRjNmY2ZWRiNjMxNWIzYzAyYyIsImlzQWRtaW4iOmZhbHNlLCJpYXQiOjE3MzkzMDA1NzZ9.FwicT9h6L56MAwqDDr8YBasdZQhkZ1rX7TBYnLq8qmA
 
 @user2=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3Y2YzZTdhMjU1ZWY4OTNlNzgwNTQ0MCIsImlzQWRtaW4iOmZhbHNlLCJpYXQiOjE3NDE2MzUyMDZ9.V4Bh3YwnYwW8su2P3ZTaHuQGHbVS7gdb_CsB_VuCIVo
