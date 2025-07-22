@@ -14,7 +14,7 @@ function HoroscopZodiac() {
     horoscops,
     likeHoroscop,
     fetchToLike,
-    handleSearchResult,
+    // handleSearchResult,
   } = useContent();
   const { user } = useAuth();
   const { sign } = useParams();
@@ -23,7 +23,7 @@ function HoroscopZodiac() {
   const handleLikeClick = async (ID) => {
     await likeHoroscop(ID);
     await fetchToLike(); // טוען מחדש את הלייקים
-    handleSearchResult(); // מעדכן את תוצאות החיפוש
+    // handleSearchResult(); // מעדכן את תוצאות החיפוש
   };
   const handleHoroscop = async (ID) => {
     if (!ID) {
@@ -60,7 +60,6 @@ function HoroscopZodiac() {
       </div>
     );
   }
-
   return (
     <div className="horoscop-page-image">
       <div className="container py-5">

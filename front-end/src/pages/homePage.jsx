@@ -25,7 +25,7 @@ function HomePage() {
           <span className="signature">Edenque</span>
         </h1>
         <div className="book-frame home-page-for-tablets p-2 text-end">
-          <h1 className="d-flex justify-content-center align-items-center custom-purple-color officle-font-header">
+          <h1 className="d-flex justify-content-center align-items-center custom-purple-color officle-font-header text-center">
             ברוכים הבאים לאתר שלי
           </h1>
           <ul className="list-unstyled fs-5 officle-font">

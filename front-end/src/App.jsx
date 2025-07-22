@@ -38,7 +38,7 @@ import { MarginalComponent } from "./components/common/lazyComponents";
 // רכיב ראשי , כאן מוצגים כל הרכיבים של האפליקציה
 function App() {
   const loction = useLocation();
-  const isHomePage =
+  const mbForComponents =
     loction.pathname === "/" ||
     loction.pathname === "/zodiacs-signs" ||
     loction.pathname.startsWith("/horoscop-page/") ||
@@ -51,7 +51,9 @@ function App() {
         <header>
           <NavBar />
         </header>
-        <main className={`${isHomePage ? "flex-fill" : "flex-fill mb-2"}`}>
+        <main
+          className={`${mbForComponents ? "flex-fill " : "flex-fill mb-2"}`}
+        >
           <Routes>
             <Route path="/" element={<MarginalComponent name={"homePage"} />} />
             <Route path="/sign-up" element={<SignUp />} />

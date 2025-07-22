@@ -167,7 +167,10 @@ function NumerologicalCalculation() {
               )
             ) : (
               <>
-                היי {userDetalis?.firstName}, מספר הגורל שלך הינו: {result}
+                <span id="numerological-hello-user">
+                  {" "}
+                  היי {userDetalis?.firstName}, מספר הגורל שלך הינו: {result}
+                </span>
                 {
                   <NumerologyNum
                     number={result}

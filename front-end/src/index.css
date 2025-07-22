@@ -137,7 +137,7 @@ h3 {
 }
 
 .book-frame {
-  max-width: 700px;
+  max-width: 90%;
   margin: 50px auto;
   padding: 60px 40px;
   background: #b58e62; /* צבע קרמי עתיק */
@@ -269,31 +269,29 @@ h3 {
 }
 
 .horoscop-card {
-  background: linear-gradient(
-    135deg,
-    rgba(136, 10, 43, 0.757),
-    #1b3457
-  ); /* שילוב של צבעים כהים עם ליינר גרדיאנט */
-  border-radius: 15px; /* פינות מעוגלות */
+  background: linear-gradient(135deg, rgba(136, 10, 43, 0.757), #1b3457);
+  border-radius: 15px;
   box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.1), 0px 20px 40px rgba(0, 0, 0, 0.2),
     0px 25px 50px rgba(0, 0, 0, 0.25), 0px 30px 60px rgba(0, 0, 0, 0.3),
-    0px 35px 70px rgba(0, 0, 0, 0.35); /* הוספתי עוד צללים חזקים ומרווחים */
+    0px 35px 70px rgba(0, 0, 0, 0.35);
   padding: 20px;
-  margin: 15px;
+  margin: 15px auto; /* רווח ויישור למרכז */
   text-align: center;
-  color: #fff; /* צבע טקסט בהיר שיבלוט על הרקע */
-  transition: transform 0.3s ease, box-shadow 0.3s ease; /* אנימציה חלקה */
-  width: 300px;
-  /* gap: 100px; */
+  color: #fff;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+  /* רספונסיביות */
+  width: 100%;
+  max-width: 300px; /* גודל מרבי לכרטיס */
+  box-sizing: border-box; /* למניעת גלישה ברוחב */
 }
 
 .horoscop-card:hover {
-  transform: translateY(-10px); /* הרמה קלה של הכרטיס כשעוברים עליו עם העכבר */
+  transform: translateY(-10px);
   box-shadow: 0px 20px 40px rgba(0, 0, 0, 0.4), 0px 30px 60px rgba(0, 0, 0, 0.5),
     0px 40px 80px rgba(0, 0, 0, 0.6), 0px 50px 100px rgba(0, 0, 0, 0.7),
-    0px 60px 120px rgba(0, 0, 0, 0.8); /* הצללות חזקות מאוד בעת ריחוף */
+    0px 60px 120px rgba(0, 0, 0, 0.8);
 }
-
 .horoscop-page-image {
   background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
     url("/crystal.jpg");
@@ -398,10 +396,30 @@ a .color-for-horoscop {
 /* הצגת הטקסט מעל השכבה השקופה */
 .backround-numerological-calculation-page h2,
 .backround-numerological-calculation-page p,
-.backround-numerological-calculation-page ul li {
+.backround-numerological-calculation-page ul li,
+#numerological-hello-user {
   position: relative;
-  z-index: 2; /* מוודא שהטקסט יהיה מעל לשכבה השקופה */
-  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.4); /* הצללה מעודנת יותר */
+  z-index: 2;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.4);
+}
+
+#numerological-hello-user {
+  color: red;
+  font-weight: bold;
+  background: linear-gradient(to right, yellow, orange);
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  font-size: 1.5rem;
+  z-index: 2;
+  position: relative;
+
+  /* אלו ההוספות שפותרות את הבעיה: */
+  display: inline-block; /* מאפשר לשבור שורה כשצריך */
+  max-width: 100%; /* לא יחרוג מהקונטיינר */
+  word-wrap: break-word; /* שבור מילים ארוכות אם צריך */
+  overflow-wrap: break-word; /* תמיכה בדפדפנים חדשים */
+  white-space: normal; /* מונע שמירת הכל בשורה אחת */
+  text-align: center; /* אופציונלי - ליישור במרכז */
 }
 
 /* ניהול כפתורים ובחירות */
@@ -442,5 +460,12 @@ a .color-for-horoscop {
     display: flex; /* גורם לתוכן להימתח בהתאם */
     flex-direction: column;
     justify-content: space-around; /* ממקם את התוכן במרכז אנכי */
+  }
+}
+
+@media (max-width: 750px) {
+  .zodiacs-grid {
+    display: flex;
+    flex-direction: column;
   }
 }

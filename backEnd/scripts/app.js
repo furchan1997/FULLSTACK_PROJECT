@@ -17,7 +17,7 @@ const productsRouter = require("../routers/products");
 const adminLoger = require("../routers/adminLoger");
 
 const corsOptions = {
-  methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+  methods: ["GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"],
   allowedHeaders: ["Content-Type", "x-auth-token"],
   credentials: true,
 };

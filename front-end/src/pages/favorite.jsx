@@ -8,9 +8,11 @@ import Logo from "../components/logo";
 
 function Favorite() {
   // קבלת הנתונים והפונקציות הדרושות מהקונטקסטים
-  const { error, loading, favorites, likeHoroscop, fetchToLike } = useContent();
+  const { error, loading, favorites, likeHoroscop, fetchToLike, getHoroscops } =
+    useContent();
   const { user, logOut } = useAuth();
   const { id } = useParams(); // קבלת ה-ID מה-URL
+  const { sign } = useParams();
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -24,17 +26,22 @@ function Favorite() {
 
   // פונקציה לניווט לדף ההורוסקופ המתאים
   const handleHoroscop = (ID) => {
-    navigate(`/horoscops/${ID}`);
+    navigate(`/horoscops/${sign}/${ID}`); // מעביר לדף ההורוסקופ הספציפי
+    // if (!ID) {
+    //   navigate("/");
+    // }
   };
 
   // פונקציה להסרת לייק מהורוסקופ ורענון רשימת המועדפים
   const handkeUnLikeClick = async (ID) => {
     await likeHoroscop(ID);
     await fetchToLike();
+    await getHoroscops();
   };
 
   // טעינת המועדפים כשהרכיב נטען לראשונה
   useEffect(() => {
+    getHoroscops();
     fetchToLike();
   }, []);
 
@@ -81,11 +88,10 @@ function Favorite() {
       <div className="container">
         <div className="row my-5 gap-3 m-auto">
           {favorites.map((f) => (
-            <div key={id} className="col-12">
+            <div key={f._id} className="col-12">
               <div className="d-flex flex-column">
                 {/* רכיב לתצוגת פרטי הורוסקופ */}
                 <HoroscopsContent
-                  key={f._id}
                   sign={f.sign}
                   title={f.title}
                   description={f.subtitle}
@@ -93,11 +99,11 @@ function Favorite() {
                   image={f.image}
                   likes={f.likes.length}
                   toggleLikeBuUser={() => {
-                    handkeUnLikeClick(f._id);
+                    handkeUnLikeClick(f?._id);
                   }}
                   isLiked={true}
                   goToHoroscop={() => {
-                    handleHoroscop(f._id);
+                    handleHoroscop(f?._id);
                   }}
                 />
               </div>

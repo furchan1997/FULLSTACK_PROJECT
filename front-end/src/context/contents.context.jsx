@@ -85,7 +85,7 @@ export function ContentProvider({ children }) {
       );
       if (err?.response?.status === 404) {
         alert("horoscop deleted or not found");
-        navigate("/horoscops");
+        navigate("/horoscop-page");
       }
       await getHoroscops();
       throw err;
@@ -146,7 +146,7 @@ export function ContentProvider({ children }) {
       if (err?.response?.status === 404) {
         alert("horoscop deleted or not found");
         await getHoroscops();
-        navigate("/horoscops");
+        navigate("/");
       }
       throw err;
     } finally {

@@ -67,7 +67,6 @@ function MyServices() {
           form.resetForm();
         }
       } catch (err) {
-        console.log(err);
         setError(
           err?.response?.data?.message || err?.message || "Something went wrong"
         );
@@ -76,10 +75,6 @@ function MyServices() {
       }
     },
   });
-
-  useEffect(() => {
-    console.log(message);
-  }, [message]);
 
   const navigate = useNavigate();
 

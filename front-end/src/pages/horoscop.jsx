@@ -69,7 +69,6 @@ function Horoscop() {
   {
     /* מציג הודעת טעינה */
   }
-
   return (
     <>
       <div className="container">

@@ -23,9 +23,9 @@ function HoroscopsContent({
 
   return (
     <div
-      className={`container rtl my-5 fw-bold book-frame color-my-services-text`}
+      className={`container rtl my-5 fw-bold book-frame color-my-services-text text-break`}
     >
-      <div className="p-4">
+      <div className="p-4 ">
         <div className="card-body">
           <div className="text-center mb-3">
             <h1>{sign}</h1>

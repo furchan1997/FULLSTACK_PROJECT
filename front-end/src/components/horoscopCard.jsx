@@ -10,30 +10,32 @@ function HoroscopsCard({
   toggleLikeBuUser = () => {},
   isLiked,
 }) {
-  const { user } = useAuth();
   return (
-    <div className="horoscop-card fw-bold">
-      <p className="text-center fs-2">{sign}</p>
-      <p className="text-center fs-4"> {title}</p>
-      <p>לייקים: {likes}</p>
+    <div className="horoscop-card fw-bold text-break">
+      <p className="text-center fs-4 fs-md-2">{sign}</p>
+      <p className="text-center fs-6 fs-md-4">{title}</p>
+      <p className="text-center">לייקים: {likes}</p>
 
-      <div className="d-flex justify-content-around align-items-center">
-        {" "}
+      <div className="d-flex justify-content-around align-items-center flex-wrap gap-2 mt-3">
         <Btn
           description={"הצג"}
-          className={"custom-bg-gold custom-gold-color"}
-          type={"submit"}
+          className="custom-bg-gold custom-gold-color"
+          type="submit"
           fn={goToHoroscop}
         />
         <Btn
           description={
             isLiked ? (
-              <span className="liked-icon fs-5">❤️</span>
+              <span className="liked-icon fs-5" aria-label="מועדף">
+                ❤️
+              </span>
             ) : (
-              <span className="unliked-icon fs-5">🤍</span>
+              <span className="unliked-icon fs-5" aria-label="לא מועדף">
+                🤍
+              </span>
             )
           }
-          type={"submit"}
+          type="submit"
           fn={toggleLikeBuUser}
         />
       </div>

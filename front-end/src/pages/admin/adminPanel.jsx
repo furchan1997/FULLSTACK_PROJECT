@@ -9,7 +9,7 @@ function AdminPanel() {
   const [loginLoger, setLoginLoger] = useState("");
   const navigate = useNavigate();
 
-  const handleClick = (route) => { 
+  const handleClick = (route) => {
     navigate(route);
   };
 
@@ -17,11 +17,8 @@ function AdminPanel() {
     const fatch = async () => {
       try {
         const dataLog = await logerService.loginLoger();
-        console.log(dataLog);
         setLoginLoger(dataLog);
-      } catch (err) {
-        console.log(err);
-      }
+      } catch (err) {}
     };
     fatch();
   }, []);
@@ -37,9 +34,6 @@ function AdminPanel() {
       date: parts[3],
     };
   });
-
-  console.log(logObjects);
-  // console.log(separationParts);
 
   return (
     <div className="container d-flex flex-column gap-3 align-items-center rtl">
