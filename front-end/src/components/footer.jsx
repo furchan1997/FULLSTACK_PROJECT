@@ -58,7 +58,7 @@ function Footer() {
           </a>
         </div>
 
-        <div className="d-flex gap-3">
+        <div className="d-flex justify-content-center align-items-center flex-wrap gap-5 align-item-center">
           <NavLink to={"/about"} className="footer">
             אודות
           </NavLink>
@@ -67,6 +67,9 @@ function Footer() {
           </NavLink>
           <NavLink to={"/My-services"} className="footer">
             השירותים שלי
+          </NavLink>
+          <NavLink to={"/Accessibility"} className="footer">
+            הצהרת נגישות{" "}
           </NavLink>
           <HashLink smooth to={"/My-services/#form"} className="footer">
             צור/י קשר

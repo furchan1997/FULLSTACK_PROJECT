@@ -36,6 +36,7 @@ import UpdateProduct from "./pages/products/updateProduct";
 import React from "react";
 import { MarginalComponent } from "./components/common/lazyComponents";
 import { useEffect } from "react";
+import Accessibility from "./pages/Accessibility";
 // רכיב ראשי , כאן מוצגים כל הרכיבים של האפליקציה
 function App() {
   const loction = useLocation();
@@ -228,6 +229,7 @@ function App() {
                 </ProtectedRouts>
               }
             />
+            <Route path="/Accessibility" element={<Accessibility />} />
           </Routes>
         </main>
         <Footer />
