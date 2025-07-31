@@ -22,7 +22,7 @@ function HomePage() {
         </div>
         <h1 className="text-center custom-purple-color">
           {" "}
-          <span className="signature">Edenque</span>
+          <span className="signature">Edenique</span>
         </h1>
         <div className="book-frame home-page-for-tablets p-2 text-end">
           <h1 className="d-flex justify-content-center align-items-center custom-purple-color officle-font-header text-center">
@@ -65,9 +65,7 @@ function HomePage() {
                   className="custom-purple-color"
                   onClick={() => handleClikeToPage("/horoscop-page")}
                 >
-                  <span className="cursor-pointer">
-                    צפו בהורוסקופ החדשים לבחירתכם
-                  </span>
+                  <span className="cursor-pointer">צפו בהורוסקופ השבועי !</span>
                 </strong>
               </div>
               <div

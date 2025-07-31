@@ -1,6 +1,16 @@
 .custom-bg-purple {
   background-color: #1b3457 !important;
 }
+.userway_buttons_wrapper {
+  position: fixed !important;
+  top: 100px !important;
+  left: 100px !important;
+  z-index: 99999 !important;
+  opacity: 1 !important;
+  /* width: 20px !important;
+  height: 20px !important; */
+  cursor: pointer;
+}
 
 .custom-bg-gold {
   background-color: #b0bec5 !important;
@@ -137,7 +147,7 @@ h3 {
 }
 
 .book-frame {
-  max-width: 90%;
+  width: 90%;
   margin: 50px auto;
   padding: 60px 40px;
   background: #b58e62; /* צבע קרמי עתיק */
@@ -207,7 +217,13 @@ h3 {
   cursor: pointer;
 }
 
+/* #container-book-frame-horo-signs {
+  display: flex;
+  justify-content: center;
+} */
+
 .book-frame[data-page="zodiacs"] {
+  margin: 100px auto;
   background-color: rgba(154, 87, 5, 0.4); /* שקיפות קלה לרקע */
   backdrop-filter: blur(49px); /* מטשטש בעדינות מה שמתחת */
   border-radius: 20px;
@@ -451,6 +467,14 @@ a .color-for-horoscop {
 
   .btn-sign-up {
     width: 25%;
+  }
+  .userway_buttons_wrapper {
+    position: fixed !important;
+    top: 10px !important;
+    left: 70px !important;
+    z-index: 99999 !important;
+    opacity: 1 !important;
+    cursor: pointer;
   }
 }
 

@@ -35,6 +35,7 @@ import CreateProduct from "./pages/products/createProduct";
 import UpdateProduct from "./pages/products/updateProduct";
 import React from "react";
 import { MarginalComponent } from "./components/common/lazyComponents";
+import { useEffect } from "react";
 // רכיב ראשי , כאן מוצגים כל הרכיבים של האפליקציה
 function App() {
   const loction = useLocation();
@@ -43,6 +44,17 @@ function App() {
     loction.pathname === "/zodiacs-signs" ||
     loction.pathname.startsWith("/horoscop-page/") ||
     loction.pathname === "/numerological-calculation";
+
+  useEffect(() => {
+    const script = document.createElement("script");
+    script.src = "https://cdn.userway.org/widget.js";
+    script.async = true;
+    document.body.appendChild(script);
+
+    return () => {
+      document.body.removeChild(script);
+    };
+  }, []);
 
   return (
     <>
