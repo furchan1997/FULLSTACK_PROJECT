@@ -28,7 +28,7 @@ function HoroscopPage() {
         <p>טוען...</p>
       </div>
     );
-  }
+}
 
   if (!user) {
     return (
