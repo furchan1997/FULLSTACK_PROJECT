@@ -20,7 +20,7 @@ router.post("/login", async (req, res, next) => {
   try {
     // VALIDATE USER INPUT
     const { error } = validateUserExists(req.body);
-    //  בשגיאת אימות
+    //  בשגיאות אימות
     if (error) {
       res.status(400).send({ message: error.details[0].message });
       return;
